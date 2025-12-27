@@ -1,0 +1,75 @@
+{
+  "site": {
+    "title": "In the Absence of a Soapbox",
+    "subtitle": "Rants and Revelations of a 30-Something Single Mum",
+    "author": "Kelwyn Wright",
+    "email": "hello@yourdomain.com",
+    "domain": "https://intheabsenceof.example"
+  },
+  "book": {
+    "title": "In the Absence of a Soapbox",
+    "subtitle": "Rants and Revelations of a 30-Something Single Mum",
+    "description": [
+      "This book begins with teenage pregnancy and follows the long, unglamorous process of growing up while being watched, judged, corrected, and spoken over.",
+      "It moves through early motherhood, sex, shame, institutions, bodies, faith, dating, and the slow recalibration that happens when life doesn't follow a plan — and then refuses to apologise for it.",
+      "Some chapters are intimate. Some are angry. Many are quietly ridiculous.",
+      "What ties them together isn't resolution, but recognition: the moment you realise that not everything broken needs fixing, and not every story needs a moral.",
+      "This isn't a transformation narrative or a lesson in resilience. There are no takeaways. No prescriptions. No neatly wrapped conclusions.",
+      "It's an account — written with hindsight, humour, and the understanding that healing doesn't always arrive with speeches or revelations. Sometimes it shows up as a dance floor, a bad decision, a laugh you didn't plan, or the sudden permission to stop trying so hard.",
+      "If the book feels like standing on a soapbox, that's figurative and serves to show progression. Most of the time, it's about stepping off one."
+    ],
+    "excerpt": {
+      "title": "Read the Introduction",
+      "content": [
+        "I turned thirty in a pandemic, alone, with a toddler who'd just discovered the word 'no' and a cat who'd discovered the joy of knocking things off shelves. It was less a celebration and more a survival milestone.",
+        "That's when I started writing these unsolicited opinions. Not because I thought I had anything particularly profound to say, but because I needed somewhere to put all the thoughts that were crowding my head. The ones that didn't fit in polite conversation or Instagram captions.",
+        "This book is what happened when I stopped trying to make my life look presentable and started writing it down exactly as it was: messy, honest, and occasionally hilarious in its absurdity.",
+        "If you're here because you're also trying to figure out how to adult while feeling like you're making it up as you go, welcome. You're not alone. And if you're here because you're curious about what happens when a single mum stops filtering herself, buckle up. It's going to be candid."
+      ]
+    },
+    "purchaseLinks": {
+      "amazon": "#",
+      "takealot": "#",
+      "kindle": "#"
+    }
+  },
+  "about": {
+    "authorBio": [
+      "Me.",
+      "I write unsolicited commentary on society in my spare time. I have travelled extensively across all four provinces of South Africa (and nowhere else). I am not yet forty. I also hold a very prestigious, ultra-important, super-adventurous, definitely-not-boring job at an insurance company.",
+      "This makes me entirely qualified to offer opinions and fully expect them to be taken seriously. (Aren't you chuffed you landed here?)",
+      "Since writing the book, I've spent years trying to make sense of my body, relationships, institutions, and the kind of decisions that feel reasonable at the time and deeply unhinged in hindsight.",
+      "I write because some experiences don't improve with silence — they just get heavier. Writing them down is cheaper than therapy and more effective than pretending I've got it all figured out.",
+      "This isn't an attempt to universalise anything. It's an account, written with enough distance to be honest and enough self-awareness to acknowledge my own role in the bullshit.",
+      "Occasionally, I climb onto a soapbox. I usually notice halfway through."
+    ],
+    "houseRules": [
+      "No unsolicited advice. No unsolicited anatomy.",
+      "Be kind or be quiet.",
+      "Profanity is allowed. So are opinions.",
+      "This is a no-judgment zone.",
+      "Take what you need, leave what you don't."
+    ],
+    "beforeYouRead": [
+      "This isn't a guide, a manifesto, or a place to get your life sorted.",
+      "It's a record — written with candour, reflection, and enough humour to survive reliving my own questionable decisions.",
+      "Some of what's here is story. Some of it is opinion. Most of it lives in the uncomfortable space between how things felt at any given time and how they look in hindsight.",
+      "Much of this recounts experiences from my teens, and my past, when perspective was limited and emotions were loud. The feelings remain intact, even where understanding has since evolved.",
+      "Kindness is welcome. Curiosity too. Bring your most honest self. Cruelty is not interesting. If you're here to correct, diagnose, or redeem me, you're probably lost.",
+      "Profanity appears without warning. So do opinions. Both are intentional.",
+      "If I had a soapbox handy, I'd use it to say this clearly: Take what resonates. Leave the rest exactly where you found it.",
+      "This isn't advice, instruction, or catharsis-by-proxy. It's an account. Read it generously. Read it with curiosity. Read it with humanity."
+    ]
+  },
+  "homePage": {
+    "whatThisIs": [
+      "This started as a book, but life kept happening.",
+      "It starts at sixteen, with a teenage pregnancy and a spectacular lack of foresight, and carries on through single motherhood, dating disasters, weight gain, depression, recalibration, and the slow realisation that adulthood is mostly just doing your best while quietly panicking.",
+      "Some of what lives here is story. Some of it is opinion. Most of it is hindsight — the kind you only earn once you've lived through things badly and had time to laugh about them.",
+      "Motherhood runs through it, but so do bodies, sex, institutions, bad decisions, and the uniquely humbling experience of watching yourself make the same mistake again, just with better vocabulary.",
+      "This isn't self-help. It's not redemption. It's an honest account of growing up in public, growing sideways instead of forward, and learning to see the ridiculousness in yourself without pretending it didn't hurt at the time. Occasionally, I even climb onto a soapbox. Fortunately, I try not to stay there long.",
+      "Silence didn't age well. Perspective did."
+    ]
+  }
+}
+

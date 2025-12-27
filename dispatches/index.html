@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Archive of unsolicited opinions - essays on single motherhood, turning thirty, dating, and life.">
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="Unsolicited Opinions - In the Absence of a Soapbox">
+  <meta property="og:description" content="Archive of unsolicited opinions - essays on single motherhood, turning thirty, dating, and life.">
+  <meta property="og:image" content="https://intheabsenceof.example/assets/images/BookCover.png">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://intheabsenceof.example/dispatches/">
+  
+  <link rel="canonical" href="https://intheabsenceof.example/dispatches/">
+  <link rel="manifest" href="../manifest.webmanifest">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;650;700;750;800&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="../css/styles.css">
+  <title>Unsolicited Opinions - In the Absence of a Soapbox</title>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <a href="../index.html" class="wordmark">
+        <span class="wordmark-label">IN THE ABSENCE OF</span>
+        <span class="wordmark-title">A SOAPBOX</span>
+      </a>
+      
+      <nav class="nav">
+        <ul class="nav-links">
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="../about.html">About</a></li>
+          <li><a href="../book.html">The Book</a></li>
+          <li><a href="index.html">Unsolicited Opinions</a></li>
+          <li><a href="../correspondence.html">Correspondence</a></li>
+        </ul>
+      </nav>
+      
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        ☰
+      </button>
+    </div>
+  </header>
+
+  <nav class="nav-mobile">
+    <div class="nav-mobile-header">
+      <div class="wordmark">
+        <span class="wordmark-label">IN THE ABSENCE OF</span>
+        <span class="wordmark-title">A SOAPBOX</span>
+      </div>
+      <button class="nav-mobile-close" aria-label="Close navigation">×</button>
+    </div>
+    <ul class="nav-mobile-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/about.html">About</a></li>
+      <li><a href="/book.html">The Book</a></li>
+      <li><a href="/dispatches/index.html">Unsolicited Opinions</a></li>
+      <li><a href="/correspondence.html">Correspondence</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-label">Archive</span>
+          <h1 class="section-title">Unsolicited Opinions</h1>
+          <p class="section-intro">This is not a blog. It's a selection.</p>
+        </div>
+        
+        <div class="filter-bar">
+          <button class="pill pill-filter active" data-tag="All">All</button>
+          <button class="pill pill-filter" data-tag="Motherhood">Motherhood</button>
+          <button class="pill pill-filter" data-tag="Sex & Bodies">Sex & Bodies</button>
+          <button class="pill pill-filter" data-tag="Institutions">Institutions</button>
+          <button class="pill pill-filter" data-tag="Growing Up">Growing Up</button>
+          <button class="pill pill-filter" data-tag="Uncomfortable Thoughts">Uncomfortable Thoughts</button>
+        </div>
+        
+        <div class="grid dispatches-grid"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2025 In the Absence of a Soapbox</p>
+    </div>
+  </footer>
+
+  <script src="../js/main.js" defer></script>
+  <script src="../js/sw-register.js" defer></script>
+</body>
+</html>
+

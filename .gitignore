@@ -1,0 +1,22 @@
+# Admin page - keep local only (optional)
+# Uncomment the line below if you don't want to commit admin.html
+# admin.html
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Logs
+*.log
+
+# Environment files
+.env
+.env.local
+

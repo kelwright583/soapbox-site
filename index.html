@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Rants and Revelations of a 30-Something Single Mum. In the Absence of a Soapbox.">
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="In the Absence of a Soapbox">
+  <meta property="og:description" content="Rants and Revelations of a 30-Something Single Mum.">
+  <meta property="og:image" content="https://intheabsenceof.example/assets/images/BookCover.png">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://intheabsenceof.example/">
+  
+  <link rel="canonical" href="https://intheabsenceof.example/">
+  <link rel="manifest" href="manifest.webmanifest">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;650;700;750;800&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="css/styles.css">
+  <title>In the Absence of a Soapbox</title>
+</head>
+<body>
+  <!--
+    ============================================
+    README FOR SETUP
+    ============================================
+    
+    TO RUN LOCALLY:
+    - Use a simple static server (e.g., Python: python -m http.server 8000)
+    - Or use VS Code Live Server extension
+    - Or use: npx serve
+    
+    TO REPLACE ASSETS:
+    - Cover image: Replace /assets/images/cover.jpg (recommended: 800x1200px)
+    - Icons: Replace files in /assets/icons/ (192x192 and 512x512 PNG)
+    - Maskable icons: Same sizes but with safe zone (see PWA maskable icon guidelines)
+    
+    TO SET REAL EMAIL:
+    - Edit /js/main.js, find the email variable in initEmailCopy() function
+    - Replace 'hello@yourdomain.com' with your actual email
+    
+    ============================================
+  -->
+
+  <header class="site-header">
+    <div class="container">
+      <a href="index.html" class="wordmark">
+        <span class="wordmark-label">IN THE ABSENCE OF</span>
+        <span class="wordmark-title">A SOAPBOX</span>
+      </a>
+      
+      <nav class="nav">
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="book.html">The Book</a></li>
+          <li><a href="dispatches/index.html">Unsolicited Opinions</a></li>
+          <li><a href="correspondence.html">Correspondence</a></li>
+        </ul>
+      </nav>
+      
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        ☰
+      </button>
+    </div>
+  </header>
+
+  <nav class="nav-mobile">
+    <div class="nav-mobile-header">
+      <div class="wordmark">
+        <span class="wordmark-label">IN THE ABSENCE OF</span>
+        <span class="wordmark-title">A SOAPBOX</span>
+      </div>
+      <button class="nav-mobile-close" aria-label="Close navigation">×</button>
+    </div>
+    <ul class="nav-mobile-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="book.html">The Book</a></li>
+      <li><a href="dispatches/index.html">Unsolicited Opinions</a></li>
+      <li><a href="correspondence.html">Correspondence</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <!-- Hero -->
+    <section class="hero hero--fullwidth">
+      <div class="hero-background">
+        <img src="assets/images/BookCover.png" alt="Book cover: In the Absence of a Soapbox" class="hero-bg-image">
+        <div class="hero-overlay"></div>
+      </div>
+      <div class="hero-content container">
+        <div class="hero-text-wrapper">
+          <h1 class="hero-title">In the Absence<br>of a Soapbox</h1>
+          <p class="hero-subheading">Rants and Revelations of a 30-Something Single Mum</p>
+          <div class="hero-ctas">
+            <a href="book.html" class="btn btn--primary">The Book</a>
+            <a href="dispatches/index.html" class="btn btn--ghost">Read an Unsolicited Opinion</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Unsolicited Opinions -->
+    <section class="section featured-dispatches featured-dispatches--prominent">
+      <div class="container">
+        <div class="section-header section-header--bold">
+          <span class="section-label">LATEST</span>
+          <h2 class="section-title section-title--large">Featured<br>Unsolicited Opinions</h2>
+          <p class="section-intro section-intro--large">The thoughts that won't leave you alone.</p>
+        </div>
+        <div class="carousel-wrapper">
+          <div class="carousel-container" id="featuredCarousel" role="region" aria-label="Featured dispatches carousel">
+            <!-- Cards will be dynamically loaded here -->
+          </div>
+          <button class="carousel-btn carousel-btn--prev" aria-label="Previous card" style="display: none;">
+            <span>‹</span>
+          </button>
+          <button class="carousel-btn carousel-btn--next" aria-label="Next card" style="display: none;">
+            <span>›</span>
+          </button>
+          <div class="carousel-dots" id="carouselDots" role="tablist" aria-label="Carousel navigation">
+            <!-- Dots will be dynamically generated -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- What This Is -->
+    <section class="section section--dark">
+      <div class="container">
+        <div class="section-header section-header--bold">
+          <span class="section-label">ABOUT</span>
+          <h2 class="section-title section-title--large">What<br>This Is</h2>
+        </div>
+         <div class="section-intro section-intro--large" style="color: rgba(255, 255, 255, 0.95);" data-content="whatThisIs">
+           <!-- Content loaded dynamically from site-content.json -->
+           <p>Loading content...</p>
+         </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2025 In the Absence of a Soapbox</p>
+    </div>
+  </footer>
+
+  <!-- Modal Overlay -->
+  <div class="modal-overlay" id="dispatchModal" aria-hidden="true">
+    <div class="modal-container">
+      <button class="modal-close" aria-label="Close modal">×</button>
+      <div class="modal-content" id="modalContent">
+        <!-- Content will be dynamically loaded -->
+      </div>
+    </div>
+  </div>
+
+  <script src="js/content-loader.js" defer></script>
+  <script src="js/main.js" defer></script>
+  <script src="js/sw-register.js" defer></script>
+</body>
+</html>
+
