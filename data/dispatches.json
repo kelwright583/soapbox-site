@@ -1,81 +1,5 @@
 [
   {
-    "slug": "test",
-    "title": "dfevverv",
-    "quote": "ergesrervergsergdfserfsegesrgsvre",
-    "chapter": "wkejfbwln",
-    "excerpt": "ergesvrserves",
-    "reflection": "esrgesvrsever",
-    "fullText": "servesrvsrv",
-    "readTime": "5 min",
-    "tags": [
-      "heowsbc",
-      "isuebfwl",
-      "sjdbwlb"
-    ],
-    "date": "2025-12-26",
-    "featured": true
-  },
-  {
-    "slug": "bra-seatbelts",
-    "title": "On Woolworths Bras and Seatbelts Disguised as Straps",
-    "readTime": "6 min",
-    "excerpt": "Thirty is the year your lingerie stops being flirtation and starts being infrastructure. The day I realized my bra was essentially a seatbelt for my tits was the day I understood I'd crossed a threshold.",
-    "tags": [
-      "Sex & Bodies",
-      "Institutions"
-    ],
-    "date": "2025-12-22"
-  },
-  {
-    "slug": "turning-thirty",
-    "title": "Turning Thirty and Other Acts of Defiance",
-    "readTime": "8 min",
-    "excerpt": "I turned thirty in a pandemic, alone, with a toddler who'd just discovered the word 'no' and a cat who'd discovered the joy of knocking things off shelves. It was less a celebration and more a survival milestone.",
-    "tags": [
-      "Growing Up",
-      "Motherhood"
-    ],
-    "date": "2025-12-15"
-  },
-  {
-    "slug": "dating-app-fatigue",
-    "title": "Dating Apps and the Art of Low Expectations",
-    "readTime": "5 min",
-    "excerpt": "There's something deeply unsexy about swiping through profiles while your child asks why the man in the photo has a fish. Dating as a single parent is less romance, more logistics.",
-    "tags": [
-      "Sex & Bodies",
-      "Motherhood"
-    ],
-    "date": "2025-12-10"
-  },
-  {
-    "slug": "body-image-thirty",
-    "title": "My Body at Thirty: A User's Manual",
-    "readTime": "7 min",
-    "excerpt": "My body and I have reached an understanding. It does its job, I try not to hate it, and we both pretend the stretch marks are tiger stripes. It's a truce, not a love story.",
-    "tags": [
-      "Sex & Bodies"
-    ],
-    "date": "2025-12-05"
-  },
-  {
-    "slug": "universal-values",
-    "title": "Universal Values",
-    "readTime": "5 min",
-    "quote": "Love. Enthusiasm. And McDonald's. Universal values.",
-    "chapter": "McDonald's for Dinner",
-    "excerpt": "Love. Enthusiasm. And McDonald's. Universal values.",
-    "reflection": "Sometimes parenting isn't about Pinterest-perfect meals or organic everything. Sometimes it's about survival, enthusiasm, and the occasional drive-through. And that's perfectly okay. My daughter is thriving, and I've learned that love doesn't come with a side of judgment – it comes with whatever gets you through the day with a smile.",
-    "fullText": "Sometimes parenting isn't about Pinterest-perfect meals or organic everything. Sometimes it's about survival, enthusiasm, and the occasional drive-through. And that's perfectly okay. My daughter is thriving, and I've learned that love doesn't come with a side of judgment – it comes with whatever gets you through the day with a smile. At the end of the day, that's all we can bank on, isn't it? Love. Enthusiasm. And McDonald's.",
-    "tags": [
-      "Motherhood",
-      "Growing Up"
-    ],
-    "date": "2025-01-15",
-    "featured": true
-  },
-  {
     "slug": "alone-vs-lonely",
     "title": "Alone vs Lonely",
     "readTime": "6 min",
@@ -122,5 +46,48 @@
     ],
     "date": "2025-01-01",
     "featured": true
+  },
+  {
+    "slug": "bra-seatbelts",
+    "title": "On Woolworths Bras and Seatbelts Disguised as Straps",
+    "readTime": "6 min",
+    "excerpt": "Thirty is the year your lingerie stops being flirtation and starts being infrastructure. The day I realized my bra was essentially a seatbelt for my tits was the day I understood I'd crossed a threshold.",
+    "tags": [
+      "Sex & Bodies",
+      "Institutions"
+    ],
+    "date": "2025-12-22"
+  },
+  {
+    "slug": "turning-thirty",
+    "title": "Turning Thirty and Other Acts of Defiance",
+    "readTime": "8 min",
+    "excerpt": "I turned thirty in a pandemic, alone, with a toddler who'd just discovered the word 'no' and a cat who'd discovered the joy of knocking things off shelves. It was less a celebration and more a survival milestone.",
+    "tags": [
+      "Growing Up",
+      "Motherhood"
+    ],
+    "date": "2025-12-15"
+  },
+  {
+    "slug": "dating-app-fatigue",
+    "title": "Dating Apps and the Art of Low Expectations",
+    "readTime": "5 min",
+    "excerpt": "There's something deeply unsexy about swiping through profiles while your child asks why the man in the photo has a fish. Dating as a single parent is less romance, more logistics.",
+    "tags": [
+      "Sex & Bodies",
+      "Motherhood"
+    ],
+    "date": "2025-12-10"
+  },
+  {
+    "slug": "body-image-thirty",
+    "title": "My Body at Thirty: A User's Manual",
+    "readTime": "7 min",
+    "excerpt": "My body and I have reached an understanding. It does its job, I try not to hate it, and we both pretend the stretch marks are tiger stripes. It's a truce, not a love story.",
+    "tags": [
+      "Sex & Bodies"
+    ],
+    "date": "2025-12-05"
   }
 ]
