@@ -3,130 +3,293 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="In the Absence of a Soapbox - Rants and Revelations of a 30-Something Single Mum.">
-  
-  <!-- Open Graph -->
-  <meta property="og:title" content="The Book - In the Absence of a Soapbox">
-  <meta property="og:description" content="Rants and Revelations of a 30-Something Single Mum.">
-  <meta property="og:image" content="https://intheabsenceof.example/assets/images/BookCover.png">
+  <title>The Book - In the Absence of a Soapbox</title>
+  <meta property="og:title" content="In the Absence of a Soapbox - Kel Wright">
+  <meta property="og:description" content="Candid, funny, occasionally furious writing about bodies, relationships, motherhood, and the long unglamorous business of growing outward instead of up.">
+  <meta property="og:image" content="https://intheabsence.co.za/assets/images/BookCover.png">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://intheabsenceof.example/book.html">
-  
-  <link rel="canonical" href="https://intheabsenceof.example/book.html">
-  <link rel="manifest" href="manifest.webmanifest">
-  
-  <!-- Google Fonts -->
+  <meta property="og:url" content="https://intheabsence.co.za/">
+  <link rel="canonical" href="https://intheabsence.co.za/">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;650;700;750;800&display=swap" rel="stylesheet">
-  
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;1,700;1,800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
-  <title>The Book - In the Absence of a Soapbox</title>
 </head>
 <body>
-  <header class="site-header">
-    <div class="container">
-      <a href="index.html" class="wordmark">
-        <span class="wordmark-label">IN THE ABSENCE OF</span>
-        <span class="wordmark-title">A SOAPBOX</span>
+
+  <!-- NAV -->
+  <nav class="site-nav" role="navigation" aria-label="Main navigation">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-wordmark">
+        <span class="nav-wordmark-sup">In the Absence of</span>
+        <span class="nav-wordmark-title">A Soapbox</span>
       </a>
-      
-      <nav class="nav">
-        <ul class="nav-links">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="book.html">The Book</a></li>
-          <li><a href="dispatches/index.html">Unsolicited Opinions</a></li>
-          <li><a href="correspondence.html">Correspondence</a></li>
-        </ul>
-      </nav>
-      
-      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
-        ☰
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="book.html" class="active">The Book</a>
+        <a href="dispatches/index.html">Unsolicited Opinions</a>
+        <a href="correspondence.html">Correspondence</a>
+      </div>
+      <button class="nav-toggle" aria-label="Open navigation" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
       </button>
     </div>
-  </header>
-
-  <nav class="nav-mobile">
-    <div class="nav-mobile-header">
-      <div class="wordmark">
-        <span class="wordmark-label">IN THE ABSENCE OF</span>
-        <span class="wordmark-title">A SOAPBOX</span>
-      </div>
-      <button class="nav-mobile-close" aria-label="Close navigation">×</button>
-    </div>
-    <ul class="nav-mobile-links">
-      <li><a href="/">Home</a></li>
-      <li><a href="/about.html">About</a></li>
-      <li><a href="/book.html">The Book</a></li>
-      <li><a href="/dispatches/index.html">Unsolicited Opinions</a></li>
-      <li><a href="/correspondence.html">Correspondence</a></li>
-    </ul>
   </nav>
 
-  <main>
-    <section class="section">
-      <div class="container">
-        <div style="display: grid; gap: 3rem; grid-template-columns: 1fr; align-items: start;">
-          <div>
-            <div class="section-header">
-              <span class="section-label">The Book</span>
-              <h1 class="section-title" data-content="bookTitle">In the Absence of a Soapbox</h1>
-              <p class="section-intro" style="font-size: 1.15rem; font-weight: 500; color: var(--charcoal);" data-content="bookSubtitle">
-                Rants and Revelations of a 30-Something Single Mum
-              </p>
-            </div>
-            
-            <div class="prose" data-content="bookDescription">
-              <!-- Content loaded dynamically from site-content.json -->
-              <p>Loading content...</p>
-            </div>
-          </div>
-          
-          <div style="text-align: center;">
-            <img src="assets/images/BookCover.png" alt="Book cover: In the Absence of a Soapbox" style="max-width: 100%; height: auto; box-shadow: var(--shadow); border-radius: 4px;">
-          </div>
+  <!-- MOBILE NAV -->
+  <div class="nav-mobile" role="dialog" aria-modal="true" aria-label="Mobile navigation">
+    <div class="nav-mobile-header">
+      <a href="index.html" class="nav-wordmark">
+        <span class="nav-wordmark-sup">In the Absence of</span>
+        <span class="nav-wordmark-title">A Soapbox</span>
+      </a>
+      <button class="nav-mobile-close" aria-label="Close navigation">×</button>
+    </div>
+    <div class="nav-mobile-links">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="book.html" class="active">The Book</a>
+      <a href="dispatches/index.html">Unsolicited Opinions</a>
+      <a href="correspondence.html">Correspondence</a>
+    </div>
+  </div>
+
+  <!-- BOOK HERO -->
+  <section class="book-hero">
+    <div class="book-hero-art">
+      <img src="assets/images/BookCover_Real.png" alt="In the Absence of a Soapbox - book cover" loading="eager">
+    </div>
+    <div class="book-hero-content">
+      <span class="book-hero-kicker">Published by Blu Lotis</span>
+      <h1>In the Absence of<br><span class="amber-italic">a Soapbox</span></h1>
+      <p class="book-hero-subtitle">Rants and Revelations of a Thirty-Something Single Mum</p>
+      <div class="opening-line">
+        <p>"One moment, I was doing adult things in bed. The next moment, I was having to lie in it."</p>
+      </div>
+      <div class="book-meta-row">
+        <div class="book-meta-item">
+          <span class="book-meta-label">Author</span>
+          <span class="book-meta-value">Kel Wright</span>
+        </div>
+        <div class="book-meta-item">
+          <span class="book-meta-label">Publisher</span>
+          <span class="book-meta-value">Blu Lotis</span>
+        </div>
+        <div class="book-meta-item">
+          <span class="book-meta-label">Format</span>
+          <span class="book-meta-value">Narrative Memoir</span>
         </div>
       </div>
-    </section>
-
-    <section class="section">
-      <div class="container">
-        <div class="section-header">
-          <h2 class="section-title">Read an Excerpt</h2>
-        </div>
-        
-        <div class="prose" data-content="bookExcerpt">
-          <!-- Content loaded dynamically from site-content.json -->
-          <p>Loading excerpt...</p>
-        </div>
+      <div class="book-hero-ctas">
+        <button class="btn btn-amber" data-modal="notify">Notify me when it's ready</button>
+        <a href="about.html" class="btn btn-ghost-light">About the author</a>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section class="section">
-      <div class="container">
-        <div class="section-header">
-          <h2 class="section-title">Buy the Book</h2>
-        </div>
-        
-        <div style="display: flex; flex-direction: column; gap: 1rem; max-width: 500px;">
-          <a href="#" class="btn btn--primary" style="text-align: center;" data-link="amazon">Amazon</a>
-          <a href="#" class="btn btn--primary" style="text-align: center;" data-link="takealot">Takealot</a>
-          <a href="#" class="btn btn--ghost" style="text-align: center;" data-link="kindle">Kindle</a>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="footer">
+  <!-- WHAT THIS IS -->
+  <section class="book-what">
     <div class="container">
-      <p>&copy; 2025 In the Absence of a Soapbox</p>
+      <div class="book-what-inner">
+        <span class="section-label">What this is</span>
+        <h2>A memoir about bodies, bad boys, and the long, unglamorous business of figuring yourself out.</h2>
+        <p>It starts at sixteen.</p>
+        <p>Pregnant.<br>Unplanned.<br>In possession of approximately zero useful skills - including, apparently, the ability to correctly deploy a condom.</p>
+        <p>It ends at 30(ish).</p>
+        <p>20(ish) kilograms heavier.<br>Two relationships worse for wear.<br>One daughter raised mostly well (the jury's still out on the dental hygiene).<br>A genuinely alarming amount of self-knowledge that was predominantly the byproduct of having made so many mistakes, and choosing to fok voort regardless.</p>
+        <p>In between:</p>
+        <p>Tinder.<br>Dumpster fires.<br>A labiaplasty that was, in hindsight, not the relationship fix I was looking for (who could have known?).<br>Woolworths bras that stopped being lingerie and became load-bearing infrastructure.<br>A solo trip to the Drakensberg to Find Myself, during which I found mostly the pits of my despair and four days of rain.<br>Open relationships, which are neither open nor relationships.<br>And a long, spectacular, recurring inability to run - metaphorically or literally.</p>
+        <p>It is also, and perhaps more than anything else, a book about a daughter. A forgiving, gracious human, who arrived before I was ready, grew up while I was still figuring out how to, and somehow - through all of it - managed to teach me more about grace, grit, and getting back up than I ever managed to teach myself.</p>
+        <p>We took our first wobbly steps at roughly the same time. Hers were cuter. Mine took considerably longer.</p>
+        <p>This is not a book about having it figured out. It is a book about what happens when you don't - and about the very specific kind of person who, in the absence of an actual soapbox, decides to write it all down anyway.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- THE SECTIONS -->
+  <section class="book-chapters">
+    <div class="container">
+      <span class="section-label">The Structure</span>
+      <h2>How it's organised. More or less.</h2>
+      <p class="book-chapters-sub">Each section has a name. Each name is, technically, a category of disaster. Together they form something that looks suspiciously like a life well examined.</p>
+
+      <div class="book-chapter-rows">
+
+        <div class="book-chapter-row">
+          <div class="book-chapter-numeral">I</div>
+          <div>
+            <span class="book-chapter-name">The Perfect Storm That Is Teenage Pregnancy and Motherhood</span>
+            <p class="book-chapter-subtitle">Sixteen. Pregnant. No plan. A school uniform, a blood test, and doctors who spoke about her in the third person while she sat right there. The sperm donor who went overseas. A congregation with opinions. Postnatal depression nobody asked about.</p>
+            <blockquote class="book-chapter-quote">"One moment, I was doing adult things in bed. The next moment, I was having to lie in it."</blockquote>
+          </div>
+          <div class="book-chapter-illus">
+            <img src="assets/The perfect storm that is Teenage Pregnancy and Motherhood-01.png" alt="" loading="lazy">
+          </div>
+        </div>
+
+        <div class="book-chapter-row">
+          <div class="book-chapter-numeral">II</div>
+          <div>
+            <span class="book-chapter-name">The Shit Show That Is Single Parenting</span>
+            <p class="book-chapter-subtitle">Running out of patience, money, and direction. A red Noddy car in a private school parking lot. McDonald's for dinner. The mother who said she was precious when she couldn't believe it herself.</p>
+            <blockquote class="book-chapter-quote">"At the end of the day, that's all we can bank on, isn't it? Love. Enthusiasm. And McDonald's. Universal values."</blockquote>
+          </div>
+          <div class="book-chapter-illus">
+            <img src="assets/The shit show that is single parenting-01.png" alt="" loading="lazy">
+          </div>
+        </div>
+
+        <div class="book-chapter-row">
+          <div class="book-chapter-numeral">III</div>
+          <div>
+            <span class="book-chapter-name">The Clusterfuck That Is Dating</span>
+            <p class="book-chapter-subtitle">Tinder. The T-rexes. The men who were functional and emotionally astute had been snatched up years ago. What remained was trying to eat you. A man with a gravelly voice who finally paid attention like she was worth paying attention to.</p>
+            <blockquote class="book-chapter-quote">"Basically, dating was a walk in the park. Jurassic Park."</blockquote>
+          </div>
+          <div class="book-chapter-illus">
+            <img src="assets/The clusterfuck that is dating-01.png" alt="" loading="lazy">
+          </div>
+        </div>
+
+        <div class="book-chapter-row">
+          <div class="book-chapter-numeral">IV</div>
+          <div>
+            <span class="book-chapter-name">The Dumpster Fire That Is Unhealthy Relationships</span>
+            <p class="book-chapter-subtitle">An open relationship. A labiaplasty. R600 salad tongs. A yellow toothbrush that didn't get to stay. The kind of gaslighting that makes you surprised nothing actually caught fire.</p>
+            <blockquote class="book-chapter-quote">"Open. As in: his pants, the door, and my emotional wound."</blockquote>
+          </div>
+          <div class="book-chapter-illus">
+            <img src="assets/the dumpster fire that is unhealthy relationships-01.png" alt="" loading="lazy">
+          </div>
+        </div>
+
+        <div class="book-chapter-row">
+          <div class="book-chapter-numeral">V</div>
+          <div>
+            <span class="book-chapter-name">The Omnishambles That Is Repeating Your Fuckups</span>
+            <p class="book-chapter-subtitle">The Afrikaner. Cape Town. A wraparound porch she started imagining. A fortnight of easy. A text received mid-Uno. Everything inside her screaming: not again.</p>
+            <blockquote class="book-chapter-quote">"Love is patient. Love is constipated."</blockquote>
+          </div>
+          <div class="book-chapter-illus">
+            <img src="assets/The omnishambles that is repeating your fuck ups -01.png" alt="" loading="lazy">
+          </div>
+        </div>
+
+        <div class="book-chapter-row">
+          <div class="book-chapter-numeral">VI</div>
+          <div>
+            <span class="book-chapter-name">The Clanger That Is Learning from Your Mistakes</span>
+            <p class="book-chapter-subtitle">A solo trip to the Drakensberg that achieved nothing she planned. The internal renovation. Brick by broken brick. Goat shit on the tyres and mascara on the cheeks - and finally, finally free.</p>
+            <blockquote class="book-chapter-quote">"One useful thing the Afrikaner did teach me was the term 'fok voort'. Fuck forward. So forward I fucked, through the rubble of my life."</blockquote>
+          </div>
+          <div class="book-chapter-illus">
+            <img src="assets/The clanger that is learning from your mistakes-01.png" alt="" loading="lazy">
+          </div>
+        </div>
+
+        <div class="book-chapter-row">
+          <div class="book-chapter-numeral">VII</div>
+          <div>
+            <span class="book-chapter-name">The Hot Mess That Is Growing Up</span>
+            <p class="book-chapter-subtitle">Size 14 and fine with it. A daughter who debriefs on the car ride home from her first school social. A front-row seat. The discovery that healing sometimes shows up as a shrug, a laugh, and a step to the left.</p>
+            <blockquote class="book-chapter-quote">"Healing doesn't always have to be a big, soapbox moment. Sometimes it shows up as a casual shrug. A laugh. A step to the left. A twirl. A finger-click. A moment you barely notice, because you're finally present within it."</blockquote>
+          </div>
+          <div class="book-chapter-illus">
+            <img src="assets/The hot mess that is growing up-01.png" alt="" loading="lazy">
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+  </section>
+
+  <!-- MOCKUP COLLAGE -->
+  <section class="book-collage">
+    <img src="assets/images/MockupCollage.png" alt="In the Absence of a Soapbox - book mockup collage" loading="lazy">
+  </section>
+
+  <!-- EXCERPT -->
+  <section class="book-excerpt">
+    <div class="container">
+      <div class="book-excerpt-inner">
+        <span class="section-label">From the Introduction</span>
+        <h2>A taste of what you're in for.</h2>
+        <p class="excerpt-body">At 30 years of age, I suddenly find I have a lot to say about life. Not only about my own life, mind you, but other peoples' too. I have opinions on topics as varied as sex, parenting, home décor, and the unforgivable presence of fruit in a savoury salad.</p>
+        <p class="excerpt-body">These things have been accumulating since I was squeezed out of utero. Items of specific importance - such as getting myself up the pole at 16, weight gain, navigating single parenting, weight gain, unhealthy relationships, weight gain, and the general state of being a hot mess in my 30s - have, it seems, given me quite a lot to work with.</p>
+        <p class="excerpt-body">I need a more genteel platform for my ideas. Like in the olden days, when one might stand on a soapbox in public gardens and share their thoughts with innocent passers-by. But since no one uses actual soapboxes anymore, I figured I'd pull up a virtual one and construct an entire manuscript dedicated to my story.</p>
+        <div class="excerpt-fade">
+          <p class="excerpt-body">In the absence of an actual soapbox, I'm going to have to make do with this book.</p>
+        </div>
+        <div class="excerpt-cta">
+          <button class="btn btn-amber" data-modal="notify">Tell me when it's available</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NOTIFY STRIP -->
+  <section class="notify-strip">
+    <div class="container">
+      <h2 class="notify-heading fade-up">The book is coming.</h2>
+      <p class="notify-sub fade-up">Be the first to know when it's available.</p>
+      <form class="notify-form fade-up" action="https://formspree.io/f/REPLACE_WITH_FORMSPREE_ID" method="POST">
+        <input type="email" name="email" placeholder="your@email.com" required>
+        <button type="submit" class="btn btn-primary">Tell me when it's ready</button>
+      </form>
+      <p class="notify-note">No newsletters. No nonsense. One email when it's available. Promise.</p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div>
+        <span class="footer-wordmark-sup">In the Absence of</span>
+        <span class="footer-wordmark-title">A Soapbox</span>
+        <p class="footer-copyright">The personal brand and book site<br>of Kel Wright. Durban, South Africa.</p>
+      </div>
+      <div>
+        <span class="footer-col-label">Navigate</span>
+        <div class="footer-links">
+          <a href="index.html">Home</a>
+          <a href="about.html">About</a>
+          <a href="book.html">The Book</a>
+          <a href="dispatches/index.html">Unsolicited Opinions</a>
+          <a href="correspondence.html">Correspondence</a>
+        </div>
+      </div>
+      <div>
+        <span class="footer-col-label">Say hello</span>
+        <div class="footer-contact">
+          <a href="mailto:hello@intheabsence.co.za">hello@intheabsence.co.za</a>
+          <a href="mailto:purchases@intheabsence.co.za">purchases@intheabsence.co.za</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bar">
+      <p>© 2026 In the Absence of a Soapbox · intheabsence.co.za</p>
     </div>
   </footer>
 
-  <script src="js/content-loader.js" defer></script>
+  <!-- EMAIL CAPTURE MODAL -->
+  <div id="notifyModal" class="modal-overlay" aria-hidden="true">
+    <div class="modal-container">
+      <button class="modal-close" aria-label="Close">×</button>
+      <p class="modal-label">Be the first to know.</p>
+      <h2 class="modal-heading">The book is coming.</h2>
+      <p class="modal-body">Drop your email. When the book is available, you'll hear about it. Once. That's it.</p>
+      <form class="modal-form" action="https://formspree.io/f/REPLACE_WITH_FORMSPREE_ID" method="POST">
+        <input type="email" name="email" placeholder="your@email.com" required>
+        <button type="submit" class="btn btn-primary">Notify me</button>
+      </form>
+      <p class="modal-note">No newsletters. No nonsense. One email. Promise.</p>
+    </div>
+  </div>
+
   <script src="js/main.js" defer></script>
-  <script src="js/sw-register.js" defer></script>
 </body>
 </html>
-

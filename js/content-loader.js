@@ -1,163 +1,73 @@
-/* ============================================
-   Content Loader - Loads site content from JSON
-   ============================================ */
+// ============================================================
+// In the Absence of a Soapbox — content-loader.js
+// ============================================================
 
 (async function() {
-  'use strict';
+  // Determine path depth (dispatches/ pages need ../ prefix)
+  const isDispatches = window.location.pathname.includes('/dispatches/');
+  const base = isDispatches ? '../' : '';
 
-  let siteContent = {};
-
-  // Load site content
-  async function loadSiteContent() {
-    try {
-      const basePath = window.location.pathname.includes('/dispatches/') ? '../' : '';
-      const response = await fetch(basePath + 'data/site-content.json');
-      if (!response.ok) throw new Error('Failed to load site content');
-      siteContent = await response.json();
-      return siteContent;
-    } catch (error) {
-      console.error('Error loading site content:', error);
-      return null;
-    }
+  let dispatches = [];
+  try {
+    const res = await fetch(`${base}data/dispatches.json`);
+    dispatches = await res.json();
+  } catch (e) {
+    console.warn('Could not load dispatches.json', e);
+    return;
   }
 
-  // Render paragraphs from array
-  function renderParagraphs(paragraphs, container) {
-    if (!paragraphs || !Array.isArray(paragraphs)) return;
-    
-    container.innerHTML = paragraphs.map(p => {
-      // Handle line breaks in paragraphs
-      const lines = p.split('<br>');
-      if (lines.length > 1) {
-        return `<p>${lines.join('<br>')}</p>`;
-      }
-      return `<p>${p}</p>`;
-    }).join('');
+  // Helper: format date
+  function fmtDate(str) {
+    const d = new Date(str);
+    return d.toLocaleDateString('en-ZA', { day: 'numeric', month: 'long', year: 'numeric' });
   }
 
-  // Load and render content for current page
-  async function renderPageContent() {
-    const content = await loadSiteContent();
-    if (!content) return;
+  // Helper: build card HTML
+  function buildCard(d) {
+    const href = (d.slug === 'bra-seatbelts' || d.slug === 'turning-thirty')
+      ? `${base}dispatches/${d.slug}.html`
+      : `${base}dispatches/index.html`;
+    const tags = Array.isArray(d.tags) ? d.tags.join(',') : (d.tags || '');
+    const tag = Array.isArray(d.tags) ? d.tags[0] : d.tags;
+    return `
+      <a href="${href}" class="opinion-card" data-tags="${tags}">
+        <div class="card-tag">${tag || ''}</div>
+        <div class="card-title">${d.title}</div>
+        <div class="card-excerpt">${d.excerpt || d.quote || ''}</div>
+        <div class="card-footer">
+          <span class="card-readtime">${d.readTime || ''}</span>
+          <span class="card-date">${d.date ? fmtDate(d.date) : ''}</span>
+        </div>
+      </a>`;
+  }
 
-    const path = window.location.pathname;
+  // Homepage carousel
+  const carouselTrack = document.getElementById('carouselTrack');
+  if (carouselTrack) {
+    const featured = dispatches.filter(d => d.featured || d.excerpt);
+    featured.forEach(d => { carouselTrack.insertAdjacentHTML('beforeend', buildCard(d)); });
+    if (typeof window.initCarousel === 'function') window.initCarousel();
+  }
 
-    // Home page - "What This Is" section
-    if (path.includes('index.html') || path === '/' || path.endsWith('/')) {
-      const whatThisIsContainer = document.querySelector('[data-content="whatThisIs"]');
-      if (whatThisIsContainer && content.homePage?.whatThisIs) {
-        renderParagraphs(content.homePage.whatThisIs, whatThisIsContainer);
-      }
-    }
-
-    // Book page
-    if (path.includes('book.html')) {
-      if (content.book) {
-        // Update book title/subtitle if elements exist
-        const bookTitle = document.querySelector('[data-content="bookTitle"]');
-        const bookSubtitle = document.querySelector('[data-content="bookSubtitle"]');
-        
-        if (bookTitle && content.book.title) {
-          bookTitle.textContent = content.book.title;
-        }
-        if (bookSubtitle && content.book.subtitle) {
-          bookSubtitle.textContent = content.book.subtitle;
-        }
-
-        // Render book description
-        const bookDescContainer = document.querySelector('[data-content="bookDescription"]');
-        if (bookDescContainer && content.book.description) {
-          renderParagraphs(content.book.description, bookDescContainer);
-        }
-
-        // Render excerpt
-        const excerptContainer = document.querySelector('[data-content="bookExcerpt"]');
-        if (excerptContainer && content.book.excerpt) {
-          const excerptTitle = content.book.excerpt.title || 'Read the Introduction';
-          const excerptContent = content.book.excerpt.content || [];
-          
-          excerptContainer.innerHTML = `
-            <details>
-              <summary>${excerptTitle}</summary>
-              <div style="margin-top: 1.5rem;">
-                ${excerptContent.map(p => `<p>${p}</p>`).join('')}
-              </div>
-            </details>
-          `;
-        }
-
-        // Update purchase links
-        if (content.book.purchaseLinks) {
-          const amazonLink = document.querySelector('[data-link="amazon"]');
-          const takealotLink = document.querySelector('[data-link="takealot"]');
-          const kindleLink = document.querySelector('[data-link="kindle"]');
-          
-          if (amazonLink && content.book.purchaseLinks.amazon !== '#') {
-            amazonLink.href = content.book.purchaseLinks.amazon;
-          }
-          if (takealotLink && content.book.purchaseLinks.takealot !== '#') {
-            takealotLink.href = content.book.purchaseLinks.takealot;
-          }
-          if (kindleLink && content.book.purchaseLinks.kindle !== '#') {
-            kindleLink.href = content.book.purchaseLinks.kindle;
-          }
-        }
-      }
-    }
-
-    // About page
-    if (path.includes('about.html')) {
-      if (content.about) {
-        // Render author bio
-        const bioContainer = document.querySelector('[data-content="authorBio"]');
-        if (bioContainer && content.about.authorBio) {
-          renderParagraphs(content.about.authorBio, bioContainer);
-        }
-
-        // Render house rules
-        const rulesContainer = document.querySelector('[data-content="houseRules"]');
-        if (rulesContainer && content.about.houseRules) {
-          rulesContainer.innerHTML = content.about.houseRules.map(rule => 
-            `<li>${rule}</li>`
-          ).join('');
-        }
-
-        // Render "Before You Read"
-        const beforeContainer = document.querySelector('[data-content="beforeYouRead"]');
-        if (beforeContainer && content.about.beforeYouRead) {
-          renderParagraphs(content.about.beforeYouRead, beforeContainer);
-        }
-      }
-    }
-
-    // Update email in correspondence page
-    if (path.includes('correspondence.html')) {
-      if (content.site?.email) {
-        const emailElements = document.querySelectorAll('[data-email]');
-        emailElements.forEach(el => {
-          if (el.hasAttribute('data-link') && el.getAttribute('data-link') === 'mailto') {
-            el.href = `mailto:${content.site.email}`;
-          } else if (el.textContent.includes('@')) {
-            el.textContent = content.site.email;
-          }
+  // Dispatches index grid
+  const opinionsGrid = document.getElementById('opinionsGrid');
+  if (opinionsGrid) {
+    dispatches.forEach(d => { opinionsGrid.insertAdjacentHTML('beforeend', buildCard(d)); });
+    // Re-run filter logic after cards are added
+    const filterPills = document.querySelectorAll('.filter-pill');
+    const cards = document.querySelectorAll('.opinion-card[data-tags]');
+    if (filterPills.length && cards.length) {
+      filterPills.forEach(pill => {
+        pill.addEventListener('click', () => {
+          filterPills.forEach(p => p.classList.remove('active'));
+          pill.classList.add('active');
+          const tag = pill.dataset.tag;
+          cards.forEach(card => {
+            const cardTags = (card.dataset.tags || '').split(',').map(t => t.trim());
+            card.style.display = (!tag || tag === 'all' || cardTags.includes(tag)) ? '' : 'none';
+          });
         });
-      }
+      });
     }
-  }
-
-  // Make siteContent available globally for carousel
-  window.getSiteContent = async function() {
-    if (!siteContent.site) {
-      await loadSiteContent();
-    }
-    return siteContent;
-  };
-
-  // Initialize
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', renderPageContent);
-  } else {
-    renderPageContent();
   }
 })();
-

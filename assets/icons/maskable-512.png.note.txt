@@ -1,0 +1,5 @@
+Placeholder for maskable-512.png
+Size: 512x512
+Color: rgb(27,41,67)
+
+Convert the corresponding .svg file to PNG format.

@@ -3,167 +3,236 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Rants and Revelations of a 30-Something Single Mum. In the Absence of a Soapbox.">
-  
-  <!-- Open Graph -->
-  <meta property="og:title" content="In the Absence of a Soapbox">
-  <meta property="og:description" content="Rants and Revelations of a 30-Something Single Mum.">
-  <meta property="og:image" content="https://intheabsenceof.example/assets/images/BookCover.png">
+  <title>Home - In the Absence of a Soapbox</title>
+  <meta property="og:title" content="In the Absence of a Soapbox - Kel Wright">
+  <meta property="og:description" content="Candid, funny, occasionally furious writing about bodies, relationships, motherhood, and the long unglamorous business of growing outward instead of up.">
+  <meta property="og:image" content="https://intheabsence.co.za/assets/images/BookCover.png">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://intheabsenceof.example/">
-  
-  <link rel="canonical" href="https://intheabsenceof.example/">
-  <link rel="manifest" href="manifest.webmanifest">
-  
-  <!-- Google Fonts -->
+  <meta property="og:url" content="https://intheabsence.co.za/">
+  <link rel="canonical" href="https://intheabsence.co.za/">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;650;700;750;800&display=swap" rel="stylesheet">
-  
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;1,700;1,800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
-  <title>In the Absence of a Soapbox</title>
 </head>
 <body>
-  <!--
-    ============================================
-    README FOR SETUP
-    ============================================
-    
-    TO RUN LOCALLY:
-    - Use a simple static server (e.g., Python: python -m http.server 8000)
-    - Or use VS Code Live Server extension
-    - Or use: npx serve
-    
-    TO REPLACE ASSETS:
-    - Cover image: Replace /assets/images/cover.jpg (recommended: 800x1200px)
-    - Icons: Replace files in /assets/icons/ (192x192 and 512x512 PNG)
-    - Maskable icons: Same sizes but with safe zone (see PWA maskable icon guidelines)
-    
-    TO SET REAL EMAIL:
-    - Edit /js/main.js, find the email variable in initEmailCopy() function
-    - Replace 'hello@yourdomain.com' with your actual email
-    
-    ============================================
-  -->
 
-  <header class="site-header">
-    <div class="container">
-      <a href="index.html" class="wordmark">
-        <span class="wordmark-label">IN THE ABSENCE OF</span>
-        <span class="wordmark-title">A SOAPBOX</span>
+  <!-- NAV -->
+  <nav class="site-nav" role="navigation" aria-label="Main navigation">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-wordmark">
+        <span class="nav-wordmark-sup">In the Absence of</span>
+        <span class="nav-wordmark-title">A Soapbox</span>
       </a>
-      
-      <nav class="nav">
-        <ul class="nav-links">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="book.html">The Book</a></li>
-          <li><a href="dispatches/index.html">Unsolicited Opinions</a></li>
-          <li><a href="correspondence.html">Correspondence</a></li>
-        </ul>
-      </nav>
-      
-      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
-        ☰
+      <div class="nav-links">
+        <a href="index.html" class="active">Home</a>
+        <a href="about.html">About</a>
+        <a href="book.html">The Book</a>
+        <a href="dispatches/index.html">Unsolicited Opinions</a>
+        <a href="correspondence.html">Correspondence</a>
+      </div>
+      <button class="nav-toggle" aria-label="Open navigation" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
       </button>
     </div>
-  </header>
-
-  <nav class="nav-mobile">
-    <div class="nav-mobile-header">
-      <div class="wordmark">
-        <span class="wordmark-label">IN THE ABSENCE OF</span>
-        <span class="wordmark-title">A SOAPBOX</span>
-      </div>
-      <button class="nav-mobile-close" aria-label="Close navigation">×</button>
-    </div>
-    <ul class="nav-mobile-links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="book.html">The Book</a></li>
-      <li><a href="dispatches/index.html">Unsolicited Opinions</a></li>
-      <li><a href="correspondence.html">Correspondence</a></li>
-    </ul>
   </nav>
 
-  <main>
-    <!-- Hero -->
-    <section class="hero hero--fullwidth">
-      <div class="hero-background">
-        <img src="assets/images/BookCover.png" alt="Book cover: In the Absence of a Soapbox" class="hero-bg-image">
-        <div class="hero-overlay"></div>
-      </div>
-      <div class="hero-content container">
-        <div class="hero-text-wrapper">
-          <h1 class="hero-title">In the Absence<br>of a Soapbox</h1>
-          <p class="hero-subheading">Rants and Revelations of a 30-Something Single Mum</p>
-          <div class="hero-ctas">
-            <a href="book.html" class="btn btn--primary">The Book</a>
-            <a href="dispatches/index.html" class="btn btn--ghost">Read an Unsolicited Opinion</a>
-          </div>
-        </div>
-      </div>
-    </section>
+  <!-- MOBILE NAV -->
+  <div class="nav-mobile" role="dialog" aria-modal="true" aria-label="Mobile navigation">
+    <div class="nav-mobile-header">
+      <a href="index.html" class="nav-wordmark">
+        <span class="nav-wordmark-sup">In the Absence of</span>
+        <span class="nav-wordmark-title">A Soapbox</span>
+      </a>
+      <button class="nav-mobile-close" aria-label="Close navigation">×</button>
+    </div>
+    <div class="nav-mobile-links">
+      <a href="index.html" class="active">Home</a>
+      <a href="about.html">About</a>
+      <a href="book.html">The Book</a>
+      <a href="dispatches/index.html">Unsolicited Opinions</a>
+      <a href="correspondence.html">Correspondence</a>
+    </div>
+  </div>
 
-    <!-- Featured Unsolicited Opinions -->
-    <section class="section featured-dispatches featured-dispatches--prominent">
-      <div class="container">
-        <div class="section-header section-header--bold">
-          <span class="section-label">LATEST</span>
-          <h2 class="section-title section-title--large">Featured<br>Unsolicited Opinions</h2>
-          <p class="section-intro section-intro--large">The thoughts that won't leave you alone.</p>
-        </div>
-        <div class="carousel-wrapper">
-          <div class="carousel-container" id="featuredCarousel" role="region" aria-label="Featured dispatches carousel">
-            <!-- Cards will be dynamically loaded here -->
-          </div>
-          <button class="carousel-btn carousel-btn--prev" aria-label="Previous card" style="display: none;">
-            <span>‹</span>
-          </button>
-          <button class="carousel-btn carousel-btn--next" aria-label="Next card" style="display: none;">
-            <span>›</span>
-          </button>
-          <div class="carousel-dots" id="carouselDots" role="tablist" aria-label="Carousel navigation">
-            <!-- Dots will be dynamically generated -->
-          </div>
+  <!-- HERO -->
+  <section class="hero-section">
+    <div class="hero-art">
+      <img
+        src="assets/images/HeroSection.png"
+        alt="Kel Wright"
+        loading="eager"
+      >
+      <div class="hero-art-vignette"></div>
+    </div>
+    <div class="hero-content">
+      <span class="hero-kicker">Kel Wright</span>
+      <h1 class="hero-headline">
+        I don't have it<br>figured out.
+        <span class="amber-italic"><br>I'm not sure<br>I ever will.</span>
+        <span class="hero-coda">Turns out that might<br>be the whole point.</span>
+      </h1>
+      <div class="topic-pills">
+        <span class="pill">Bodies, gained and kept</span>
+        <span class="pill">Men who weren't worth it</span>
+        <span class="pill">Decisions that seemed fine at the time</span>
+        <span class="pill">Single parenting</span>
+        <span class="pill">Dating apps</span>
+        <span class="pill">Running (eventually)</span>
+        <span class="pill">Finding a voice</span>
+      </div>
+      <p class="hero-body">Candid, funny, occasionally furious writing about bodies, relationships, motherhood, and the long, unglamorous business of growing outward instead of up.</p>
+      <div class="hero-ctas">
+        <a href="dispatches/index.html" class="btn btn-primary">Read the Opinions</a>
+        <button class="btn btn-ghost" data-modal="notify">Get the book</button>
+      </div>
+      <div class="hero-book-cameo">
+        <img src="assets/images/BookCover_Real.png" alt="In the Absence of a Soapbox book cover" class="hero-book-cover">
+        <div class="hero-book-meta">
+          <span class="hero-book-title">In the Absence of a Soapbox</span>
+          <span class="hero-book-pub">A memoir. Published by Blu Lotis.</span>
+          <a href="book.html" class="hero-book-link">About the book →</a>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- What This Is -->
-    <section class="section section--dark">
-      <div class="container">
-        <div class="section-header section-header--bold">
-          <span class="section-label">ABOUT</span>
-          <h2 class="section-title section-title--large">What<br>This Is</h2>
-        </div>
-         <div class="section-intro section-intro--large" style="color: rgba(255, 255, 255, 0.95);" data-content="whatThisIs">
-           <!-- Content loaded dynamically from site-content.json -->
-           <p>Loading content...</p>
-         </div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="footer">
+  <!-- BROWNIE STRIP -->
+  <section class="brownie-strip">
     <div class="container">
-      <p>&copy; 2025 In the Absence of a Soapbox</p>
+      <blockquote class="brownie-quote fade-up">
+        "I wasn't a failure. I was fabulous. Or I was failing fabulously.<br>
+        <span class="amber-hl">Turns out those two things are not mutually exclusive.</span>"
+      </blockquote>
+      <p class="brownie-body fade-up">
+        Sixteen, pregnant, and entirely unqualified.<br>
+        Thirty, twenty kilograms heavier, and somehow fine with it.<br>
+        Two men who weren't worth it. One daughter who absolutely was.<br>
+        A labiaplasty, a Drakensberg breakdown, and a metaphorical Soapbox that can barely carry the weight.<br>
+        The long way round. Every single time.
+      </p>
+      <a href="about.html" class="strip-link fade-up">Meet Kel →</a>
+    </div>
+  </section>
+
+  <!-- BOOK JOURNEY -->
+  <section class="book-journey">
+    <div class="container">
+      <div class="book-journey-grid">
+        <div>
+          <span class="section-label">The Book</span>
+          <h2 class="book-journey-heading">It starts at sixteen. It takes a while from there.</h2>
+          <p class="book-journey-body">She was pregnant before she was old enough to drive herself to the appointment. A mother before she knew how to change a nappy. Single before she'd figured out how to be a couple.</p>
+          <p class="book-journey-body">This is the book that came out of all of that.</p>
+          <p class="book-journey-body">Not a memoir about rock bottom and redemption. Not a lesson. Not a how-to or a didn't-you-know or a here's-what-I-learned-so-you-don't-have-to.</p>
+          <p class="book-journey-body">Just an honest account of what it looks like when life doesn't follow the order it was supposed to - and you have to grow up in public, out of sequence, with everyone watching, and no real idea what you're doing.</p>
+          <p class="book-journey-body">Told with enough distance to be funny about it.</p>
+          <p class="book-journey-body">And enough honesty to know it wasn't, at the time.</p>
+          <div class="book-journey-more">
+            <a href="book.html">About the book →</a>
+          </div>
+        </div>
+        <div class="book-journey-illus">
+          <div class="book-journey-mockup">
+            <img src="assets/images/BookMockup.png" alt="In the Absence of a Soapbox - book mockup" loading="lazy">
+            <div class="book-journey-ctas">
+              <a href="book.html" class="btn btn-primary">About the book</a>
+              <a href="correspondence.html" class="btn btn-ghost">Put me on the list</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OPINIONS CAROUSEL -->
+  <section class="opinions-carousel">
+    <div class="container">
+      <div class="carousel-header">
+        <div class="carousel-header-left">
+          <span class="section-label">Unsolicited Opinions</span>
+          <h2>She's still talking.</h2>
+          <p>The book ended. The opinions didn't. What happened after, what changed, what she'd undo - and what she absolutely would not.</p>
+        </div>
+        <div class="carousel-controls">
+          <button class="carousel-btn carousel-btn--prev" aria-label="Previous">&#8592;</button>
+          <button class="carousel-btn carousel-btn--next" aria-label="Next">&#8594;</button>
+        </div>
+      </div>
+      <div class="carousel-viewport">
+        <div class="carousel-track" id="carouselTrack">
+          <!-- Cards populated by content-loader.js -->
+        </div>
+      </div>
+      <div class="carousel-dots" id="carouselDots"></div>
+      <div class="carousel-all-link">
+        <a href="dispatches/index.html">All Unsolicited Opinions →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- NOTIFY STRIP -->
+  <section class="notify-strip">
+    <div class="container">
+      <h2 class="notify-heading fade-up">The book is coming.</h2>
+      <p class="notify-sub fade-up">Be the first to know when it's available.</p>
+      <form class="notify-form fade-up" action="https://formspree.io/f/REPLACE_WITH_FORMSPREE_ID" method="POST">
+        <input type="email" name="email" placeholder="your@email.com" required>
+        <button type="submit" class="btn btn-primary">Tell me when it's ready</button>
+      </form>
+      <p class="notify-note">No newsletters. No nonsense. One email when it's available. Promise.</p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div>
+        <span class="footer-wordmark-sup">In the Absence of</span>
+        <span class="footer-wordmark-title">A Soapbox</span>
+        <p class="footer-copyright">The personal brand and book site<br>of Kel Wright. Durban, South Africa.</p>
+      </div>
+      <div>
+        <span class="footer-col-label">Navigate</span>
+        <div class="footer-links">
+          <a href="index.html">Home</a>
+          <a href="about.html">About</a>
+          <a href="book.html">The Book</a>
+          <a href="dispatches/index.html">Unsolicited Opinions</a>
+          <a href="correspondence.html">Correspondence</a>
+        </div>
+      </div>
+      <div>
+        <span class="footer-col-label">Say hello</span>
+        <div class="footer-contact">
+          <a href="mailto:hello@intheabsence.co.za">hello@intheabsence.co.za</a>
+          <a href="mailto:purchases@intheabsence.co.za">purchases@intheabsence.co.za</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bar">
+      <p>© 2026 In the Absence of a Soapbox · intheabsence.co.za</p>
     </div>
   </footer>
 
-  <!-- Modal Overlay -->
-  <div class="modal-overlay" id="dispatchModal" aria-hidden="true">
+  <!-- EMAIL CAPTURE MODAL -->
+  <div id="notifyModal" class="modal-overlay" aria-hidden="true">
     <div class="modal-container">
-      <button class="modal-close" aria-label="Close modal">×</button>
-      <div class="modal-content" id="modalContent">
-        <!-- Content will be dynamically loaded -->
-      </div>
+      <button class="modal-close" aria-label="Close">×</button>
+      <p class="modal-label">Be the first to know.</p>
+      <h2 class="modal-heading">The book is coming.</h2>
+      <p class="modal-body">Drop your email. When the book is available, you'll hear about it. Once. That's it.</p>
+      <form class="modal-form" action="https://formspree.io/f/REPLACE_WITH_FORMSPREE_ID" method="POST">
+        <input type="email" name="email" placeholder="your@email.com" required>
+        <button type="submit" class="btn btn-primary">Notify me</button>
+      </form>
+      <p class="modal-note">No newsletters. No nonsense. One email. Promise.</p>
     </div>
   </div>
 
   <script src="js/content-loader.js" defer></script>
   <script src="js/main.js" defer></script>
-  <script src="js/sw-register.js" defer></script>
 </body>
 </html>
-

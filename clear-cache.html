@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clear Cache - Soapbox PWA</title>
+  <style>
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      max-width: 600px;
+      margin: 50px auto;
+      padding: 20px;
+      line-height: 1.6;
+    }
+    button {
+      background: #1B2943;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 4px;
+      margin: 10px 5px;
+    }
+    button:hover {
+      background: #343642;
+    }
+    .status {
+      margin-top: 20px;
+      padding: 15px;
+      background: #f0f0f0;
+      border-radius: 4px;
+    }
+    .success {
+      background: #d4edda;
+      color: #155724;
+    }
+    .error {
+      background: #f8d7da;
+      color: #721c24;
+    }
+  </style>
+</head>
+<body>
+  <h1>Clear Cache & Service Worker</h1>
+  <p>Use this page to clear all caches and unregister the service worker.</p>
+  
+  <button onclick="clearAllCaches()">Clear All Caches</button>
+  <button onclick="unregisterServiceWorker()">Unregister Service Worker</button>
+  <button onclick="clearBoth()">Clear Everything</button>
+  
+  <div id="status"></div>
+
+  <script>
+    async function clearAllCaches() {
+      const statusDiv = document.getElementById('status');
+      statusDiv.className = 'status';
+      statusDiv.textContent = 'Clearing caches...';
+      
+      try {
+        const cacheNames = await caches.keys();
+        await Promise.all(
+          cacheNames.map(cacheName => caches.delete(cacheName))
+        );
+        statusDiv.className = 'status success';
+        statusDiv.textContent = `✅ Cleared ${cacheNames.length} cache(s): ${cacheNames.join(', ')}`;
+      } catch (error) {
+        statusDiv.className = 'status error';
+        statusDiv.textContent = `❌ Error clearing caches: ${error.message}`;
+      }
+    }
+
+    async function unregisterServiceWorker() {
+      const statusDiv = document.getElementById('status');
+      statusDiv.className = 'status';
+      statusDiv.textContent = 'Unregistering service worker...';
+      
+      try {
+        if ('serviceWorker' in navigator) {
+          const registrations = await navigator.serviceWorker.getRegistrations();
+          await Promise.all(
+            registrations.map(registration => registration.unregister())
+          );
+          statusDiv.className = 'status success';
+          statusDiv.textContent = `✅ Unregistered ${registrations.length} service worker(s)`;
+        } else {
+          statusDiv.className = 'status error';
+          statusDiv.textContent = '❌ Service workers not supported';
+        }
+      } catch (error) {
+        statusDiv.className = 'status error';
+        statusDiv.textContent = `❌ Error unregistering service worker: ${error.message}`;
+      }
+    }
+
+    async function clearBoth() {
+      await clearAllCaches();
+      await unregisterServiceWorker();
+      const statusDiv = document.getElementById('status');
+      statusDiv.className = 'status success';
+      statusDiv.innerHTML = '✅ <strong>Everything cleared!</strong><br>Now close this tab and hard refresh the main page (Ctrl+Shift+R or Cmd+Shift+R)';
+    }
+
+    // Show current cache status on load
+    window.addEventListener('load', async () => {
+      const statusDiv = document.getElementById('status');
+      try {
+        const cacheNames = await caches.keys();
+        const registrations = 'serviceWorker' in navigator 
+          ? await navigator.serviceWorker.getRegistrations() 
+          : [];
+        
+        statusDiv.className = 'status';
+        statusDiv.innerHTML = `
+          <strong>Current Status:</strong><br>
+          Caches: ${cacheNames.length} (${cacheNames.join(', ') || 'none'})<br>
+          Service Workers: ${registrations.length} (${registrations.map(r => r.scope).join(', ') || 'none'})
+        `;
+      } catch (error) {
+        statusDiv.className = 'status error';
+        statusDiv.textContent = `Error checking status: ${error.message}`;
+      }
+    });
+  </script>
+</body>
+</html>
+

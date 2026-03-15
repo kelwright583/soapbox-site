@@ -3,109 +3,221 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="About the author behind In the Absence of a Soapbox.">
-  
-  <!-- Open Graph -->
-  <meta property="og:title" content="About - In the Absence of a Soapbox">
-  <meta property="og:description" content="About the author behind In the Absence of a Soapbox.">
-  <meta property="og:image" content="https://intheabsenceof.example/assets/images/BookCover.png">
+  <title>About - In the Absence of a Soapbox</title>
+  <meta property="og:title" content="In the Absence of a Soapbox - Kel Wright">
+  <meta property="og:description" content="Candid, funny, occasionally furious writing about bodies, relationships, motherhood, and the long unglamorous business of growing outward instead of up.">
+  <meta property="og:image" content="https://intheabsence.co.za/assets/images/BookCover.png">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://intheabsenceof.example/about.html">
-  
-  <link rel="canonical" href="https://intheabsenceof.example/about.html">
-  <link rel="manifest" href="manifest.webmanifest">
-  
-  <!-- Google Fonts -->
+  <meta property="og:url" content="https://intheabsence.co.za/">
+  <link rel="canonical" href="https://intheabsence.co.za/">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;650;700;750;800&display=swap" rel="stylesheet">
-  
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;1,700;1,800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
-  <title>About - In the Absence of a Soapbox</title>
 </head>
 <body>
-  <header class="site-header">
-    <div class="container">
-      <a href="index.html" class="wordmark">
-        <span class="wordmark-label">IN THE ABSENCE OF</span>
-        <span class="wordmark-title">A SOAPBOX</span>
+
+  <!-- NAV -->
+  <nav class="site-nav" role="navigation" aria-label="Main navigation">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-wordmark">
+        <span class="nav-wordmark-sup">In the Absence of</span>
+        <span class="nav-wordmark-title">A Soapbox</span>
       </a>
-      
-      <nav class="nav">
-        <ul class="nav-links">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="book.html">The Book</a></li>
-          <li><a href="dispatches/index.html">Unsolicited Opinions</a></li>
-          <li><a href="correspondence.html">Correspondence</a></li>
-        </ul>
-      </nav>
-      
-      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
-        ☰
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="about.html" class="active">About</a>
+        <a href="book.html">The Book</a>
+        <a href="dispatches/index.html">Unsolicited Opinions</a>
+        <a href="correspondence.html">Correspondence</a>
+      </div>
+      <button class="nav-toggle" aria-label="Open navigation" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
       </button>
     </div>
-  </header>
-
-  <nav class="nav-mobile">
-    <div class="nav-mobile-header">
-      <div class="wordmark">
-        <span class="wordmark-label">IN THE ABSENCE OF</span>
-        <span class="wordmark-title">A SOAPBOX</span>
-      </div>
-      <button class="nav-mobile-close" aria-label="Close navigation">×</button>
-    </div>
-    <ul class="nav-mobile-links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="book.html">The Book</a></li>
-      <li><a href="dispatches/index.html">Unsolicited Opinions</a></li>
-      <li><a href="correspondence.html">Correspondence</a></li>
-    </ul>
   </nav>
 
-  <main>
-    <section class="section">
-      <div class="container">
-        <div class="section-header">
-          <span class="section-label">About</span>
-          <h1 class="section-title">Who Writes This</h1>
-        </div>
-        
-        <div class="prose" data-content="authorBio">
-          <!-- Content loaded dynamically from site-content.json -->
-          <p>Loading content...</p>
-          <div class="author-image-wrapper">
-            <img src="assets/images/AuthorPicture.jpeg" alt="Author photo" class="author-image">
+  <!-- MOBILE NAV -->
+  <div class="nav-mobile" role="dialog" aria-modal="true" aria-label="Mobile navigation">
+    <div class="nav-mobile-header">
+      <a href="index.html" class="nav-wordmark">
+        <span class="nav-wordmark-sup">In the Absence of</span>
+        <span class="nav-wordmark-title">A Soapbox</span>
+      </a>
+      <button class="nav-mobile-close" aria-label="Close navigation">×</button>
+    </div>
+    <div class="nav-mobile-links">
+      <a href="index.html">Home</a>
+      <a href="about.html" class="active">About</a>
+      <a href="book.html">The Book</a>
+      <a href="dispatches/index.html">Unsolicited Opinions</a>
+      <a href="correspondence.html">Correspondence</a>
+    </div>
+  </div>
+
+  <!-- ABOUT HERO -->
+  <section class="about-hero">
+    <div class="about-hero-art">
+      <img src="assets/images/AuthorPicture.jpeg" alt="Kel Wright" loading="eager">
+    </div>
+    <div class="about-hero-content">
+      <span class="about-hero-kicker">The author</span>
+      <h1>She's 35.<br>She has a lot<br><span class="amber-italic">to say about it.</span></h1>
+      <p class="about-hero-coda">And she's been collecting material since she was 16.</p>
+      <p class="about-hero-body">Kel Wright is a writer, a mother, and the holder of a very prestigious, ultra-important, super-adventurous, not-boring-at-all position at an insurance company. She has strong opinions about everything, and the good sense to know that social media is not the place for them.</p>
+      <div class="about-hero-ctas">
+        <a href="book.html" class="btn btn-ghost-light">Read the Book</a>
+        <a href="dispatches/index.html" class="btn btn-amber">Read the Opinions</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- THE REAL BIO -->
+  <section class="bio-section">
+    <div class="container">
+      <div class="bio-inner">
+        <span class="section-label">Who she actually is</span>
+        <h2>Not the polished version.</h2>
+        <p>At 30(ish), I suddenly find I have a lot to say about life. Not only about my own life, mind you, but other peoples' too. I have opinions on topics as varied as sex, parenting, home décor, and the unforgivable presence of fruit in a savoury salad.</p>
+        <p>I am not yet forty, not yet rich, not yet thin, and not yet in possession of a single thriving herb, and yet I consider these stellar lack of achievements the perfect qualifications to have strong views about everything and the good sense to know that social media is not the place for them - though I cannot always say the same for text messages (which have historically functioned as delivery vehicles for very long, very detailed essays that nobody asked for).</p>
+        <p>The book covers the years between 16 and 30. The ones in which I became a mother, lost myself in a couple of relationships that were, in retrospect, more situationship than relationship, and considerably more chaos than either. I gained 20 kilograms and stopped apologising for it (because what is a girl to do when she loves food and disdains exercise), and slowly - very slowly - started to figure out what I actually thought about things. (Let's be honest: I'm still not entirely sure, and this may change with the same frequency as my opinions on whether wine counts as a food group. It does.)</p>
+        <p>Moving on.</p>
+        <p>In the book I showcased a spectacular and recurring inability to run literally. Instead I did so figuratively - out of fucks, patience, money, time, and all remaining sensibilities. I now actually run (although, I use the term loosely). "Running" is generous... I shuffle. A determined, committed, not-entirely-dignified shuffle, like a waddle of wombats wobbling toward a warren, or a parade of plodding penguins who'd been told there was pilchards at the podium. (Unlike my running, the alliteration, at least, has always been effortless.) Incidentally, the chapters in the book where I say I would never run, were written before I took up this extreme sport. I choose to see this as character development. If you have no idea what I am talking about, it's because you haven't bought the book. You should.)</p>
+        <p>I write because some experiences don't improve with silence. I write because when left unsaid, things get heavier over time. I write because if I do not, some poor unsuspecting victim will likely be the receiver of an unsolicited state of the nation address, in the form of a WhatsApp or an exceedingly well worded, although decidedly harsh, email. I write because, if I've learned anything, it's that the story you're most embarrassed to tell is usually the one someone else desperately needed to hear.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- TIMELINE -->
+  <section class="timeline-section">
+    <div class="container">
+      <div class="timeline-inner">
+        <span class="section-label">The short version</span>
+        <h2>How we got here.</h2>
+        <div class="timeline-list">
+          <div class="timeline-item">
+            <span class="timeline-year">2008</span>
+            <span class="timeline-text">Daughter born. Matric written, under circumstances that could generously be described as suboptimal. Passed with distinction. Got all As, since you're asking, and nobody was. We don't talk about Afrikaans.</span>
+          </div>
+          <div class="timeline-item">
+            <span class="timeline-year">2009-2011</span>
+            <span class="timeline-text">Single. Fucking it up enthusiastically. Running - figuratively, obviously, never literally - from responsibility, from reality, and from anything that looked like it might require sustained effort. Somehow also studying. Got a BA in Marketing, which is the thing you study when you have absolutely no idea what to study, and which conveniently positions you to one day do an MBA, which is the thing that every single person who has ever wanted to seem successful eventually does.</span>
+          </div>
+          <div class="timeline-item">
+            <span class="timeline-year">2012-2017</span>
+            <span class="timeline-text">Still single. Landed a very prestigious, ultra-important, super-adventurous, not-boring-at-all position at an insurance firm. Got stable. Met Tinder Guy. Became considerably less stable.</span>
+          </div>
+          <div class="timeline-item">
+            <span class="timeline-year">2018</span>
+            <span class="timeline-text">More Tinder Guy. Lost myself entirely, which was particularly frustrating given that I'd only just found myself. Navigated what I now correctly identify as a narcissist - because by 2018 narcissist content was trending and I finally had the vocabulary. Moved out. Got into significant debt acquiring very impressive crockery. Worth it.</span>
+          </div>
+          <div class="timeline-item">
+            <span class="timeline-year">2019</span>
+            <span class="timeline-text">Moved back home. Cap in hand. Started writing.</span>
+          </div>
+          <div class="timeline-item">
+            <span class="timeline-year">2020</span>
+            <span class="timeline-text">Met a Capetonian. Immediately decided I would marry him and have his children. Turned 30 in what can only be described as the shittest of shit years, on the shittest of shit birthdays, completely alone, in a pandemic. Did not marry the Capetonian.</span>
+          </div>
+          <div class="timeline-item">
+            <span class="timeline-year">2021</span>
+            <span class="timeline-text">Did not have his children either. Or anyone else's.</span>
+          </div>
+          <div class="timeline-item">
+            <span class="timeline-year">2022-2024</span>
+            <span class="timeline-text">Wrote and finished the manuscript. Discovered that telling the stories that needed breathing room - and physically cutting the ones that didn't - was its own kind of healing. Closed some chapters for good. Incidentally, and this did not make it into the book: dated someone fifteen years my senior, despite having very strong opinions about exactly this in the manuscript. Confirmed that maturity has nothing to do with age, and that large age gaps are, in fact, as annoying as I originally suspected.</span>
+          </div>
+          <div class="timeline-item">
+            <span class="timeline-year">2025</span>
+            <span class="timeline-text">Met Karl. Stable, sturdy, beautifully dorky, wise, kind. Feels like home. Did not see this coming. Delighted to report it anyway.</span>
+          </div>
+          <div class="timeline-item">
+            <span class="timeline-year">2026</span>
+            <span class="timeline-text">The book. Finally.</span>
           </div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section class="section">
-      <div class="container">
-        <div class="section-header">
-          <span class="section-label">About</span>
-          <h2 class="section-title">Before You Read</h2>
-        </div>
-        
-        <div class="prose" data-content="beforeYouRead">
-          <!-- Content loaded dynamically from site-content.json -->
-          <p>Loading content...</p>
+  <!-- BEFORE YOU READ -->
+  <section class="before-read-section">
+    <div class="container">
+      <div class="before-read-inner">
+        <span class="section-label">Ground rules</span>
+        <h2>A few things before you dive in.</h2>
+        <ul class="rules-list">
+          <li>This isn't a guide, a manifesto, or a place to get your life sorted.</li>
+          <li>It's a record - written with candour, reflection, and enough humour to survive reliving my own questionable decisions.</li>
+          <li>Profanity appears without warning. So do opinions. Both are intentional.</li>
+          <li>Kindness is welcome. Curiosity too. Cruelty is not interesting.</li>
+          <li>Take what resonates. Leave the rest exactly where you found it.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- NOTIFY STRIP -->
+  <section class="notify-strip">
+    <div class="container">
+      <h2 class="notify-heading fade-up">The book is coming.</h2>
+      <p class="notify-sub fade-up">Be the first to know when it's available.</p>
+      <form class="notify-form fade-up" action="https://formspree.io/f/REPLACE_WITH_FORMSPREE_ID" method="POST">
+        <input type="email" name="email" placeholder="your@email.com" required>
+        <button type="submit" class="btn btn-primary">Tell me when it's ready</button>
+      </form>
+      <p class="notify-note">No newsletters. No nonsense. One email when it's available. Promise.</p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div>
+        <span class="footer-wordmark-sup">In the Absence of</span>
+        <span class="footer-wordmark-title">A Soapbox</span>
+        <p class="footer-copyright">The personal brand and book site<br>of Kel Wright. Durban, South Africa.</p>
+      </div>
+      <div>
+        <span class="footer-col-label">Navigate</span>
+        <div class="footer-links">
+          <a href="index.html">Home</a>
+          <a href="about.html">About</a>
+          <a href="book.html">The Book</a>
+          <a href="dispatches/index.html">Unsolicited Opinions</a>
+          <a href="correspondence.html">Correspondence</a>
         </div>
       </div>
-    </section>
-  </main>
-
-  <footer class="footer">
-    <div class="container">
-      <p>&copy; 2025 In the Absence of a Soapbox</p>
+      <div>
+        <span class="footer-col-label">Say hello</span>
+        <div class="footer-contact">
+          <a href="mailto:hello@intheabsence.co.za">hello@intheabsence.co.za</a>
+          <a href="mailto:purchases@intheabsence.co.za">purchases@intheabsence.co.za</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bar">
+      <p>© 2026 In the Absence of a Soapbox · intheabsence.co.za</p>
     </div>
   </footer>
 
-  <script src="js/content-loader.js" defer></script>
+  <!-- EMAIL CAPTURE MODAL -->
+  <div id="notifyModal" class="modal-overlay" aria-hidden="true">
+    <div class="modal-container">
+      <button class="modal-close" aria-label="Close">×</button>
+      <p class="modal-label">Be the first to know.</p>
+      <h2 class="modal-heading">The book is coming.</h2>
+      <p class="modal-body">Drop your email. When the book is available, you'll hear about it. Once. That's it.</p>
+      <form class="modal-form" action="https://formspree.io/f/REPLACE_WITH_FORMSPREE_ID" method="POST">
+        <input type="email" name="email" placeholder="your@email.com" required>
+        <button type="submit" class="btn btn-primary">Notify me</button>
+      </form>
+      <p class="modal-note">No newsletters. No nonsense. One email. Promise.</p>
+    </div>
+  </div>
+
   <script src="js/main.js" defer></script>
-  <script src="js/sw-register.js" defer></script>
 </body>
 </html>
-

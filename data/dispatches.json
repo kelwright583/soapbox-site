@@ -2,92 +2,81 @@
   {
     "slug": "alone-vs-lonely",
     "title": "Alone vs Lonely",
-    "readTime": "6 min",
+    "readTime": "6 min read",
     "quote": "I came to the conclusion that I would take actually being alone over feeling lonely in a relationship every day of the week.",
-    "chapter": "Not Again",
-    "excerpt": "I came to the conclusion that I would take actually being alone over feeling lonely in a relationship every day of the week.",
-    "reflection": "This was the moment I realized I'd been confusing companionship with connection. Being in a relationship where you feel invisible, unheard, or constantly second-guessing yourself isn't better than being single. It's worse. At least when you're alone, you're not being gaslit into thinking the problem is you. At least when you're alone, you can start to remember who you are.",
-    "fullText": "This was the moment I realized I'd been confusing companionship with connection. Being in a relationship where you feel invisible, unheard, or constantly second-guessing yourself isn't better than being single. It's worse. At least when you're alone, you're not being gaslit into thinking the problem is you. At least when you're alone, you can start to remember who you are. It took me years to learn this, but once I did, I stopped settling for crumbs disguised as love.",
-    "tags": [
-      "Uncomfortable Thoughts",
-      "Growing Up"
-    ],
+    "excerpt": "I came to the conclusion that I would take actually being alone over feeling lonely in a relationship every day of the week. At least when you're alone, you're not being gaslit into thinking the problem is you.",
+    "tags": ["Relationships"],
     "date": "2025-01-10",
     "featured": true
   },
   {
     "slug": "jurassic-park",
     "title": "Jurassic Park",
-    "readTime": "5 min",
+    "readTime": "5 min read",
     "quote": "Dating was a walk in the park. Jurassic Park.",
-    "chapter": "Pubs and Clubs",
-    "excerpt": "Dating was a walk in the park. Jurassic Park.",
-    "reflection": "Dating as a single mom in your 30s is less about romance and more about survival. The men who were functional, independent, intelligent, and emotionally astute had already been snatched up. The ones available? Well, let's just say their short arms couldn't reach their wallets when it was important, and their big teeth had no trouble chewing you up and spitting you out after they'd had their fill.",
-    "fullText": "Dating as a single mom in your 30s is less about romance and more about survival. The men who were functional, independent, intelligent, and emotionally astute had already been snatched up. The ones available? Well, let's just say their short arms couldn't reach their wallets when it was important, and their big teeth had no trouble chewing you up and spitting you out after they'd had their fill. Finding someone who saw me as a person – not a mirror, a muse, or an emotional mule – felt like navigating a theme park where the attractions were actively trying to eat you.",
-    "tags": [
-      "Sex & Bodies",
-      "Growing Up"
-    ],
+    "excerpt": "Dating was a walk in the park. Jurassic Park. The men who were functional and emotionally astute had been snatched up years ago. What remained was trying to eat you.",
+    "tags": ["Dating"],
     "date": "2025-01-05",
     "featured": true
   },
   {
     "slug": "failing-fabulously",
     "title": "Failing Fabulously",
-    "readTime": "7 min",
-    "quote": "I wasn't a failure. I was fabulous! Or I was failing fabulously.",
-    "chapter": "Failing Fabulously",
-    "excerpt": "I wasn't a failure. I was fabulous! Or I was failing fabulously.",
-    "reflection": "I gained 20 kilograms after a breakup. I went from a size 8 to a size 14. And you know what? It didn't bother me all that much. Because I finally realized that my value wasn't tied to my dress size, my relationship status, or my ability to maintain a 'perfect' life. I was sharp, perceptive, funny, and a damn good mom. That's what mattered. The rest? Just noise.",
-    "fullText": "I gained 20 kilograms after a breakup. I went from a size 8 to a size 14. And you know what? It didn't bother me all that much. Because I finally realized that my value wasn't tied to my dress size, my relationship status, or my ability to maintain a 'perfect' life. I was sharp, perceptive, funny, and a damn good mom. That's what mattered. The rest? Just noise. At long last I realized that all that truly mattered in life was to love, to laugh, and to find joy wherever we could. And this was me loving myself at my 'worst.'",
-    "tags": [
-      "Sex & Bodies",
-      "Growing Up"
-    ],
+    "readTime": "7 min read",
+    "quote": "I wasn't a failure. I was fabulous. Or I was failing fabulously.",
+    "excerpt": "I went from a size 8 to a size 14. And you know what? It didn't bother me all that much. Because I finally worked out what actually mattered.",
+    "tags": ["Bodies"],
     "date": "2025-01-01",
+    "featured": true
+  },
+  {
+    "slug": "universal-values",
+    "title": "Universal Values",
+    "readTime": "5 min read",
+    "quote": "Love. Enthusiasm. And McDonald's. Universal values.",
+    "excerpt": "Sometimes parenting isn't about Pinterest-perfect meals or organic everything. Sometimes it's about survival, enthusiasm, and the occasional drive-through.",
+    "tags": ["Motherhood"],
+    "date": "2025-01-15",
     "featured": true
   },
   {
     "slug": "bra-seatbelts",
     "title": "On Woolworths Bras and Seatbelts Disguised as Straps",
-    "readTime": "6 min",
-    "excerpt": "Thirty is the year your lingerie stops being flirtation and starts being infrastructure. The day I realized my bra was essentially a seatbelt for my tits was the day I understood I'd crossed a threshold.",
-    "tags": [
-      "Sex & Bodies",
-      "Institutions"
-    ],
-    "date": "2025-12-22"
+    "readTime": "6 min read",
+    "quote": "Thirty is the year your lingerie stops being flirtation and starts being infrastructure.",
+    "excerpt": "Thirty is the year your lingerie stops being flirtation and starts being infrastructure. The day I stood in the Woolworths fitting room holding a bra the approximate size of a small bridge and thought this makes complete sense — that was the day I understood I'd crossed a threshold.",
+    "tags": ["Bodies"],
+    "date": "2025-12-22",
+    "featured": true
   },
   {
     "slug": "turning-thirty",
     "title": "Turning Thirty and Other Acts of Defiance",
-    "readTime": "8 min",
-    "excerpt": "I turned thirty in a pandemic, alone, with a toddler who'd just discovered the word 'no' and a cat who'd discovered the joy of knocking things off shelves. It was less a celebration and more a survival milestone.",
-    "tags": [
-      "Growing Up",
-      "Motherhood"
-    ],
-    "date": "2025-12-15"
+    "readTime": "8 min read",
+    "quote": "I turned thirty in a pandemic, alone, with a toddler who'd just discovered the word 'no'.",
+    "excerpt": "I turned thirty in a pandemic, alone, with a toddler who'd discovered 'no' and a cat who'd discovered gravity. It was less a celebration and more a survival milestone.",
+    "tags": ["Growing Up", "Motherhood"],
+    "date": "2025-12-15",
+    "featured": false
   },
   {
     "slug": "dating-app-fatigue",
     "title": "Dating Apps and the Art of Low Expectations",
-    "readTime": "5 min",
+    "readTime": "5 min read",
+    "quote": "There's something deeply unsexy about swiping through profiles while your child asks why the man in the photo has a fish.",
     "excerpt": "There's something deeply unsexy about swiping through profiles while your child asks why the man in the photo has a fish. Dating as a single parent is less romance, more logistics.",
-    "tags": [
-      "Sex & Bodies",
-      "Motherhood"
-    ],
-    "date": "2025-12-10"
+    "tags": ["Dating", "Motherhood"],
+    "date": "2025-12-10",
+    "featured": false
   },
   {
     "slug": "body-image-thirty",
     "title": "My Body at Thirty: A User's Manual",
-    "readTime": "7 min",
+    "readTime": "7 min read",
+    "quote": "My body and I have reached an understanding.",
     "excerpt": "My body and I have reached an understanding. It does its job, I try not to hate it, and we both pretend the stretch marks are tiger stripes. It's a truce, not a love story.",
-    "tags": [
-      "Sex & Bodies"
-    ],
-    "date": "2025-12-05"
+    "tags": ["Bodies"],
+    "date": "2025-12-05",
+    "featured": false
   }
 ]

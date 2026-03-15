@@ -15,3 +15,6 @@ Replace these placeholder files with actual images:
    - Can be a repeating pattern
    - If not used, the warm paper color will be the background
 
+
+
+

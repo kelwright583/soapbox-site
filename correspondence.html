@@ -3,119 +3,172 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Get in touch - Correspondence page for In the Absence of a Soapbox.">
-  
-  <!-- Open Graph -->
-  <meta property="og:title" content="Correspondence - In the Absence of a Soapbox">
-  <meta property="og:description" content="Get in touch - Correspondence page for In the Absence of a Soapbox.">
-  <meta property="og:image" content="https://intheabsenceof.example/assets/images/BookCover.png">
+  <title>Correspondence — In the Absence of a Soapbox</title>
+  <meta property="og:title" content="In the Absence of a Soapbox — Kel Wright">
+  <meta property="og:description" content="Candid, funny, occasionally furious writing about bodies, relationships, motherhood, and the long unglamorous business of growing outward instead of up.">
+  <meta property="og:image" content="https://intheabsence.co.za/assets/images/BookCover.png">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://intheabsenceof.example/correspondence.html">
-  
-  <link rel="canonical" href="https://intheabsenceof.example/correspondence.html">
-  <link rel="manifest" href="manifest.webmanifest">
-  
-  <!-- Google Fonts -->
+  <meta property="og:url" content="https://intheabsence.co.za/">
+  <link rel="canonical" href="https://intheabsence.co.za/">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;650;700;750;800&display=swap" rel="stylesheet">
-  
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;1,700;1,800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
-  <title>Correspondence - In the Absence of a Soapbox</title>
 </head>
 <body>
-  <header class="site-header">
-    <div class="container">
-      <a href="index.html" class="wordmark">
-        <span class="wordmark-label">IN THE ABSENCE OF</span>
-        <span class="wordmark-title">A SOAPBOX</span>
+
+  <!-- NAV -->
+  <nav class="site-nav" role="navigation" aria-label="Main navigation">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-wordmark">
+        <span class="nav-wordmark-sup">In the Absence of</span>
+        <span class="nav-wordmark-title">A Soapbox</span>
       </a>
-      
-      <nav class="nav">
-        <ul class="nav-links">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="book.html">The Book</a></li>
-          <li><a href="dispatches/index.html">Unsolicited Opinions</a></li>
-          <li><a href="correspondence.html">Correspondence</a></li>
-        </ul>
-      </nav>
-      
-      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
-        ☰
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="book.html">The Book</a>
+        <a href="dispatches/index.html">Unsolicited Opinions</a>
+        <a href="correspondence.html" class="active">Correspondence</a>
+      </div>
+      <button class="nav-toggle" aria-label="Open navigation" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
       </button>
     </div>
-  </header>
-
-  <nav class="nav-mobile">
-    <div class="nav-mobile-header">
-      <div class="wordmark">
-        <span class="wordmark-label">IN THE ABSENCE OF</span>
-        <span class="wordmark-title">A SOAPBOX</span>
-      </div>
-      <button class="nav-mobile-close" aria-label="Close navigation">×</button>
-    </div>
-    <ul class="nav-mobile-links">
-      <li><a href="/">Home</a></li>
-      <li><a href="/about.html">About</a></li>
-      <li><a href="/book.html">The Book</a></li>
-      <li><a href="/dispatches/index.html">Unsolicited Opinions</a></li>
-      <li><a href="/correspondence.html">Correspondence</a></li>
-    </ul>
   </nav>
 
-  <main>
-    <section class="section">
-      <div class="container">
-        <div class="section-header">
-          <span class="section-label">Get in Touch</span>
-          <h1 class="section-title">Correspondence</h1>
-        </div>
-        
-        <div class="prose">
-          <p>Want to say hello? Have a question? Found a typo that's been driving you mad? I'd love to hear from you.</p>
-          
-          <p style="font-size: 0.95rem; color: var(--charcoal); font-style: italic; margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--border);">
-            No unsolicited advice. No unsolicited anatomy.
-          </p>
-        </div>
-        
-        <div class="form" style="margin-top: 3rem;">
-          <form>
-            <div class="form-group">
-              <label for="name" class="form-label">Name</label>
-              <input type="text" id="name" name="name" class="form-input" required>
-            </div>
-            
-            <div class="form-group">
-              <label for="email" class="form-label">Email</label>
-              <input type="email" id="email" name="email" class="form-input" required>
-            </div>
-            
-            <div class="form-group">
-              <label for="message" class="form-label">Message</label>
-              <textarea id="message" name="message" class="form-textarea" required></textarea>
-            </div>
-            
-            <div class="form-actions">
-              <button type="button" class="btn btn--primary btn-copy-email">Copy email address</button>
-              <a href="#" class="btn btn--ghost" data-email data-link="mailto">Open email app</a>
-            </div>
+  <!-- MOBILE NAV -->
+  <div class="nav-mobile" role="dialog" aria-modal="true" aria-label="Mobile navigation">
+    <div class="nav-mobile-header">
+      <a href="index.html" class="nav-wordmark">
+        <span class="nav-wordmark-sup">In the Absence of</span>
+        <span class="nav-wordmark-title">A Soapbox</span>
+      </a>
+      <button class="nav-mobile-close" aria-label="Close navigation">×</button>
+    </div>
+    <div class="nav-mobile-links">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="book.html">The Book</a>
+      <a href="dispatches/index.html">Unsolicited Opinions</a>
+      <a href="correspondence.html" class="active">Correspondence</a>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <section class="correspondence-hero">
+    <div class="container">
+      <span class="section-label">Correspondence</span>
+      <h1>Say hello.<br><span class="amber-italic">She reads everything.</span></h1>
+      <p class="correspondence-sub">She doesn't always reply immediately. She has a life, a daughter, and strong opinions about avocado pricing. But she reads everything. Eventually.</p>
+    </div>
+  </section>
+
+  <!-- CONTACT BODY -->
+  <section class="correspondence-body">
+    <div class="container">
+      <div class="correspondence-grid">
+
+        <!-- LEFT: CONTACT FORM -->
+        <div>
+          <span class="form-label">Send a letter</span>
+          <form class="contact-form" action="https://formspree.io/f/REPLACE_WITH_FORMSPREE_ID" method="POST">
+            <input type="text" name="name" placeholder="Your name" required>
+            <input type="email" name="email" placeholder="your@email.com" required>
+            <textarea name="message" rows="7" placeholder="Say what you came to say."></textarea>
+            <button type="submit" class="btn btn-primary">Send it</button>
           </form>
         </div>
-      </div>
-    </section>
-  </main>
 
-  <footer class="footer">
+        <!-- RIGHT: DIRECT + HOUSE RULES -->
+        <div>
+          <span class="direct-contact-label">Or, more directly</span>
+          <div class="email-row">
+            <span class="email-row-label">General</span>
+            <a href="mailto:hello@intheabsence.co.za">hello@intheabsence.co.za</a>
+          </div>
+          <div class="email-row">
+            <span class="email-row-label">Book enquiries</span>
+            <a href="mailto:purchases@intheabsence.co.za">purchases@intheabsence.co.za</a>
+          </div>
+
+          <div class="house-rules-section">
+            <span class="section-label">Ground rules</span>
+            <ul class="house-rules-list">
+              <li>No unsolicited advice. No unsolicited anatomy.</li>
+              <li>Be kind or be quiet.</li>
+              <li>Profanity is allowed. So are opinions.</li>
+              <li>This is a no-judgment zone.</li>
+              <li>Take what you need, leave what you don't.</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- NOTIFY STRIP -->
+  <section class="notify-strip">
     <div class="container">
-      <p>&copy; 2025 In the Absence of a Soapbox</p>
+      <h2 class="notify-heading fade-up">The book is coming.</h2>
+      <p class="notify-sub fade-up">Be the first to know when it's available.</p>
+      <form class="notify-form fade-up" action="https://formspree.io/f/REPLACE_WITH_FORMSPREE_ID" method="POST">
+        <input type="email" name="email" placeholder="your@email.com" required>
+        <button type="submit" class="btn btn-primary">Tell me when it's ready</button>
+      </form>
+      <p class="notify-note">No newsletters. No nonsense. One email when it's available. Promise.</p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div>
+        <span class="footer-wordmark-sup">In the Absence of</span>
+        <span class="footer-wordmark-title">A Soapbox</span>
+        <p class="footer-copyright">The personal brand and book site<br>of Kel Wright. Durban, South Africa.</p>
+      </div>
+      <div>
+        <span class="footer-col-label">Navigate</span>
+        <div class="footer-links">
+          <a href="index.html">Home</a>
+          <a href="about.html">About</a>
+          <a href="book.html">The Book</a>
+          <a href="dispatches/index.html">Unsolicited Opinions</a>
+          <a href="correspondence.html">Correspondence</a>
+        </div>
+      </div>
+      <div>
+        <span class="footer-col-label">Say hello</span>
+        <div class="footer-contact">
+          <a href="mailto:hello@intheabsence.co.za">hello@intheabsence.co.za</a>
+          <a href="mailto:purchases@intheabsence.co.za">purchases@intheabsence.co.za</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bar">
+      <p>© 2026 In the Absence of a Soapbox · intheabsence.co.za</p>
     </div>
   </footer>
 
-  <script src="js/content-loader.js" defer></script>
+  <!-- EMAIL CAPTURE MODAL -->
+  <div id="notifyModal" class="modal-overlay" aria-hidden="true">
+    <div class="modal-container">
+      <button class="modal-close" aria-label="Close">×</button>
+      <p class="modal-label">Be the first to know.</p>
+      <h2 class="modal-heading">The book is coming.</h2>
+      <p class="modal-body">Drop your email. When the book is available, you'll hear about it. Once. That's it.</p>
+      <form class="modal-form" action="https://formspree.io/f/REPLACE_WITH_FORMSPREE_ID" method="POST">
+        <input type="email" name="email" placeholder="your@email.com" required>
+        <button type="submit" class="btn btn-primary">Notify me</button>
+      </form>
+      <p class="modal-note">No newsletters. No nonsense. One email. Promise.</p>
+    </div>
+  </div>
+
   <script src="js/main.js" defer></script>
-  <script src="js/sw-register.js" defer></script>
 </body>
 </html>
-
