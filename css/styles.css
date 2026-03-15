@@ -1661,6 +1661,43 @@ blockquote {
   text-align: left;
 }
 
+.book-dedication {
+  background: var(--ink);
+  padding: 108px 0;
+}
+
+.book-dedication-inner {
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.book-dedication-inner .section-label {
+  color: var(--amber);
+}
+
+.dedication-to {
+  font-family: var(--display);
+  font-size: 1.3rem;
+  font-weight: 700;
+  font-style: italic;
+  color: var(--white);
+  margin-bottom: 40px;
+}
+
+.dedication-poem {
+  font-family: var(--display);
+  font-size: clamp(1rem, 1.8vw, 1.2rem);
+  font-weight: 400;
+  font-style: italic;
+  color: rgba(255,255,255,0.82);
+  line-height: 1.9;
+}
+
+.dedication-poem p {
+  margin-bottom: 2rem;
+}
+
 .book-chapters {
   background: var(--white);
   padding: 108px 0;
