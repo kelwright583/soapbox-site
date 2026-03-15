@@ -234,7 +234,7 @@ blockquote {
 
 .nav-wordmark-sup {
   font-family: var(--body);
-  font-size: 0.53rem;
+  font-size: 0.6rem;
   font-weight: 600;
   letter-spacing: 0.22em;
   text-transform: uppercase;
@@ -243,7 +243,7 @@ blockquote {
 
 .nav-wordmark-title {
   font-family: var(--display);
-  font-size: 1.1rem;
+  font-size: 1.55rem;
   font-weight: 700;
   color: var(--ink);
   line-height: 1.1;
@@ -253,6 +253,7 @@ blockquote {
   display: flex;
   align-items: center;
   gap: 32px;
+  margin-left: auto;
 }
 
 .nav-links a {
