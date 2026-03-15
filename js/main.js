@@ -109,6 +109,19 @@ if (track) {
   if (prevBtn) prevBtn.addEventListener('click', () => { current--; updateCarousel(); });
   if (nextBtn) nextBtn.addEventListener('click', () => { current++; updateCarousel(); });
 
+  // Touch swipe support
+  let touchStartX = 0;
+  let touchEndX = 0;
+  track.addEventListener('touchstart', e => { touchStartX = e.changedTouches[0].clientX; }, { passive: true });
+  track.addEventListener('touchend', e => {
+    touchEndX = e.changedTouches[0].clientX;
+    const diff = touchStartX - touchEndX;
+    if (Math.abs(diff) > 40) {
+      if (diff > 0) { current++; } else { current--; }
+      updateCarousel();
+    }
+  }, { passive: true });
+
   window.addEventListener('resize', () => { current = 0; buildDots(); updateCarousel(); });
 
   // Called after content-loader populates the track
