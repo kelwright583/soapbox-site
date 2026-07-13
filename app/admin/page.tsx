@@ -1,6 +1,9 @@
 import Link from 'next/link'
 import { createClient } from '@/lib/supabase/server'
-import { FileText, ImageIcon, Video, Podcast, Eye, PenLine, Plus, ArrowRight } from 'lucide-react'
+import {
+  FileText, ImageIcon, Video, Podcast, Eye, PenLine,
+  Plus, ArrowRight, Sparkles,
+} from 'lucide-react'
 
 export default async function AdminDashboard() {
   const supabase = await createClient()
@@ -26,60 +29,86 @@ export default async function AdminDashboard() {
     .limit(5)
 
   const stats = [
-    { label: 'Total Posts', value: totalPosts, icon: FileText, color: '#C07B2A' },
-    { label: 'Published', value: publishedPosts, icon: Eye, color: '#16a34a' },
-    { label: 'Drafts', value: totalPosts - publishedPosts, icon: PenLine, color: '#9ca3af' },
-    { label: 'Images', value: totalImages, icon: ImageIcon, color: '#3b82f6' },
-    { label: 'Videos', value: totalVideos, icon: Video, color: '#8b5cf6' },
-    { label: 'Podcasts', value: totalPodcasts, icon: Podcast, color: '#f97316' },
+    { label: 'Total Posts', value: totalPosts, icon: FileText, color: '#C07B2A', bg: 'rgba(192,123,42,0.08)' },
+    { label: 'Published', value: publishedPosts, icon: Eye, color: '#16a34a', bg: 'rgba(22,163,74,0.08)' },
+    { label: 'Drafts', value: totalPosts - publishedPosts, icon: PenLine, color: '#8b8b8b', bg: 'rgba(139,139,139,0.08)' },
+    { label: 'Images', value: totalImages, icon: ImageIcon, color: '#3b82f6', bg: 'rgba(59,130,246,0.08)' },
+    { label: 'Videos', value: totalVideos, icon: Video, color: '#8b5cf6', bg: 'rgba(139,92,246,0.08)' },
+    { label: 'Podcasts', value: totalPodcasts, icon: Podcast, color: '#f97316', bg: 'rgba(249,115,22,0.08)' },
   ]
 
   return (
     <div>
-      <div style={{ marginBottom: 40 }}>
-        <h1 className="admin-page-title">Good to see you.</h1>
-        <p className="admin-page-desc">Your creative space. Here is everything at a glance.</p>
+      {/* Welcome banner */}
+      <div className="admin-welcome">
+        <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', flexWrap: 'wrap', gap: 16 }}>
+          <div>
+            <h1 style={{
+              fontFamily: "'Playfair Display', Georgia, serif",
+              fontSize: 32, fontWeight: 800, color: '#1a1a1a',
+              lineHeight: 1.2, marginBottom: 8, letterSpacing: '-0.01em',
+            }}>
+              Good to see you.
+            </h1>
+            <p style={{ fontSize: 15, color: '#9a8a76', lineHeight: 1.5, maxWidth: 420 }}>
+              Your creative space. Everything you need to write, curate and share your thoughts with the world.
+            </p>
+          </div>
+          <Link
+            href="/admin/opinions/new"
+            className="admin-btn-primary"
+            style={{ textDecoration: 'none', padding: '13px 28px', fontSize: 15 }}
+          >
+            <Sparkles style={{ width: 17, height: 17 }} />
+            Start Writing
+          </Link>
+        </div>
       </div>
 
       {/* Stats */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(140px, 1fr))', gap: 12, marginBottom: 40 }}>
-        {stats.map(({ label, value, icon: Icon, color }) => (
-          <div key={label} className="admin-card" style={{ padding: '20px 18px' }}>
-            <Icon style={{ width: 20, height: 20, color, marginBottom: 12 }} strokeWidth={1.7} />
-            <div style={{ fontSize: 28, fontWeight: 700, color: '#1a1a1a', lineHeight: 1 }}>{value}</div>
-            <div style={{ fontSize: 12, color: '#999', marginTop: 4 }}>{label}</div>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(145px, 1fr))', gap: 14, marginBottom: 36 }}>
+        {stats.map(({ label, value, icon: Icon, color, bg }) => (
+          <div key={label} className="admin-stat">
+            <div className="admin-stat-icon" style={{ background: bg }}>
+              <Icon style={{ width: 18, height: 18, color }} strokeWidth={1.8} />
+            </div>
+            <div style={{ fontSize: 30, fontWeight: 700, color: '#1a1a1a', lineHeight: 1, letterSpacing: '-0.02em' }}>{value}</div>
+            <div style={{ fontSize: 12.5, color: '#aaa', marginTop: 5, fontWeight: 500 }}>{label}</div>
           </div>
         ))}
       </div>
 
       {/* Two columns */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 16 }}>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: 18, alignItems: 'start' }}>
         {/* Quick actions */}
         <div className="admin-card">
-          <div className="admin-section-title">Create</div>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
-            <Link href="/admin/opinions/new" className="admin-btn-primary" style={{ textDecoration: 'none' }}>
-              <Plus style={{ width: 16, height: 16 }} /> Write a New Opinion
+          <div className="admin-section-title">Quick Actions</div>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+            <Link href="/admin/opinions/new" className="admin-btn-primary" style={{ textDecoration: 'none', padding: 14 }}>
+              <Plus style={{ width: 17, height: 17 }} /> Write a New Opinion
             </Link>
-            <Link href="/admin/media" className="admin-btn-secondary" style={{ textDecoration: 'none' }}>
-              <ImageIcon style={{ width: 16, height: 16 }} /> Open Media Library
+            <Link href="/admin/media" className="admin-btn-secondary" style={{ textDecoration: 'none', padding: 14 }}>
+              <ImageIcon style={{ width: 17, height: 17 }} /> Open Media Library
+            </Link>
+            <Link href="/admin/opinions" className="admin-btn-secondary" style={{ textDecoration: 'none', padding: 14 }}>
+              <FileText style={{ width: 17, height: 17 }} /> View All Opinions
             </Link>
           </div>
         </div>
 
         {/* Recent posts */}
         <div className="admin-card" style={{ padding: 0 }}>
-          <div style={{ padding: '18px 20px 10px' }}>
+          <div style={{ padding: '22px 24px 12px' }}>
             <div className="admin-section-title" style={{ marginBottom: 0 }}>Recent Work</div>
           </div>
           {recentPosts && recentPosts.length > 0 ? (
             <div>
-              {recentPosts.map((post, i) => (
+              {recentPosts.map((post) => (
                 <Link
                   key={post.id}
                   href={`/admin/opinions/${post.id}`}
                   className="admin-row"
-                  style={{ borderTop: '1px solid #f0f0ee' }}
+                  style={{ borderTop: '1px solid #f0eeea', padding: '14px 24px' }}
                 >
                   <span style={{ fontSize: 14, fontWeight: 500, color: '#333', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', minWidth: 0 }}>
                     {post.title || '(untitled)'}
@@ -88,14 +117,21 @@ export default async function AdminDashboard() {
                     <span className={`admin-badge ${post.published ? 'admin-badge-live' : 'admin-badge-draft'}`}>
                       {post.published ? 'Live' : 'Draft'}
                     </span>
-                    <ArrowRight style={{ width: 14, height: 14, color: '#ccc' }} />
+                    <ArrowRight style={{ width: 14, height: 14, color: '#d4d0ca' }} />
                   </div>
                 </Link>
               ))}
+              <div style={{ padding: '14px 24px', borderTop: '1px solid #f0eeea', textAlign: 'center' }}>
+                <Link href="/admin/opinions" style={{ fontSize: 13, color: '#C07B2A', fontWeight: 600, textDecoration: 'none' }}>
+                  View all opinions &rarr;
+                </Link>
+              </div>
             </div>
           ) : (
-            <div style={{ padding: '24px 20px', textAlign: 'center' }}>
-              <p style={{ fontSize: 13, color: '#aaa' }}>Nothing here yet. Start writing!</p>
+            <div style={{ padding: '36px 24px', textAlign: 'center' }}>
+              <p style={{ fontSize: 14, color: '#bbb', fontStyle: 'italic' }}>
+                Nothing here yet. Your first thought is waiting to be written.
+              </p>
             </div>
           )}
         </div>

@@ -39,14 +39,21 @@ export function AdminSidebar() {
   const content = (
     <div style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
       {/* Brand */}
-      <div style={{ padding: '24px 20px 16px' }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 20 }}>
-          <div style={{ width: 34, height: 34, borderRadius: 9, background: '#C07B2A', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-            <PenTool style={{ width: 16, height: 16, color: '#fff' }} strokeWidth={2} />
+      <div style={{ padding: '28px 24px 20px' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 24 }}>
+          <div style={{
+            width: 38, height: 38, borderRadius: 10,
+            background: 'linear-gradient(135deg, #C07B2A, #a86a24)',
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
+            boxShadow: '0 2px 8px rgba(192,123,42,0.3)',
+          }}>
+            <PenTool style={{ width: 17, height: 17, color: '#fff' }} strokeWidth={2} />
           </div>
           <div>
-            <div style={{ fontSize: 14, fontWeight: 700, color: '#1a1a1a', lineHeight: 1.2 }}>The Desk</div>
-            <div style={{ fontSize: 11, color: '#aaa', lineHeight: 1.3 }}>Your creative space</div>
+            <div style={{ fontSize: 15, fontWeight: 700, color: '#1a1a1a', lineHeight: 1.2, fontFamily: "'Playfair Display', Georgia, serif" }}>
+              The Desk
+            </div>
+            <div style={{ fontSize: 11.5, color: '#b5a898', lineHeight: 1.3 }}>Your creative space</div>
           </div>
         </div>
 
@@ -55,7 +62,7 @@ export function AdminSidebar() {
           href="/admin/opinions/new"
           onClick={() => setOpen(false)}
           className="admin-btn-primary"
-          style={{ width: '100%', padding: '11px 16px', textDecoration: 'none' }}
+          style={{ width: '100%', padding: '12px 16px', textDecoration: 'none', fontSize: 14 }}
         >
           <Plus style={{ width: 16, height: 16 }} />
           Write Something New
@@ -63,11 +70,11 @@ export function AdminSidebar() {
       </div>
 
       {/* Divider */}
-      <div style={{ margin: '0 20px', borderTop: '1px solid #eee' }} />
+      <div style={{ margin: '0 24px', borderTop: '1px solid #f0eeea' }} />
 
       {/* Nav */}
-      <nav style={{ flex: 1, padding: '12px 12px' }}>
-        <div style={{ padding: '0 12px', marginBottom: 6, fontSize: 10, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em', color: '#ccc' }}>
+      <nav style={{ flex: 1, padding: '16px 14px' }}>
+        <div style={{ padding: '0 14px', marginBottom: 10, fontSize: 10, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.12em', color: '#ccc' }}>
           Manage
         </div>
         {navItems.map(({ href, label, icon: Icon }) => (
@@ -84,7 +91,7 @@ export function AdminSidebar() {
       </nav>
 
       {/* Footer */}
-      <div style={{ borderTop: '1px solid #eee', padding: 12 }}>
+      <div style={{ borderTop: '1px solid #f0eeea', padding: '12px 14px' }}>
         <Link href="/" target="_blank" className="admin-nav-link" style={{ color: '#bbb' }}>
           <ExternalLink style={{ width: 16, height: 16 }} strokeWidth={1.6} />
           View Live Site
@@ -92,10 +99,10 @@ export function AdminSidebar() {
         <button
           onClick={handleSignOut}
           style={{
-            display: 'flex', alignItems: 'center', gap: 10, padding: '9px 12px',
-            borderRadius: 8, width: '100%', fontSize: 13.5, fontWeight: 500,
+            display: 'flex', alignItems: 'center', gap: 11, padding: '10px 14px',
+            borderRadius: 10, width: '100%', fontSize: 14, fontWeight: 500,
             background: 'none', border: 'none', color: '#bbb', cursor: 'pointer',
-            fontFamily: 'inherit',
+            fontFamily: 'inherit', transition: 'color 0.15s',
           }}
         >
           <LogOut style={{ width: 16, height: 16 }} strokeWidth={1.6} />
@@ -112,15 +119,21 @@ export function AdminSidebar() {
 
       {/* Mobile top bar */}
       <div className="admin-topbar">
-        <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-          <div style={{ width: 28, height: 28, borderRadius: 7, background: '#C07B2A', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+          <div style={{
+            width: 30, height: 30, borderRadius: 8,
+            background: 'linear-gradient(135deg, #C07B2A, #a86a24)',
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
+          }}>
             <PenTool style={{ width: 13, height: 13, color: '#fff' }} strokeWidth={2} />
           </div>
-          <span style={{ fontSize: 14, fontWeight: 700, color: '#1a1a1a' }}>The Desk</span>
+          <span style={{ fontSize: 15, fontWeight: 700, color: '#1a1a1a', fontFamily: "'Playfair Display', Georgia, serif" }}>
+            The Desk
+          </span>
         </div>
         <button
           onClick={() => setOpen(!open)}
-          style={{ background: 'none', border: 'none', color: '#666', cursor: 'pointer', padding: 4 }}
+          style={{ background: 'none', border: 'none', color: '#666', cursor: 'pointer', padding: 6 }}
         >
           {open ? <X style={{ width: 22, height: 22 }} /> : <Menu style={{ width: 22, height: 22 }} />}
         </button>

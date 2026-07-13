@@ -19,8 +19,8 @@ export default async function EditOpinionPage({
 
   return (
     <div style={{ maxWidth: 720 }}>
-      <Link href="/admin/opinions" className="admin-nav-link" style={{ display: 'inline-flex', marginBottom: 16, color: '#aaa', fontSize: 13 }}>
-        <ArrowLeft style={{ width: 14, height: 14 }} /> All Opinions
+      <Link href="/admin" className="admin-nav-link" style={{ display: 'inline-flex', marginBottom: 16, color: '#aaa', fontSize: 13 }}>
+        <ArrowLeft style={{ width: 14, height: 14 }} /> Back to Dashboard
       </Link>
       <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 4 }}>
         <h1 className="admin-page-title" style={{ marginBottom: 0 }}>{post.title || 'Edit Opinion'}</h1>
