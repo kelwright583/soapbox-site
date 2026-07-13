@@ -4,7 +4,7 @@ import { useActionState, useState } from 'react'
 import Image from 'next/image'
 import { createPost, updatePost, deletePost, type PostState } from './actions'
 import { MediaPicker } from '@/components/admin/MediaPicker'
-import { Trash2, ImageIcon, Check } from 'lucide-react'
+import { Trash2, ImageIcon, Check, Save } from 'lucide-react'
 
 interface Post {
   id: string
@@ -20,7 +20,6 @@ interface Post {
 
 export function PostEditor({ post }: { post?: Post }) {
   const isEdit = !!post
-
   const action = isEdit ? updatePost.bind(null, post.id) : createPost
 
   const [state, formAction, pending] = useActionState<PostState, FormData>(
@@ -43,9 +42,7 @@ export function PostEditor({ post }: { post?: Post }) {
 
   function addTag() {
     const t = tagInput.trim()
-    if (t && !tags.includes(t)) {
-      setTags([...tags, t])
-    }
+    if (t && !tags.includes(t)) setTags([...tags, t])
     setTagInput('')
   }
 
@@ -60,208 +57,176 @@ export function PostEditor({ post }: { post?: Post }) {
   }
 
   return (
-    <form action={formAction} className="space-y-6">
-      {/* Hidden fields */}
+    <form action={formAction}>
       <input type="hidden" name="cover_image" value={coverImage} />
       <input type="hidden" name="tags_json" value={JSON.stringify(tags)} />
 
-      {/* ── SECTION: The Basics ── */}
-      <div className="admin-card">
-        <p className="admin-section-title">The Basics</p>
+      {/* ── Title & Slug ── */}
+      <div className="admin-card" style={{ marginBottom: 16 }}>
+        <div className="admin-section-title">The Basics</div>
 
-        <div className="space-y-5">
-          {/* Title */}
-          <div>
-            <label htmlFor="title" className="admin-label">
-              Title <span style={{ color: '#C07B2A' }}>*</span>
-            </label>
-            <input
-              id="title"
-              name="title"
-              value={title}
-              onChange={(e) => setTitle(e.target.value)}
-              required
-              className="admin-input"
-              placeholder="Give your opinion a name..."
-            />
-          </div>
+        <div style={{ marginBottom: 20 }}>
+          <label htmlFor="ed-title" className="admin-label">Title</label>
+          <input
+            id="ed-title"
+            name="title"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+            required
+            className="admin-input"
+            placeholder="Give your opinion a title..."
+          />
+        </div>
 
-          {/* Slug */}
-          <div>
-            <label htmlFor="slug" className="admin-label">
-              URL Slug <span style={{ color: '#C07B2A' }}>*</span>
-            </label>
-            <input
-              id="slug"
-              name="slug"
-              defaultValue={post?.slug ?? slugify(title)}
-              key={isEdit ? post.slug : title}
-              required
-              className="admin-input"
-              style={{ fontFamily: 'monospace' }}
-              placeholder="auto-generated-from-title"
-            />
-            <p className="admin-hint">
-              This becomes the URL: intheabsence.co.za/opinions/<strong>{slugify(title) || 'your-slug'}</strong>
-            </p>
-          </div>
+        <div>
+          <label htmlFor="ed-slug" className="admin-label">URL Slug</label>
+          <input
+            id="ed-slug"
+            name="slug"
+            defaultValue={post?.slug ?? slugify(title)}
+            key={isEdit ? post.slug : title}
+            required
+            className="admin-input"
+            style={{ fontFamily: 'monospace', fontSize: 13 }}
+            placeholder="auto-generated-from-title"
+          />
+          <p className="admin-hint">
+            Your post will live at: <strong style={{ color: '#C07B2A' }}>intheabsence.co.za/opinions/{slugify(title) || 'your-slug'}</strong>
+          </p>
         </div>
       </div>
 
-      {/* ── SECTION: Cover Image ── */}
-      <div className="admin-card">
-        <p className="admin-section-title">Cover Image</p>
-        <p className="admin-hint" style={{ marginTop: '-0.5rem', marginBottom: '1rem' }}>
-          This appears at the top of your post and in social media previews.
+      {/* ── Cover Image ── */}
+      <div className="admin-card" style={{ marginBottom: 16 }}>
+        <div className="admin-section-title">Cover Image</div>
+        <p className="admin-hint" style={{ marginTop: -8, marginBottom: 16 }}>
+          Appears at the top of your post and when shared on social media.
         </p>
 
         {coverImage ? (
-          <div style={{ position: 'relative', aspectRatio: '16/9', maxWidth: '480px', borderRadius: '0.5rem', overflow: 'hidden', border: '1px solid rgba(255,255,255,0.06)', marginBottom: '0.75rem' }}>
+          <div style={{ position: 'relative', aspectRatio: '16/9', maxWidth: 500, borderRadius: 10, overflow: 'hidden', border: '1px solid #e8e8e6', marginBottom: 12 }}>
             <Image
               src={`${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/media/${coverImage}`}
               alt="Cover"
               fill
               className="object-cover"
-              sizes="480px"
+              sizes="500px"
             />
             <button
               type="button"
               onClick={() => setCoverImage('')}
-              style={{ position: 'absolute', top: '0.5rem', right: '0.5rem', padding: '0.25rem 0.75rem', borderRadius: '0.375rem', background: 'rgba(0,0,0,0.7)', color: '#fff', fontSize: '12px', border: 'none', cursor: 'pointer' }}
+              style={{ position: 'absolute', top: 8, right: 8, padding: '4px 12px', borderRadius: 6, background: 'rgba(0,0,0,0.6)', color: '#fff', fontSize: 12, fontWeight: 500, border: 'none', cursor: 'pointer', backdropFilter: 'blur(4px)' }}
             >
               Remove
             </button>
           </div>
         ) : (
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', aspectRatio: '16/9', maxWidth: '480px', borderRadius: '0.5rem', border: '2px dashed rgba(255,255,255,0.08)', marginBottom: '0.75rem' }}>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', aspectRatio: '16/9', maxWidth: 500, borderRadius: 10, border: '2px dashed #ddd', background: '#fafaf9', marginBottom: 12 }}>
             <div style={{ textAlign: 'center' }}>
-              <ImageIcon style={{ width: 32, height: 32, color: 'rgba(255,255,255,0.1)', margin: '0 auto 0.5rem' }} strokeWidth={1.5} />
-              <p style={{ fontSize: '13px', color: 'rgba(255,255,255,0.2)' }}>No image selected</p>
+              <ImageIcon style={{ width: 36, height: 36, color: '#ccc', margin: '0 auto 8px' }} strokeWidth={1.3} />
+              <p style={{ fontSize: 13, color: '#bbb' }}>No image selected</p>
             </div>
           </div>
         )}
-        <button type="button" onClick={() => setShowMediaPicker(true)} className="admin-btn-outline">
+        <button type="button" onClick={() => setShowMediaPicker(true)} className="admin-btn-secondary">
           {coverImage ? 'Change Image' : 'Choose from Media Library'}
         </button>
       </div>
 
-      {/* ── SECTION: Content ── */}
-      <div className="admin-card">
-        <p className="admin-section-title">Content</p>
+      {/* ── Content ── */}
+      <div className="admin-card" style={{ marginBottom: 16 }}>
+        <div className="admin-section-title">Content</div>
 
-        <div className="space-y-5">
-          {/* Excerpt */}
-          <div>
-            <label htmlFor="excerpt" className="admin-label">
-              Excerpt
-            </label>
-            <textarea
-              id="excerpt"
-              name="excerpt"
-              defaultValue={post?.excerpt}
-              rows={3}
-              className="admin-input"
-              placeholder="A short summary that appears in previews and on the opinions listing page..."
-            />
-            <p className="admin-hint">
-              Keep it to 1-2 sentences. This shows on the opinions page before people click through.
-            </p>
-          </div>
+        <div style={{ marginBottom: 20 }}>
+          <label htmlFor="ed-excerpt" className="admin-label">Excerpt</label>
+          <textarea
+            id="ed-excerpt"
+            name="excerpt"
+            defaultValue={post?.excerpt}
+            rows={3}
+            className="admin-input"
+            style={{ resize: 'vertical' }}
+            placeholder="A short summary that appears in previews..."
+          />
+          <p className="admin-hint">1-2 sentences. Shows on the opinions listing page.</p>
+        </div>
 
-          {/* Body */}
-          <div>
-            <label htmlFor="body" className="admin-label">
-              Full Post
-            </label>
-            <textarea
-              id="body"
-              name="body"
-              defaultValue={post?.body}
-              rows={20}
-              className="admin-input"
-              style={{ fontFamily: 'monospace', lineHeight: '1.7' }}
-              placeholder={`Write your opinion here...
+        <div>
+          <label htmlFor="ed-body" className="admin-label">Full Post</label>
+          <textarea
+            id="ed-body"
+            name="body"
+            defaultValue={post?.body}
+            rows={22}
+            className="admin-input"
+            style={{ fontFamily: "'DM Mono', monospace", fontSize: 13, lineHeight: 1.8, resize: 'vertical' }}
+            placeholder={`Write your opinion here...
 
-You can use simple formatting:
-## Heading
-### Subheading
-**bold text**
-*italic text*`}
-            />
-            <p className="admin-hint">
-              Supports Markdown: use ## for headings, **bold**, *italic*, and blank lines for paragraphs.
-            </p>
-          </div>
+## Use headings to structure your thoughts
+**bold** and *italic* for emphasis
+
+Each blank line starts a new paragraph.`}
+          />
+          <p className="admin-hint">
+            Formatting: ## Heading, ### Subheading, **bold**, *italic*, blank lines for paragraphs.
+          </p>
         </div>
       </div>
 
-      {/* ── SECTION: Tags ── */}
-      <div className="admin-card">
-        <p className="admin-section-title">Tags</p>
-        <p className="admin-hint" style={{ marginTop: '-0.5rem', marginBottom: '1rem' }}>
-          Help readers find related posts. Add topics like "life", "writing", "growth", etc.
+      {/* ── Tags ── */}
+      <div className="admin-card" style={{ marginBottom: 16 }}>
+        <div className="admin-section-title">Tags</div>
+        <p className="admin-hint" style={{ marginTop: -8, marginBottom: 16 }}>
+          Help readers find related posts. Think topics like "life", "writing", "honesty".
         </p>
 
         {tags.length > 0 && (
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem', marginBottom: '0.75rem' }}>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8, marginBottom: 12 }}>
             {tags.map((tag) => (
               <span
                 key={tag}
-                style={{ display: 'inline-flex', alignItems: 'center', gap: '0.375rem', padding: '0.25rem 0.75rem', borderRadius: '9999px', background: 'rgba(192,123,42,0.12)', color: '#C07B2A', fontSize: '13px', fontWeight: 500 }}
+                style={{ display: 'inline-flex', alignItems: 'center', gap: 6, padding: '5px 12px', borderRadius: 20, background: '#fef3e2', color: '#C07B2A', fontSize: 13, fontWeight: 500 }}
               >
                 {tag}
-                <button
-                  type="button"
-                  onClick={() => removeTag(tag)}
-                  style={{ color: 'rgba(192,123,42,0.5)', background: 'none', border: 'none', cursor: 'pointer', fontSize: '16px', lineHeight: 1 }}
-                >
+                <button type="button" onClick={() => removeTag(tag)} style={{ color: '#d4943f', background: 'none', border: 'none', cursor: 'pointer', fontSize: 16, lineHeight: 1, padding: 0 }}>
                   &times;
                 </button>
               </span>
             ))}
           </div>
         )}
-        <div style={{ display: 'flex', gap: '0.5rem' }}>
+        <div style={{ display: 'flex', gap: 8 }}>
           <input
             value={tagInput}
             onChange={(e) => setTagInput(e.target.value)}
-            onKeyDown={(e) => {
-              if (e.key === 'Enter') {
-                e.preventDefault()
-                addTag()
-              }
-            }}
+            onKeyDown={(e) => { if (e.key === 'Enter') { e.preventDefault(); addTag() } }}
             className="admin-input"
             style={{ flex: 1 }}
             placeholder="Type a tag and press Enter..."
           />
-          <button type="button" onClick={addTag} className="admin-btn-outline">
-            Add
-          </button>
+          <button type="button" onClick={addTag} className="admin-btn-secondary">Add</button>
         </div>
       </div>
 
-      {/* ── SECTION: Publishing ── */}
-      <div className="admin-card">
-        <p className="admin-section-title">Publishing</p>
+      {/* ── Publishing ── */}
+      <div className="admin-card" style={{ marginBottom: 24 }}>
+        <div className="admin-section-title">Publishing</div>
 
-        <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '1.5rem' }}>
-          <label style={{ display: 'flex', alignItems: 'center', gap: '0.625rem', fontSize: '14px', color: 'rgba(255,255,255,0.7)', cursor: 'pointer' }}>
+        <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: 24 }}>
+          <label style={{ display: 'flex', alignItems: 'center', gap: 10, fontSize: 14, color: '#444', cursor: 'pointer' }}>
             <input
               type="checkbox"
               name="published"
               defaultChecked={post?.published}
-              style={{ accentColor: '#C07B2A', width: '18px', height: '18px' }}
+              style={{ accentColor: '#C07B2A', width: 18, height: 18 }}
             />
             Make this post live on the site
           </label>
 
           <div>
-            <label htmlFor="published_at" className="admin-label">
-              Publish Date
-            </label>
+            <label htmlFor="ed-date" className="admin-label">Publish Date</label>
             <input
-              id="published_at"
+              id="ed-date"
               type="date"
               name="published_at"
               defaultValue={
@@ -275,30 +240,30 @@ You can use simple formatting:
           </div>
         </div>
 
-        <p className="admin-hint" style={{ marginTop: '0.75rem' }}>
+        <p className="admin-hint" style={{ marginTop: 12 }}>
           {isEdit
-            ? 'Uncheck to save as a draft. Only published posts appear on the public site.'
-            : 'Leave unchecked to save as a draft. You can publish it later.'}
+            ? 'Uncheck to take it offline. Only published posts appear on your site.'
+            : 'Leave unchecked to save as a draft. Publish when you are ready.'}
         </p>
       </div>
 
-      {/* ── Actions ── */}
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', paddingTop: '0.5rem' }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+      {/* ── Action bar ── */}
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '16px 0', borderTop: '1px solid #e8e8e6' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
           <button type="submit" disabled={pending} className="admin-btn-primary">
             {pending ? (
               'Saving...'
             ) : (
               <>
-                <Check style={{ width: 16, height: 16 }} />
+                <Save style={{ width: 16, height: 16 }} />
                 {isEdit ? 'Save Changes' : 'Create Opinion'}
               </>
             )}
           </button>
           {state.message && (
-            <p style={{ fontSize: '13px', fontWeight: 500, color: state.ok ? '#4ade80' : '#f87171' }}>
+            <span style={{ fontSize: 13, fontWeight: 500, color: state.ok ? '#16a34a' : '#dc2626' }}>
               {state.message}
-            </p>
+            </span>
           )}
         </div>
 
@@ -306,23 +271,19 @@ You can use simple formatting:
           <button
             type="button"
             onClick={handleDelete}
-            style={{ display: 'flex', alignItems: 'center', gap: '0.375rem', padding: '0.5rem 0.75rem', borderRadius: '0.5rem', background: 'transparent', border: 'none', color: 'rgba(248,113,113,0.5)', fontSize: '13px', cursor: 'pointer', transition: 'color 0.15s' }}
-            onMouseEnter={(e) => (e.currentTarget.style.color = '#f87171')}
-            onMouseLeave={(e) => (e.currentTarget.style.color = 'rgba(248,113,113,0.5)')}
+            style={{ display: 'flex', alignItems: 'center', gap: 6, padding: '8px 12px', borderRadius: 8, background: 'none', border: 'none', color: '#ccc', fontSize: 13, cursor: 'pointer', transition: 'color 0.15s' }}
+            onMouseEnter={(e) => (e.currentTarget.style.color = '#dc2626')}
+            onMouseLeave={(e) => (e.currentTarget.style.color = '#ccc')}
           >
             <Trash2 style={{ width: 14, height: 14 }} />
-            Delete Post
+            Delete
           </button>
         )}
       </div>
 
-      {/* Media picker modal */}
       {showMediaPicker && (
         <MediaPicker
-          onSelect={(path) => {
-            setCoverImage(path)
-            setShowMediaPicker(false)
-          }}
+          onSelect={(path) => { setCoverImage(path); setShowMediaPicker(false) }}
           onClose={() => setShowMediaPicker(false)}
         />
       )}

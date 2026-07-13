@@ -1,9 +1,8 @@
 'use client'
 
 import { useCallback, useState } from 'react'
-import { Upload, Check, Loader2 } from 'lucide-react'
+import { Upload, Check, Loader2, AlertCircle } from 'lucide-react'
 import imageCompression from 'browser-image-compression'
-import { cn } from '@/lib/utils'
 
 interface DropzoneProps {
   onUpload: (path: string, width: number, height: number) => void
@@ -19,51 +18,33 @@ export function Dropzone({ onUpload }: DropzoneProps) {
   const [uploads, setUploads] = useState<UploadItem[]>([])
   const [dragging, setDragging] = useState(false)
 
-  const updateUpload = (name: string, update: Partial<UploadItem>) => {
-    setUploads((prev) =>
-      prev.map((u) => (u.name === name ? { ...u, ...update } : u)),
-    )
-  }
+  const updateUpload = (name: string, update: Partial<UploadItem>) =>
+    setUploads((prev) => prev.map((u) => (u.name === name ? { ...u, ...update } : u)))
 
   const handleFiles = useCallback(
     async (files: FileList | null) => {
       if (!files || files.length === 0) return
 
-      const newItems: UploadItem[] = Array.from(files).map((f) => ({
-        name: f.name,
-        status: 'compressing' as const,
-      }))
+      const newItems: UploadItem[] = Array.from(files).map((f) => ({ name: f.name, status: 'compressing' as const }))
       setUploads((prev) => [...newItems, ...prev])
 
       for (const file of Array.from(files)) {
         try {
-          const compressed =
-            file.size > 1_000_000
-              ? await imageCompression(file, {
-                  maxSizeMB: 1,
-                  maxWidthOrHeight: 2400,
-                  useWebWorker: true,
-                })
-              : file
+          const compressed = file.size > 1_000_000
+            ? await imageCompression(file, { maxSizeMB: 1, maxWidthOrHeight: 2400, useWebWorker: true })
+            : file
 
           updateUpload(file.name, { status: 'uploading' })
 
           const urlRes = await fetch('/api/media/upload-url', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-              filename: file.name,
-              contentType: compressed.type,
-            }),
+            body: JSON.stringify({ filename: file.name, contentType: compressed.type }),
           })
           if (!urlRes.ok) throw new Error('Failed to get upload URL')
           const { signedUrl, path } = await urlRes.json()
 
-          const uploadRes = await fetch(signedUrl, {
-            method: 'PUT',
-            headers: { 'Content-Type': compressed.type },
-            body: compressed,
-          })
+          const uploadRes = await fetch(signedUrl, { method: 'PUT', headers: { 'Content-Type': compressed.type }, body: compressed })
           if (!uploadRes.ok) throw new Error('Upload failed')
 
           const img = new window.Image()
@@ -75,41 +56,19 @@ export function Dropzone({ onUpload }: DropzoneProps) {
           updateUpload(file.name, { status: 'done' })
           onUpload(path, dims.w, dims.h)
         } catch (err) {
-          updateUpload(file.name, {
-            status: 'error',
-            error: err instanceof Error ? err.message : 'Upload failed',
-          })
+          updateUpload(file.name, { status: 'error', error: err instanceof Error ? err.message : 'Upload failed' })
         }
       }
 
-      // Clear completed uploads after delay
-      setTimeout(() => {
-        setUploads((prev) => prev.filter((u) => u.status !== 'done'))
-      }, 3000)
+      setTimeout(() => setUploads((prev) => prev.filter((u) => u.status !== 'done')), 3000)
     },
     [onUpload],
   )
 
   return (
-    <div className="space-y-3">
+    <div>
       <button
         type="button"
-        className={cn(
-          'flex w-full cursor-pointer flex-col items-center justify-center gap-3 rounded-xl border-2 border-dashed py-10 text-center transition-all',
-          dragging
-            ? 'border-amber/50 bg-amber/5 text-amber'
-            : 'border-white/[0.08] text-white/25 hover:border-amber/30 hover:text-white/40',
-        )}
-        onDragOver={(e) => {
-          e.preventDefault()
-          setDragging(true)
-        }}
-        onDragLeave={() => setDragging(false)}
-        onDrop={(e) => {
-          e.preventDefault()
-          setDragging(false)
-          handleFiles(e.dataTransfer.files)
-        }}
         onClick={() => {
           const input = document.createElement('input')
           input.type = 'file'
@@ -118,40 +77,60 @@ export function Dropzone({ onUpload }: DropzoneProps) {
           input.onchange = () => handleFiles(input.files)
           input.click()
         }}
+        onDragOver={(e) => { e.preventDefault(); setDragging(true) }}
+        onDragLeave={() => setDragging(false)}
+        onDrop={(e) => { e.preventDefault(); setDragging(false); handleFiles(e.dataTransfer.files) }}
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          justifyContent: 'center',
+          gap: 10,
+          width: '100%',
+          padding: '36px 20px',
+          borderRadius: 12,
+          border: `2px dashed ${dragging ? '#C07B2A' : '#ddd'}`,
+          background: dragging ? 'rgba(192,123,42,0.04)' : '#fafaf9',
+          color: dragging ? '#C07B2A' : '#aaa',
+          cursor: 'pointer',
+          transition: 'all 0.15s ease',
+          textAlign: 'center',
+        }}
       >
-        <Upload className="h-8 w-8" strokeWidth={1.5} />
+        <Upload style={{ width: 28, height: 28 }} strokeWidth={1.5} />
         <div>
-          <p className="text-sm font-medium">Drop images here or click to browse</p>
-          <p className="mt-1 text-[11px] opacity-50">JPG, PNG, WebP - auto-compressed</p>
+          <p style={{ fontSize: 14, fontWeight: 500 }}>Drop images here or click to browse</p>
+          <p style={{ fontSize: 12, marginTop: 4, opacity: 0.7 }}>JPG, PNG, WebP - auto-compressed to 1MB</p>
         </div>
       </button>
 
-      {/* Upload progress */}
       {uploads.length > 0 && (
-        <div className="space-y-1.5">
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 6, marginTop: 12 }}>
           {uploads.map((item) => (
             <div
               key={item.name}
-              className="flex items-center gap-3 rounded-lg border border-white/[0.06] bg-ink-soft px-4 py-2.5 text-sm"
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: 10,
+                padding: '10px 14px',
+                borderRadius: 8,
+                background: '#fff',
+                border: '1px solid #e8e8e6',
+                fontSize: 13,
+              }}
             >
               {item.status === 'done' ? (
-                <Check className="h-4 w-4 shrink-0 text-green-400" />
+                <Check style={{ width: 16, height: 16, color: '#16a34a', flexShrink: 0 }} />
               ) : item.status === 'error' ? (
-                <span className="text-xs text-red-400">!</span>
+                <AlertCircle style={{ width: 16, height: 16, color: '#dc2626', flexShrink: 0 }} />
               ) : (
-                <Loader2 className="h-4 w-4 shrink-0 animate-spin text-amber" />
+                <Loader2 style={{ width: 16, height: 16, color: '#C07B2A', flexShrink: 0, animation: 'spin 1s linear infinite' }} />
               )}
-              <span className="min-w-0 flex-1 truncate text-white/60">{item.name}</span>
-              <span
-                className={cn(
-                  'shrink-0 text-[10px] uppercase tracking-wider',
-                  item.status === 'done'
-                    ? 'text-green-400'
-                    : item.status === 'error'
-                      ? 'text-red-400'
-                      : 'text-white/30',
-                )}
-              >
+              <span style={{ flex: 1, minWidth: 0, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', color: '#555' }}>
+                {item.name}
+              </span>
+              <span style={{ flexShrink: 0, fontSize: 11, fontWeight: 500, color: item.status === 'done' ? '#16a34a' : item.status === 'error' ? '#dc2626' : '#999' }}>
                 {item.status === 'error' ? item.error : item.status}
               </span>
             </div>

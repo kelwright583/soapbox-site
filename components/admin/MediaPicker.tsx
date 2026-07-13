@@ -38,67 +38,62 @@ export function MediaPicker({ onSelect, onClose }: MediaPickerProps) {
     setLoading(false)
   }, [])
 
-  useEffect(() => {
-    loadAssets()
-  }, [loadAssets])
+  useEffect(() => { loadAssets() }, [loadAssets])
 
   async function handleUpload(path: string, width: number, height: number) {
     const supabase = createClient()
-    await supabase.from('media_assets').insert({
-      storage_path: path,
-      type: 'image',
-      width,
-      height,
-    })
+    await supabase.from('media_assets').insert({ storage_path: path, type: 'image', width, height })
     loadAssets()
   }
 
   return (
     <div
-      className="fixed inset-0 z-[200] flex items-center justify-center bg-black/60 p-4 backdrop-blur-sm"
+      style={{ position: 'fixed', inset: 0, zIndex: 200, display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'rgba(0,0,0,0.25)', padding: 16 }}
       onClick={onClose}
     >
       <div
-        className="relative max-h-[80vh] w-full max-w-3xl overflow-y-auto rounded-xl border border-white/[0.08] bg-ink-soft p-6"
+        style={{ width: '100%', maxWidth: 720, maxHeight: '80vh', overflowY: 'auto', borderRadius: 14, background: '#fff', border: '1px solid #e8e8e6', boxShadow: '0 20px 60px rgba(0,0,0,0.12)', padding: 28 }}
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
-        <div className="mb-6 flex items-center justify-between">
-          <h2 className="font-display text-lg font-bold text-white">Select Image</h2>
-          <button onClick={onClose} className="text-white/30 transition-colors hover:text-white/60">
-            <X className="h-5 w-5" />
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 24 }}>
+          <div>
+            <h2 className="font-display" style={{ fontSize: 18, fontWeight: 700, color: '#1a1a1a' }}>Choose an Image</h2>
+            <p style={{ fontSize: 13, color: '#999', marginTop: 2 }}>Select from your library or upload a new one.</p>
+          </div>
+          <button onClick={onClose} style={{ color: '#bbb', background: 'none', border: 'none', cursor: 'pointer', padding: 4 }}>
+            <X style={{ width: 20, height: 20 }} />
           </button>
         </div>
 
-        {/* Upload */}
         <Dropzone onUpload={handleUpload} />
 
-        {/* Gallery */}
-        <div className="mt-6">
+        <div style={{ marginTop: 24 }}>
           {loading ? (
-            <p className="py-8 text-center text-sm text-white/30">Loading...</p>
+            <p style={{ padding: '32px 0', textAlign: 'center', fontSize: 14, color: '#aaa' }}>Loading...</p>
           ) : assets.length === 0 ? (
-            <div className="rounded-xl border border-dashed border-white/[0.08] px-8 py-12 text-center">
-              <ImageIcon className="mx-auto mb-2 h-8 w-8 text-white/10" />
-              <p className="text-sm text-white/30">No images yet. Upload your first one above.</p>
+            <div style={{ padding: '40px 0', textAlign: 'center' }}>
+              <ImageIcon style={{ width: 36, height: 36, color: '#ddd', margin: '0 auto 8px' }} strokeWidth={1.3} />
+              <p style={{ fontSize: 14, color: '#bbb' }}>No images yet. Upload your first one above.</p>
             </div>
           ) : (
-            <div className="grid grid-cols-3 gap-2.5 sm:grid-cols-4">
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(120px, 1fr))', gap: 8 }}>
               {assets.map((asset) => (
                 <button
                   key={asset.id}
                   type="button"
                   onClick={() => onSelect(asset.storage_path)}
-                  className="group relative aspect-square overflow-hidden rounded-lg border border-white/[0.06] transition-all hover:border-amber hover:ring-2 hover:ring-amber/20"
+                  style={{ position: 'relative', aspectRatio: '1', borderRadius: 8, overflow: 'hidden', border: '2px solid transparent', background: 'none', padding: 0, cursor: 'pointer', transition: 'border-color 0.12s, box-shadow 0.12s' }}
+                  onMouseEnter={(e) => { e.currentTarget.style.borderColor = '#C07B2A'; e.currentTarget.style.boxShadow = '0 0 0 2px rgba(192,123,42,0.2)' }}
+                  onMouseLeave={(e) => { e.currentTarget.style.borderColor = 'transparent'; e.currentTarget.style.boxShadow = 'none' }}
                 >
                   <Image
                     src={`${SUPABASE_URL}/storage/v1/object/public/media/${asset.storage_path}`}
                     alt={asset.alt_text || ''}
                     fill
-                    className="object-cover transition-transform group-hover:scale-105"
-                    sizes="150px"
+                    className="object-cover"
+                    sizes="120px"
                   />
-                  <div className="absolute inset-0 bg-amber/0 transition-colors group-hover:bg-amber/10" />
                 </button>
               ))}
             </div>

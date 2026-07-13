@@ -18,10 +18,7 @@ export function AdminLoginForm() {
     setLoading(true)
 
     const supabase = createClient()
-    const { error: authError } = await supabase.auth.signInWithPassword({
-      email,
-      password,
-    })
+    const { error: authError } = await supabase.auth.signInWithPassword({ email, password })
 
     if (authError) {
       setError(authError.message)
@@ -40,9 +37,7 @@ export function AdminLoginForm() {
     const supabase = createClient()
     const { error: otpError } = await supabase.auth.signInWithOtp({
       email,
-      options: {
-        emailRedirectTo: `${window.location.origin}/admin`,
-      },
+      options: { emailRedirectTo: `${window.location.origin}/admin` },
     })
 
     if (otpError) {
@@ -57,24 +52,24 @@ export function AdminLoginForm() {
 
   if (magicSent) {
     return (
-      <div style={{ textAlign: 'center', padding: '1rem 0' }}>
-        <p className="font-display" style={{ fontSize: '18px', fontWeight: 700, color: '#fff' }}>
-          Check your email.
+      <div style={{ textAlign: 'center', padding: '16px 0' }}>
+        <p className="font-display" style={{ fontSize: 18, fontWeight: 700, color: '#1a1a1a' }}>
+          Check your email
         </p>
-        <p style={{ marginTop: '0.75rem', fontSize: '14px', lineHeight: 1.6, color: 'rgba(255,255,255,0.45)' }}>
+        <p style={{ marginTop: 10, fontSize: 14, color: '#888', lineHeight: 1.6 }}>
           A magic link has been sent to{' '}
-          <strong style={{ fontWeight: 600, color: '#C07B2A' }}>{email}</strong>.
+          <strong style={{ color: '#C07B2A' }}>{email}</strong>.
         </p>
       </div>
     )
   }
 
   return (
-    <form onSubmit={handlePasswordLogin} style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
+    <form onSubmit={handlePasswordLogin} style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
       <div>
-        <label htmlFor="login-email" className="admin-label">Email</label>
+        <label htmlFor="email" className="admin-label">Email</label>
         <input
-          id="login-email"
+          id="email"
           type="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
@@ -84,9 +79,9 @@ export function AdminLoginForm() {
         />
       </div>
       <div>
-        <label htmlFor="login-password" className="admin-label">Password</label>
+        <label htmlFor="password" className="admin-label">Password</label>
         <input
-          id="login-password"
+          id="password"
           type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
@@ -96,23 +91,21 @@ export function AdminLoginForm() {
       </div>
 
       {error && (
-        <div style={{ padding: '0.625rem 1rem', borderRadius: '0.5rem', border: '1px solid rgba(248,113,113,0.2)', background: 'rgba(248,113,113,0.05)' }}>
-          <p style={{ fontSize: '13px', color: '#f87171' }}>{error}</p>
+        <div style={{ padding: '10px 14px', borderRadius: 8, background: '#fef2f2', border: '1px solid #fecaca' }}>
+          <p style={{ fontSize: 13, color: '#dc2626' }}>{error}</p>
         </div>
       )}
 
-      <button type="submit" disabled={loading} className="admin-btn-primary" style={{ width: '100%', justifyContent: 'center', padding: '0.75rem' }}>
+      <button type="submit" disabled={loading} className="admin-btn-primary" style={{ width: '100%', padding: 12 }}>
         {loading ? 'Signing in...' : 'Sign In'}
       </button>
 
-      <div style={{ position: 'relative', margin: '0.5rem 0' }}>
+      <div style={{ position: 'relative', margin: '4px 0' }}>
         <div style={{ position: 'absolute', inset: 0, display: 'flex', alignItems: 'center' }}>
-          <div style={{ width: '100%', borderTop: '1px solid rgba(255,255,255,0.06)' }} />
+          <div style={{ width: '100%', borderTop: '1px solid #e8e8e6' }} />
         </div>
         <div style={{ position: 'relative', display: 'flex', justifyContent: 'center' }}>
-          <span style={{ background: '#242424', padding: '0 0.75rem', fontSize: '10px', textTransform: 'uppercase', letterSpacing: '0.15em', color: 'rgba(255,255,255,0.2)' }}>
-            or
-          </span>
+          <span style={{ background: '#fff', padding: '0 12px', fontSize: 12, color: '#bbb' }}>or</span>
         </div>
       </div>
 
@@ -120,8 +113,8 @@ export function AdminLoginForm() {
         type="button"
         onClick={handleMagicLink}
         disabled={!email || loading}
-        className="admin-btn-outline"
-        style={{ width: '100%', justifyContent: 'center', padding: '0.75rem' }}
+        className="admin-btn-secondary"
+        style={{ width: '100%', padding: 12 }}
       >
         Send Magic Link
       </button>

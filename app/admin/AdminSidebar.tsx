@@ -12,12 +12,13 @@ import {
   Menu,
   X,
   ExternalLink,
+  PenTool,
 } from 'lucide-react'
 
 const navItems = [
   { href: '/admin', label: 'Dashboard', icon: LayoutDashboard },
   { href: '/admin/opinions', label: 'Opinions', icon: FileText },
-  { href: '/admin/media', label: 'Media', icon: ImageIcon },
+  { href: '/admin/media', label: 'Media Library', icon: ImageIcon },
 ]
 
 export function AdminSidebar() {
@@ -31,82 +32,100 @@ export function AdminSidebar() {
     router.push('/admin/login')
   }
 
-  const linkStyle = (active: boolean): React.CSSProperties => ({
-    display: 'flex',
-    alignItems: 'center',
-    gap: '0.75rem',
-    padding: '0.625rem 0.75rem',
-    borderRadius: '0.5rem',
-    fontSize: '13px',
-    fontWeight: 500,
-    textDecoration: 'none',
-    transition: 'all 0.15s ease',
-    background: active ? 'rgba(255,255,255,0.07)' : 'transparent',
-    color: active ? '#C07B2A' : 'rgba(255,255,255,0.45)',
-  })
+  const isActive = (href: string) =>
+    pathname === href || (href !== '/admin' && pathname.startsWith(href))
 
-  const nav = (
+  const sidebar = (
     <div style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
-      {/* Branding */}
-      <div style={{ padding: '1.5rem 1.25rem 1.25rem' }}>
-        <span style={{ display: 'block', fontSize: '9px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.3em', color: '#C07B2A', marginBottom: '0.125rem' }}>
-          The Desk
-        </span>
-        <span className="font-display" style={{ display: 'block', fontSize: '15px', fontWeight: 800, color: '#fff' }}>
-          Soapbox Admin
-        </span>
+      {/* Brand */}
+      <div style={{ padding: '28px 24px 20px' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+          <div style={{ width: 32, height: 32, borderRadius: 8, background: '#C07B2A', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <PenTool style={{ width: 16, height: 16, color: '#fff' }} strokeWidth={2} />
+          </div>
+          <div>
+            <div style={{ fontSize: 14, fontWeight: 700, color: '#1a1a1a', lineHeight: 1.2 }}>The Desk</div>
+            <div style={{ fontSize: 11, color: '#999', lineHeight: 1.2 }}>Soapbox Admin</div>
+          </div>
+        </div>
       </div>
 
-      {/* Divider */}
-      <div style={{ margin: '0 1rem 0.5rem', borderTop: '1px solid rgba(255,255,255,0.06)' }} />
-
-      {/* Navigation */}
-      <nav style={{ flex: 1, padding: '0 0.75rem', display: 'flex', flexDirection: 'column', gap: '2px' }}>
-        {navItems.map(({ href, label, icon: Icon }) => {
-          const active = pathname === href || (href !== '/admin' && pathname.startsWith(href))
-          return (
-            <Link
-              key={href}
-              href={href}
-              onClick={() => setOpen(false)}
-              style={linkStyle(active)}
-            >
-              <Icon style={{ width: 18, height: 18 }} strokeWidth={1.8} />
-              {label}
-            </Link>
-          )
-        })}
+      {/* Nav */}
+      <nav style={{ flex: 1, padding: '0 12px' }}>
+        <div style={{ marginBottom: 8 }}>
+          <div style={{ padding: '0 12px', marginBottom: 4, fontSize: 10, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em', color: '#bbb' }}>
+            Content
+          </div>
+          {navItems.map(({ href, label, icon: Icon }) => {
+            const active = isActive(href)
+            return (
+              <Link
+                key={href}
+                href={href}
+                onClick={() => setOpen(false)}
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: 10,
+                  padding: '9px 12px',
+                  borderRadius: 8,
+                  fontSize: 13,
+                  fontWeight: active ? 600 : 500,
+                  textDecoration: 'none',
+                  color: active ? '#C07B2A' : '#666',
+                  background: active ? 'rgba(192, 123, 42, 0.08)' : 'transparent',
+                  transition: 'all 0.12s ease',
+                  marginBottom: 2,
+                }}
+              >
+                <Icon style={{ width: 18, height: 18 }} strokeWidth={active ? 2 : 1.6} />
+                {label}
+              </Link>
+            )
+          })}
+        </div>
       </nav>
 
       {/* Footer */}
-      <div style={{ borderTop: '1px solid rgba(255,255,255,0.06)', padding: '0.75rem' }}>
+      <div style={{ borderTop: '1px solid #eee', padding: 12 }}>
         <Link
           href="/"
           target="_blank"
-          style={{ ...linkStyle(false), color: 'rgba(255,255,255,0.25)' }}
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: 10,
+            padding: '9px 12px',
+            borderRadius: 8,
+            fontSize: 13,
+            fontWeight: 500,
+            textDecoration: 'none',
+            color: '#999',
+            transition: 'color 0.12s',
+          }}
         >
-          <ExternalLink style={{ width: 18, height: 18 }} strokeWidth={1.8} />
-          View Site
+          <ExternalLink style={{ width: 16, height: 16 }} strokeWidth={1.6} />
+          View Live Site
         </Link>
         <button
           onClick={handleSignOut}
           style={{
             display: 'flex',
             alignItems: 'center',
-            gap: '0.75rem',
+            gap: 10,
+            padding: '9px 12px',
+            borderRadius: 8,
             width: '100%',
-            padding: '0.625rem 0.75rem',
-            borderRadius: '0.5rem',
-            fontSize: '13px',
+            fontSize: 13,
             fontWeight: 500,
-            background: 'transparent',
+            background: 'none',
             border: 'none',
-            color: 'rgba(255,255,255,0.25)',
+            color: '#999',
             cursor: 'pointer',
-            transition: 'color 0.15s',
+            transition: 'color 0.12s',
           }}
         >
-          <LogOut style={{ width: 18, height: 18 }} strokeWidth={1.8} />
+          <LogOut style={{ width: 16, height: 16 }} strokeWidth={1.6} />
           Sign Out
         </button>
       </div>
@@ -117,43 +136,63 @@ export function AdminSidebar() {
     <>
       {/* Desktop sidebar */}
       <aside
+        style={{
+          width: 240,
+          flexShrink: 0,
+          background: '#fff',
+          borderRight: '1px solid #e8e8e6',
+          position: 'sticky',
+          top: 0,
+          height: '100vh',
+          overflowY: 'auto',
+        }}
         className="hidden lg:block"
-        style={{ width: '220px', flexShrink: 0, borderRight: '1px solid rgba(255,255,255,0.06)', background: '#161616' }}
       >
-        <div style={{ position: 'sticky', top: 0, height: '100vh' }}>{nav}</div>
+        {sidebar}
       </aside>
 
-      {/* Mobile header */}
+      {/* Mobile top bar */}
       <div
         className="lg:hidden"
-        style={{ position: 'sticky', top: 0, zIndex: 30, display: 'flex', alignItems: 'center', justifyContent: 'space-between', borderBottom: '1px solid rgba(255,255,255,0.06)', background: '#161616', padding: '0.75rem 1rem' }}
+        style={{
+          position: 'sticky',
+          top: 0,
+          zIndex: 30,
+          background: '#fff',
+          borderBottom: '1px solid #e8e8e6',
+          padding: '12px 16px',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+        }}
       >
-        <span style={{ fontSize: '9px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.3em', color: '#C07B2A' }}>
-          The Desk
-        </span>
-        <button onClick={() => setOpen(!open)} style={{ color: 'rgba(255,255,255,0.5)', background: 'none', border: 'none', cursor: 'pointer' }}>
-          {open ? <X style={{ width: 20, height: 20 }} /> : <Menu style={{ width: 20, height: 20 }} />}
+        <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+          <div style={{ width: 28, height: 28, borderRadius: 6, background: '#C07B2A', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <PenTool style={{ width: 14, height: 14, color: '#fff' }} strokeWidth={2} />
+          </div>
+          <span style={{ fontSize: 13, fontWeight: 700, color: '#1a1a1a' }}>The Desk</span>
+        </div>
+        <button
+          onClick={() => setOpen(!open)}
+          style={{ background: 'none', border: 'none', color: '#666', cursor: 'pointer', padding: 4 }}
+        >
+          {open ? <X style={{ width: 22, height: 22 }} /> : <Menu style={{ width: 22, height: 22 }} />}
         </button>
       </div>
 
-      {/* Mobile overlay */}
+      {/* Mobile slide-out */}
       {open && (
         <>
           <div
             onClick={() => setOpen(false)}
             className="lg:hidden"
-            style={{ position: 'fixed', inset: 0, zIndex: 40, background: 'rgba(0,0,0,0.6)', backdropFilter: 'blur(4px)' }}
+            style={{ position: 'fixed', inset: 0, zIndex: 40, background: 'rgba(0,0,0,0.3)' }}
           />
           <div
             className="lg:hidden"
-            style={{ position: 'fixed', top: 0, bottom: 0, left: 0, zIndex: 50, width: '260px', background: '#161616' }}
+            style={{ position: 'fixed', top: 0, left: 0, bottom: 0, zIndex: 50, width: 280, background: '#fff', boxShadow: '4px 0 24px rgba(0,0,0,0.08)' }}
           >
-            <div style={{ display: 'flex', justifyContent: 'flex-end', padding: '0.75rem 1rem' }}>
-              <button onClick={() => setOpen(false)} style={{ color: 'rgba(255,255,255,0.5)', background: 'none', border: 'none', cursor: 'pointer' }}>
-                <X style={{ width: 20, height: 20 }} />
-              </button>
-            </div>
-            {nav}
+            {sidebar}
           </div>
         </>
       )}

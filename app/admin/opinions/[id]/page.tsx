@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
+import { ArrowLeft } from 'lucide-react'
 import { createClient } from '@/lib/supabase/server'
 import { PostEditor } from '../PostEditor'
 
@@ -17,21 +18,26 @@ export default async function EditOpinionPage({
   if (!post) notFound()
 
   return (
-    <div style={{ maxWidth: '720px' }}>
+    <div style={{ maxWidth: 720 }}>
       <Link
         href="/admin/opinions"
-        style={{ display: 'inline-block', marginBottom: '1rem', fontSize: '13px', fontWeight: 600, color: 'rgba(255,255,255,0.3)', textDecoration: 'none', transition: 'color 0.15s' }}
-        className="hover:!text-white/60"
+        style={{ display: 'inline-flex', alignItems: 'center', gap: 6, marginBottom: 20, fontSize: 13, fontWeight: 500, color: '#999', textDecoration: 'none' }}
       >
-        &larr; Back to all opinions
+        <ArrowLeft style={{ width: 14, height: 14 }} />
+        All Opinions
       </Link>
-      <h1 className="font-display" style={{ fontSize: '1.75rem', fontWeight: 800, color: '#fff', marginBottom: '0.25rem' }}>
-        {post.title || 'Edit Opinion'}
-      </h1>
-      <p style={{ fontSize: '14px', color: 'rgba(255,255,255,0.35)', marginBottom: '2rem' }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 4 }}>
+        <h1 className="font-display" style={{ fontSize: 24, fontWeight: 800, color: '#1a1a1a' }}>
+          {post.title || 'Edit Opinion'}
+        </h1>
+        <span className={post.published ? 'admin-badge admin-badge-live' : 'admin-badge admin-badge-draft'}>
+          {post.published ? 'Live' : 'Draft'}
+        </span>
+      </div>
+      <p style={{ fontSize: 14, color: '#999', marginBottom: 32 }}>
         {post.published
-          ? 'This post is live on the site. Changes will appear after saving.'
-          : 'This post is saved as a draft. Publish it when you are ready.'}
+          ? 'This post is live. Changes appear on your site after saving.'
+          : 'This is a draft. Publish it when you are ready.'}
       </p>
       <PostEditor post={post} />
     </div>

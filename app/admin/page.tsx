@@ -8,6 +8,7 @@ import {
   Eye,
   PenLine,
   Plus,
+  ArrowRight,
 } from 'lucide-react'
 
 export default async function AdminDashboard() {
@@ -34,110 +35,97 @@ export default async function AdminDashboard() {
     .limit(5)
 
   const stats = [
-    { label: 'Opinions', value: totalPosts, icon: FileText, color: '#C07B2A', href: '/admin/opinions' },
-    { label: 'Published', value: publishedPosts, icon: Eye, color: '#4ade80', href: '/admin/opinions' },
-    { label: 'Drafts', value: totalPosts - publishedPosts, icon: PenLine, color: 'rgba(255,255,255,0.4)', href: '/admin/opinions' },
-    { label: 'Images', value: totalImages, icon: ImageIcon, color: '#60a5fa', href: '/admin/media' },
-    { label: 'Videos', value: totalVideos, icon: Video, color: '#a78bfa', href: '/admin/media?tab=videos' },
-    { label: 'Podcasts', value: totalPodcasts, icon: Podcast, color: '#fb923c', href: '/admin/media?tab=podcasts' },
+    { label: 'Total Posts', value: totalPosts, icon: FileText, color: '#C07B2A' },
+    { label: 'Published', value: publishedPosts, icon: Eye, color: '#16a34a' },
+    { label: 'Drafts', value: totalPosts - publishedPosts, icon: PenLine, color: '#9ca3af' },
+    { label: 'Images', value: totalImages, icon: ImageIcon, color: '#3b82f6' },
+    { label: 'Videos', value: totalVideos, icon: Video, color: '#8b5cf6' },
+    { label: 'Podcasts', value: totalPodcasts, icon: Podcast, color: '#f97316' },
   ]
 
   return (
     <div>
       {/* Header */}
-      <div style={{ marginBottom: '2.5rem' }}>
-        <p style={{ fontSize: '10px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.25em', color: '#C07B2A', marginBottom: '0.25rem' }}>
-          The Desk
-        </p>
-        <h1 className="font-display" style={{ fontSize: '1.875rem', fontWeight: 800, color: '#fff', marginBottom: '0.5rem' }}>
-          Dashboard
+      <div style={{ marginBottom: 40 }}>
+        <h1 className="font-display" style={{ fontSize: 28, fontWeight: 800, color: '#1a1a1a', marginBottom: 6 }}>
+          Good to see you.
         </h1>
-        <p style={{ fontSize: '14px', color: 'rgba(255,255,255,0.35)' }}>
-          Welcome back. Here is an overview of your content.
+        <p style={{ fontSize: 15, color: '#888' }}>
+          Here is what is happening with your site.
         </p>
       </div>
 
-      {/* Stat cards */}
-      <div style={{ display: 'grid', gap: '0.75rem', gridTemplateColumns: 'repeat(auto-fill, minmax(150px, 1fr))', marginBottom: '2.5rem' }}>
-        {stats.map(({ label, value, icon: Icon, color, href }) => (
-          <Link
-            key={label}
-            href={href}
-            className="admin-card"
-            style={{ textDecoration: 'none', transition: 'border-color 0.15s' }}
-          >
-            <Icon style={{ width: 20, height: 20, color, marginBottom: '0.75rem' }} strokeWidth={1.8} />
-            <p style={{ fontSize: '1.5rem', fontWeight: 700, color: '#fff' }}>{value}</p>
-            <p style={{ fontSize: '11px', color: 'rgba(255,255,255,0.3)', marginTop: '0.125rem' }}>{label}</p>
-          </Link>
+      {/* Stats */}
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(140px, 1fr))', gap: 12, marginBottom: 40 }}>
+        {stats.map(({ label, value, icon: Icon, color }) => (
+          <div key={label} className="admin-card" style={{ padding: '20px 18px' }}>
+            <Icon style={{ width: 20, height: 20, color, marginBottom: 12 }} strokeWidth={1.7} />
+            <div style={{ fontSize: 28, fontWeight: 700, color: '#1a1a1a', lineHeight: 1 }}>{value}</div>
+            <div style={{ fontSize: 12, color: '#999', marginTop: 4 }}>{label}</div>
+          </div>
         ))}
       </div>
 
-      {/* Quick actions */}
-      <div style={{ marginBottom: '2.5rem' }}>
-        <p className="admin-section-title">Quick Actions</p>
-        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem' }}>
-          <Link href="/admin/opinions/new" className="admin-btn-primary" style={{ textDecoration: 'none' }}>
-            <Plus style={{ width: 16, height: 16 }} />
-            New Opinion
-          </Link>
-          <Link href="/admin/media" className="admin-btn-outline" style={{ textDecoration: 'none' }}>
-            <ImageIcon style={{ width: 16, height: 16 }} />
-            Media Library
-          </Link>
-        </div>
-      </div>
-
-      {/* Recent opinions */}
-      {recentPosts && recentPosts.length > 0 && (
-        <div>
-          <p className="admin-section-title">Recent Opinions</p>
-          <div style={{ borderRadius: '0.75rem', border: '1px solid rgba(255,255,255,0.06)', overflow: 'hidden' }}>
-            {recentPosts.map((post, i) => (
-              <Link
-                key={post.id}
-                href={`/admin/opinions/${post.id}`}
-                style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'space-between',
-                  padding: '0.875rem 1.25rem',
-                  textDecoration: 'none',
-                  borderTop: i > 0 ? '1px solid rgba(255,255,255,0.04)' : 'none',
-                  transition: 'background 0.15s',
-                }}
-                className="hover:bg-white/[0.02]"
-              >
-                <span style={{ fontSize: '14px', fontWeight: 500, color: 'rgba(255,255,255,0.8)' }}>
-                  {post.title || '(untitled)'}
-                </span>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-                  <span
-                    style={{
-                      padding: '0.125rem 0.625rem',
-                      borderRadius: '9999px',
-                      fontSize: '10px',
-                      fontWeight: 600,
-                      textTransform: 'uppercase',
-                      letterSpacing: '0.05em',
-                      background: post.published ? 'rgba(74,222,128,0.1)' : 'rgba(255,255,255,0.04)',
-                      color: post.published ? '#4ade80' : 'rgba(255,255,255,0.3)',
-                    }}
-                  >
-                    {post.published ? 'Live' : 'Draft'}
-                  </span>
-                  <span style={{ fontSize: '11px', color: 'rgba(255,255,255,0.2)' }}>
-                    {new Date(post.updated_at).toLocaleDateString('en-GB', {
-                      day: 'numeric',
-                      month: 'short',
-                    })}
-                  </span>
-                </div>
-              </Link>
-            ))}
+      {/* Two-column layout */}
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }} className="max-sm:!grid-cols-1">
+        {/* Quick Actions */}
+        <div className="admin-card">
+          <div className="admin-section-title">Quick Actions</div>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+            <Link href="/admin/opinions/new" className="admin-btn-primary" style={{ textDecoration: 'none' }}>
+              <Plus style={{ width: 16, height: 16 }} />
+              Write a New Opinion
+            </Link>
+            <Link href="/admin/media" className="admin-btn-secondary" style={{ textDecoration: 'none' }}>
+              <ImageIcon style={{ width: 16, height: 16 }} />
+              Open Media Library
+            </Link>
           </div>
         </div>
-      )}
+
+        {/* Recent Posts */}
+        <div className="admin-card" style={{ padding: 0 }}>
+          <div style={{ padding: '18px 20px 12px' }}>
+            <div className="admin-section-title" style={{ marginBottom: 0 }}>Recent Opinions</div>
+          </div>
+          {recentPosts && recentPosts.length > 0 ? (
+            <div>
+              {recentPosts.map((post, i) => (
+                <Link
+                  key={post.id}
+                  href={`/admin/opinions/${post.id}`}
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'space-between',
+                    padding: '12px 20px',
+                    textDecoration: 'none',
+                    borderTop: '1px solid #f0f0ee',
+                    transition: 'background 0.1s',
+                  }}
+                  className="hover:!bg-stone-50"
+                >
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 10, minWidth: 0 }}>
+                    <span style={{ fontSize: 14, fontWeight: 500, color: '#333', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                      {post.title || '(untitled)'}
+                    </span>
+                  </div>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 10, flexShrink: 0 }}>
+                    <span className={post.published ? 'admin-badge admin-badge-live' : 'admin-badge admin-badge-draft'}>
+                      {post.published ? 'Live' : 'Draft'}
+                    </span>
+                    <ArrowRight style={{ width: 14, height: 14, color: '#ccc' }} />
+                  </div>
+                </Link>
+              ))}
+            </div>
+          ) : (
+            <div style={{ padding: '24px 20px', textAlign: 'center' }}>
+              <p style={{ fontSize: 13, color: '#aaa' }}>No posts yet. Write your first one above.</p>
+            </div>
+          )}
+        </div>
+      </div>
     </div>
   )
 }
