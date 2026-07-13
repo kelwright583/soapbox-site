@@ -13,10 +13,12 @@ export function ScrollRevealObserver() {
           }
         })
       },
-      { threshold: 0.1 },
+      { threshold: 0.08 },
     )
 
-    document.querySelectorAll('.scroll-reveal').forEach((el) => observer.observe(el))
+    document.querySelectorAll('.scroll-reveal, .scroll-reveal-left, .scroll-reveal-scale').forEach((el) =>
+      observer.observe(el),
+    )
 
     return () => observer.disconnect()
   }, [])

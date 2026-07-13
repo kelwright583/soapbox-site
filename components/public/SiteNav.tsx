@@ -32,28 +32,75 @@ export function SiteNav() {
   return (
     <>
       <nav
-        className={`fixed left-0 right-0 top-0 z-50 bg-white/92 backdrop-blur-md transition-all duration-300 ${
-          scrolled ? 'shadow-sm' : ''
-        }`}
+        style={{
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          right: 0,
+          zIndex: 50,
+          height: 64,
+          background: 'rgba(255,255,255,0.96)',
+          backdropFilter: 'blur(16px)',
+          WebkitBackdropFilter: 'blur(16px)',
+          borderBottom: scrolled ? '1px solid rgba(26,26,26,0.08)' : '1px solid transparent',
+          transition: 'border-color 0.3s, box-shadow 0.3s',
+          boxShadow: scrolled ? '0 1px 12px rgba(0,0,0,0.04)' : 'none',
+        }}
       >
-        <div className="mx-auto flex max-w-[1140px] items-center justify-between px-6 py-4">
-          <Link href="/" className="group">
-            <span className="block text-[10px] font-medium uppercase tracking-[0.2em] text-muted">
+        <div
+          style={{
+            maxWidth: 1140,
+            margin: '0 auto',
+            padding: '0 24px',
+            height: 64,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+          }}
+        >
+          <Link href="/" style={{ textDecoration: 'none' }}>
+            <span
+              style={{
+                display: 'block',
+                fontFamily: 'var(--font-body)',
+                fontSize: '0.6rem',
+                fontWeight: 600,
+                letterSpacing: '0.22em',
+                textTransform: 'uppercase' as const,
+                color: 'rgba(26,26,26,0.44)',
+              }}
+            >
               In the Absence of
             </span>
-            <span className="font-display block text-lg font-extrabold leading-tight tracking-tight text-ink">
+            <span
+              className="font-display"
+              style={{
+                display: 'block',
+                fontSize: '1.4rem',
+                fontWeight: 700,
+                color: '#1a1a1a',
+                lineHeight: 1.1,
+              }}
+            >
               A Soapbox
             </span>
           </Link>
 
-          <div className="hidden items-center gap-8 md:flex">
+          <div className="hidden md:flex" style={{ alignItems: 'center', gap: 32 }}>
             {links.map(({ href, label }) => (
               <Link
                 key={href}
                 href={href}
-                className={`text-sm font-medium transition-colors hover:text-amber ${
-                  pathname === href ? 'text-amber' : 'text-ink'
-                }`}
+                className={`nav-link-anim ${pathname === href ? 'active' : ''}`}
+                style={{
+                  fontFamily: 'var(--font-body)',
+                  fontSize: '0.875rem',
+                  fontWeight: 500,
+                  color: pathname === href ? '#C07B2A' : '#1a1a1a',
+                  textDecoration: 'none',
+                  transition: 'color 0.2s',
+                  paddingBottom: 2,
+                }}
               >
                 {label}
               </Link>
@@ -64,37 +111,78 @@ export function SiteNav() {
             onClick={() => setOpen(true)}
             className="md:hidden"
             aria-label="Open navigation"
+            style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 4 }}
           >
-            <Menu className="h-6 w-6 text-ink" />
+            <Menu style={{ width: 24, height: 24, color: '#1a1a1a' }} />
           </button>
         </div>
       </nav>
 
       {/* Mobile drawer */}
       {open && (
-        <div className="fixed inset-0 z-[100] bg-white">
-          <div className="flex items-center justify-between px-6 py-4">
-            <Link href="/" onClick={() => setOpen(false)}>
-              <span className="block text-[10px] font-medium uppercase tracking-[0.2em] text-muted">
+        <div
+          style={{
+            position: 'fixed',
+            inset: 0,
+            zIndex: 100,
+            background: '#ffffff',
+          }}
+        >
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              height: 64,
+              padding: '0 24px',
+              borderBottom: '1px solid rgba(26,26,26,0.08)',
+            }}
+          >
+            <Link href="/" onClick={() => setOpen(false)} style={{ textDecoration: 'none' }}>
+              <span
+                style={{
+                  display: 'block',
+                  fontFamily: 'var(--font-body)',
+                  fontSize: '0.6rem',
+                  fontWeight: 600,
+                  letterSpacing: '0.22em',
+                  textTransform: 'uppercase' as const,
+                  color: 'rgba(26,26,26,0.44)',
+                }}
+              >
                 In the Absence of
               </span>
-              <span className="font-display block text-lg font-extrabold leading-tight text-ink">
+              <span
+                className="font-display"
+                style={{ display: 'block', fontSize: '1.4rem', fontWeight: 700, color: '#1a1a1a', lineHeight: 1.1 }}
+              >
                 A Soapbox
               </span>
             </Link>
-            <button onClick={() => setOpen(false)} aria-label="Close navigation">
-              <X className="h-6 w-6 text-ink" />
+            <button
+              onClick={() => setOpen(false)}
+              aria-label="Close navigation"
+              style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 4 }}
+            >
+              <X style={{ width: 24, height: 24, color: '#1a1a1a' }} />
             </button>
           </div>
-          <div className="flex flex-col gap-6 px-6 pt-8">
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 0, marginTop: 8 }}>
             {links.map(({ href, label }) => (
               <Link
                 key={href}
                 href={href}
                 onClick={() => setOpen(false)}
-                className={`font-display text-2xl font-bold ${
-                  pathname === href ? 'text-amber' : 'text-ink'
-                }`}
+                className="font-display"
+                style={{
+                  fontSize: '1.6rem',
+                  fontWeight: 700,
+                  color: pathname === href ? '#C07B2A' : '#1a1a1a',
+                  textDecoration: 'none',
+                  padding: '16px 24px',
+                  borderBottom: '1px solid rgba(26,26,26,0.06)',
+                  transition: 'color 0.15s',
+                }}
               >
                 {label}
               </Link>

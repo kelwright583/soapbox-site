@@ -25,8 +25,8 @@ export function NewsletterForm() {
   if (status === 'success') {
     return (
       <div className="text-center">
-        <p className="font-display text-xl font-bold text-ink">You&apos;re on the list.</p>
-        <p className="mt-2 text-sm text-muted">One email when it&apos;s available. Promise.</p>
+        <p className="font-display text-xl font-extrabold text-white">You&apos;re on the list.</p>
+        <p className="mt-3 text-sm text-white/50">One email when it&apos;s available. Promise.</p>
       </div>
     )
   }
@@ -39,12 +39,14 @@ export function NewsletterForm() {
         onChange={(e) => setEmail(e.target.value)}
         placeholder="your@email.com"
         required
-        className="flex-1 rounded-lg border border-border bg-white px-4 py-3 text-sm text-ink placeholder:text-muted focus:border-amber focus:outline-none"
+        className="flex-1 border border-white/15 bg-white/8 px-5 py-3.5 text-sm text-white placeholder:text-white/30 focus:border-amber focus:outline-none"
+        style={{ borderRadius: 2, backdropFilter: 'blur(4px)' }}
       />
       <button
         type="submit"
         disabled={status === 'loading'}
-        className="rounded-lg bg-amber px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-amber-light disabled:opacity-50"
+        className="btn-lift bg-amber px-6 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-amber-light disabled:opacity-50"
+        style={{ borderRadius: 2 }}
       >
         {status === 'loading' ? 'Sending...' : 'Tell me when it\u2019s ready'}
       </button>

@@ -25,6 +25,27 @@
     color: var(--color-ink);
     background: var(--color-white);
   }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: rgba(26, 26, 26, 0.15);
+    border-radius: 99px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(26, 26, 26, 0.3);
+  }
+
+  /* Selection */
+  ::selection {
+    background: rgba(192, 123, 42, 0.2);
+    color: var(--color-ink);
+  }
 }
 
 @layer components {
@@ -37,10 +58,12 @@
     font-style: italic;
   }
 
+  /* ── Scroll Reveal Animations ────────────────── */
   .scroll-reveal {
     opacity: 0;
-    transform: translateY(24px);
-    transition: opacity 0.6s ease, transform 0.6s ease;
+    transform: translateY(32px);
+    transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
     transition-delay: var(--reveal-delay, 0ms);
   }
 
@@ -49,6 +72,129 @@
     transform: translateY(0);
   }
 
+  /* Fade in from left */
+  .scroll-reveal-left {
+    opacity: 0;
+    transform: translateX(-40px);
+    transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    transition-delay: var(--reveal-delay, 0ms);
+  }
+  .scroll-reveal-left.revealed {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  /* Scale reveal */
+  .scroll-reveal-scale {
+    opacity: 0;
+    transform: scale(0.92);
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    transition-delay: var(--reveal-delay, 0ms);
+  }
+  .scroll-reveal-scale.revealed {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  /* ── Hero Entrance Animations ────────────────── */
+  @keyframes hero-fade-up {
+    from { opacity: 0; transform: translateY(28px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes hero-fade-in {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+
+  @keyframes hero-image-reveal {
+    from { opacity: 0; transform: scale(1.05); }
+    to   { opacity: 1; transform: scale(1); }
+  }
+
+  @keyframes hero-pill-pop {
+    from { opacity: 0; transform: scale(0.8) translateY(8px); }
+    to   { opacity: 1; transform: scale(1) translateY(0); }
+  }
+
+  .hero-animate-image {
+    animation: hero-image-reveal 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both;
+  }
+  .hero-animate-kicker {
+    animation: hero-fade-up 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.3s both;
+  }
+  .hero-animate-headline {
+    animation: hero-fade-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.45s both;
+  }
+  .hero-animate-pills {
+    animation: hero-fade-up 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.65s both;
+  }
+  .hero-animate-body {
+    animation: hero-fade-up 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.75s both;
+  }
+  .hero-animate-ctas {
+    animation: hero-fade-up 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.85s both;
+  }
+  .hero-animate-cameo {
+    animation: hero-fade-up 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.95s both;
+  }
+
+  /* ── Link hover underline ────────────────────── */
+  .link-hover {
+    position: relative;
+    display: inline-block;
+  }
+  .link-hover::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 0;
+    height: 1.5px;
+    background: var(--color-amber);
+    transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .link-hover:hover::after {
+    width: 100%;
+  }
+
+  /* ── Nav link hover ──────────────────────────── */
+  .nav-link-anim {
+    position: relative;
+  }
+  .nav-link-anim::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: -4px;
+    width: 0;
+    height: 2px;
+    background: var(--color-amber);
+    transition: width 0.25s cubic-bezier(0.16, 1, 0.3, 1), left 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .nav-link-anim:hover::after,
+  .nav-link-anim.active::after {
+    width: 100%;
+    left: 0;
+  }
+
+  /* ── Button micro-interaction ────────────────── */
+  .btn-lift {
+    transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+                box-shadow 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .btn-lift:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+  }
+  .btn-lift:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  /* ── Prose ───────────────────────────────────── */
   .prose-soapbox h2 {
     font-family: var(--font-display);
     font-size: 1.5rem;

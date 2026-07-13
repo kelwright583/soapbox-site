@@ -15,22 +15,28 @@ export function OpinionsPreview({ posts }: { posts: Post[] }) {
   if (posts.length === 0) return null
 
   return (
-    <section className="bg-grey py-20">
+    <section className="border-t border-border bg-grey py-24">
       <div className="mx-auto max-w-[1140px] px-6">
-        <div className="mb-10">
-          <span className="mb-2 block text-[10px] font-semibold uppercase tracking-[0.2em] text-amber">
+        <div className="mb-12">
+          <span className="scroll-reveal mb-3 block text-[10px] font-semibold uppercase tracking-[0.26em] text-amber">
             Unsolicited Opinions
           </span>
-          <h2 className="font-display text-3xl font-bold text-ink md:text-4xl">
+          <h2
+            className="scroll-reveal font-display text-[clamp(1.8rem,3vw,2.6rem)] font-extrabold text-ink"
+            style={{ '--reveal-delay': '80ms' } as React.CSSProperties}
+          >
             I&apos;m still talking.
           </h2>
-          <p className="mt-3 max-w-lg text-sm leading-relaxed text-muted">
+          <p
+            className="scroll-reveal mt-4 max-w-lg text-[15px] leading-[1.8] text-muted"
+            style={{ '--reveal-delay': '160ms' } as React.CSSProperties}
+          >
             The book ended. The opinions didn&apos;t. What happened after, what changed, what
-            I&apos;d undo — and what I absolutely would not.
+            I&apos;d undo &mdash; and what I absolutely would not.
           </p>
         </div>
 
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
           {posts.map((post, i) => (
             <OpinionCard
               key={post.id}
@@ -45,10 +51,10 @@ export function OpinionsPreview({ posts }: { posts: Post[] }) {
           ))}
         </div>
 
-        <div className="mt-10 text-center">
+        <div className="scroll-reveal mt-12 text-center">
           <Link
             href="/opinions"
-            className="inline-block text-sm font-semibold text-amber hover:text-amber-light"
+            className="link-hover inline-block text-sm font-semibold text-amber"
           >
             All Unsolicited Opinions &rarr;
           </Link>
