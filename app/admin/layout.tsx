@@ -13,7 +13,7 @@ export default async function AdminLayout({ children }: { children: React.ReactN
   } = await supabase.auth.getUser()
 
   if (!user) {
-    return <div className="admin-shell">{children}</div>
+    return <div className="admin-shell" style={{ display: 'block' }}>{children}</div>
   }
 
   const { data: profile } = await supabase
@@ -27,12 +27,10 @@ export default async function AdminLayout({ children }: { children: React.ReactN
   }
 
   return (
-    <div className="admin-shell" style={{ display: 'flex' }}>
+    <div className="admin-shell">
       <AdminSidebar />
-      <div style={{ flex: 1, minWidth: 0 }}>
-        <main style={{ maxWidth: 960, margin: '0 auto', padding: '40px 32px' }}>
-          {children}
-        </main>
+      <div className="admin-main">
+        <div className="admin-main-inner">{children}</div>
       </div>
     </div>
   )

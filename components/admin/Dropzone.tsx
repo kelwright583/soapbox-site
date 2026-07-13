@@ -71,9 +71,7 @@ export function Dropzone({ onUpload }: DropzoneProps) {
         type="button"
         onClick={() => {
           const input = document.createElement('input')
-          input.type = 'file'
-          input.accept = 'image/*'
-          input.multiple = true
+          input.type = 'file'; input.accept = 'image/*'; input.multiple = true
           input.onchange = () => handleFiles(input.files)
           input.click()
         }}
@@ -81,20 +79,12 @@ export function Dropzone({ onUpload }: DropzoneProps) {
         onDragLeave={() => setDragging(false)}
         onDrop={(e) => { e.preventDefault(); setDragging(false); handleFiles(e.dataTransfer.files) }}
         style={{
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          justifyContent: 'center',
-          gap: 10,
-          width: '100%',
-          padding: '36px 20px',
-          borderRadius: 12,
+          display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
+          gap: 10, width: '100%', padding: '36px 20px', borderRadius: 12,
           border: `2px dashed ${dragging ? '#C07B2A' : '#ddd'}`,
           background: dragging ? 'rgba(192,123,42,0.04)' : '#fafaf9',
           color: dragging ? '#C07B2A' : '#aaa',
-          cursor: 'pointer',
-          transition: 'all 0.15s ease',
-          textAlign: 'center',
+          cursor: 'pointer', transition: 'all 0.15s', textAlign: 'center', fontFamily: 'inherit',
         }}
       >
         <Upload style={{ width: 28, height: 28 }} strokeWidth={1.5} />
@@ -107,29 +97,15 @@ export function Dropzone({ onUpload }: DropzoneProps) {
       {uploads.length > 0 && (
         <div style={{ display: 'flex', flexDirection: 'column', gap: 6, marginTop: 12 }}>
           {uploads.map((item) => (
-            <div
-              key={item.name}
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: 10,
-                padding: '10px 14px',
-                borderRadius: 8,
-                background: '#fff',
-                border: '1px solid #e8e8e6',
-                fontSize: 13,
-              }}
-            >
+            <div key={item.name} style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '10px 14px', borderRadius: 8, background: '#fff', border: '1px solid #e8e8e6', fontSize: 13 }}>
               {item.status === 'done' ? (
                 <Check style={{ width: 16, height: 16, color: '#16a34a', flexShrink: 0 }} />
               ) : item.status === 'error' ? (
                 <AlertCircle style={{ width: 16, height: 16, color: '#dc2626', flexShrink: 0 }} />
               ) : (
-                <Loader2 style={{ width: 16, height: 16, color: '#C07B2A', flexShrink: 0, animation: 'spin 1s linear infinite' }} />
+                <Loader2 className="admin-spinner" style={{ width: 16, height: 16, color: '#C07B2A', flexShrink: 0 }} />
               )}
-              <span style={{ flex: 1, minWidth: 0, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', color: '#555' }}>
-                {item.name}
-              </span>
+              <span style={{ flex: 1, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', color: '#555' }}>{item.name}</span>
               <span style={{ flexShrink: 0, fontSize: 11, fontWeight: 500, color: item.status === 'done' ? '#16a34a' : item.status === 'error' ? '#dc2626' : '#999' }}>
                 {item.status === 'error' ? item.error : item.status}
               </span>

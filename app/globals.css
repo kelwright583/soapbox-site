@@ -40,9 +40,7 @@
   .scroll-reveal {
     opacity: 0;
     transform: translateY(24px);
-    transition:
-      opacity 0.6s ease,
-      transform 0.6s ease;
+    transition: opacity 0.6s ease, transform 0.6s ease;
     transition-delay: var(--reveal-delay, 0ms);
   }
 
@@ -51,7 +49,6 @@
     transform: translateY(0);
   }
 
-  /* Prose styling for blog post bodies */
   .prose-soapbox h2 {
     font-family: var(--font-display);
     font-size: 1.5rem;
@@ -94,19 +91,123 @@
     font-style: italic;
   }
 
-  /* ── Admin Design System ── */
+  /* ══════════════════════════════════════════
+     ADMIN DESIGN SYSTEM
+     Pure CSS — zero Tailwind utility reliance
+     ══════════════════════════════════════════ */
 
   .admin-shell {
     min-height: 100vh;
     background: #f5f5f4;
     color: #1a1a1a;
+    display: flex;
   }
 
+  /* ── Sidebar ── */
+  .admin-sidebar {
+    width: 250px;
+    flex-shrink: 0;
+    background: #fff;
+    border-right: 1px solid #e8e8e6;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow-y: auto;
+    display: block;
+  }
+
+  .admin-topbar {
+    display: none;
+    position: sticky;
+    top: 0;
+    z-index: 30;
+    background: #fff;
+    border-bottom: 1px solid #e8e8e6;
+    padding: 12px 16px;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  @media (max-width: 1023px) {
+    .admin-shell {
+      flex-direction: column;
+    }
+    .admin-sidebar {
+      display: none;
+    }
+    .admin-topbar {
+      display: flex;
+    }
+  }
+
+  .admin-nav-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 9px 12px;
+    border-radius: 8px;
+    font-size: 13.5px;
+    font-weight: 500;
+    text-decoration: none;
+    color: #666;
+    transition: all 0.12s ease;
+    margin-bottom: 1px;
+  }
+
+  .admin-nav-link:hover {
+    background: #f5f5f4;
+    color: #333;
+  }
+
+  .admin-nav-link-active {
+    font-weight: 600;
+    color: #C07B2A;
+    background: rgba(192, 123, 42, 0.07);
+  }
+
+  .admin-nav-link-active:hover {
+    background: rgba(192, 123, 42, 0.1);
+    color: #C07B2A;
+  }
+
+  /* ── Main content ── */
+  .admin-main {
+    flex: 1;
+    min-width: 0;
+    padding: 40px 32px;
+  }
+
+  .admin-main-inner {
+    max-width: 960px;
+    margin: 0 auto;
+  }
+
+  @media (max-width: 639px) {
+    .admin-main {
+      padding: 24px 16px;
+    }
+  }
+
+  /* ── Cards ── */
   .admin-card {
     background: #ffffff;
     border-radius: 12px;
     border: 1px solid #e8e8e6;
-    padding: 1.5rem;
+    padding: 24px;
+  }
+
+  /* ── Typography ── */
+  .admin-page-title {
+    font-family: var(--font-display);
+    font-size: 26px;
+    font-weight: 800;
+    color: #1a1a1a;
+    margin-bottom: 6px;
+  }
+
+  .admin-page-desc {
+    font-size: 14px;
+    color: #999;
   }
 
   .admin-section-title {
@@ -115,7 +216,7 @@
     text-transform: uppercase;
     letter-spacing: 0.08em;
     color: #999;
-    margin-bottom: 1rem;
+    margin-bottom: 16px;
   }
 
   .admin-label {
@@ -133,6 +234,7 @@
     line-height: 1.5;
   }
 
+  /* ── Inputs ── */
   .admin-input {
     width: 100%;
     border-radius: 8px;
@@ -143,6 +245,7 @@
     color: #1a1a1a;
     outline: none;
     transition: border-color 0.15s, box-shadow 0.15s;
+    font-family: inherit;
   }
 
   .admin-input:focus {
@@ -154,21 +257,7 @@
     color: #bbb;
   }
 
-  .admin-btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    border-radius: 8px;
-    padding: 10px 20px;
-    font-size: 13px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.15s ease;
-    border: none;
-    text-decoration: none;
-  }
-
+  /* ── Buttons ── */
   .admin-btn-primary {
     display: inline-flex;
     align-items: center;
@@ -179,11 +268,12 @@
     font-size: 13px;
     font-weight: 600;
     cursor: pointer;
-    transition: all 0.15s ease;
+    transition: background 0.15s;
     border: none;
     text-decoration: none;
     background: #C07B2A;
     color: #fff;
+    font-family: inherit;
   }
 
   .admin-btn-primary:hover {
@@ -205,11 +295,12 @@
     font-size: 13px;
     font-weight: 600;
     cursor: pointer;
-    transition: all 0.15s ease;
+    transition: all 0.15s;
     text-decoration: none;
     background: #fff;
     color: #555;
     border: 1px solid #d4d4d4;
+    font-family: inherit;
   }
 
   .admin-btn-secondary:hover {
@@ -218,13 +309,13 @@
     color: #333;
   }
 
+  /* ── Badges ── */
   .admin-badge {
     display: inline-block;
     padding: 3px 10px;
     border-radius: 20px;
     font-size: 11px;
     font-weight: 600;
-    letter-spacing: 0.02em;
   }
 
   .admin-badge-live {
@@ -235,5 +326,137 @@
   .admin-badge-draft {
     background: #f3f4f6;
     color: #9ca3af;
+  }
+
+  /* ── Table rows ── */
+  .admin-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 20px;
+    text-decoration: none;
+    transition: background 0.1s;
+    color: inherit;
+  }
+
+  .admin-row:hover {
+    background: #fafaf9;
+  }
+
+  /* ── Media grid ── */
+  .admin-media-item {
+    position: relative;
+    aspect-ratio: 1;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid #e8e8e6;
+    background: #fff;
+  }
+
+  .admin-media-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    padding: 10px;
+    background: linear-gradient(to top, rgba(0,0,0,0.55) 0%, transparent 60%);
+    opacity: 0;
+    transition: opacity 0.15s;
+  }
+
+  .admin-media-item:hover .admin-media-overlay {
+    opacity: 1;
+  }
+
+  /* ── Responsive helpers ── */
+  .admin-hide-mobile {
+    display: table-cell;
+  }
+
+  @media (max-width: 767px) {
+    .admin-hide-mobile {
+      display: none;
+    }
+  }
+
+  /* ── Tab bar ── */
+  .admin-tab {
+    padding: 10px 16px;
+    font-size: 13px;
+    font-weight: 600;
+    background: none;
+    border: none;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -1px;
+    color: #aaa;
+    cursor: pointer;
+    transition: color 0.12s;
+    font-family: inherit;
+  }
+
+  .admin-tab:hover {
+    color: #666;
+  }
+
+  .admin-tab-active {
+    color: #C07B2A;
+    border-bottom-color: #C07B2A;
+  }
+
+  /* ── Spinner ── */
+  @keyframes admin-spin {
+    to { transform: rotate(360deg); }
+  }
+
+  .admin-spinner {
+    animation: admin-spin 1s linear infinite;
+  }
+
+  /* ── Mobile overlay ── */
+  .admin-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 40;
+    background: rgba(0, 0, 0, 0.3);
+  }
+
+  .admin-drawer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 50;
+    width: 280px;
+    background: #fff;
+    box-shadow: 4px 0 24px rgba(0, 0, 0, 0.08);
+  }
+
+  /* ── Modal ── */
+  .admin-modal-backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.25);
+    padding: 16px;
+  }
+
+  .admin-modal {
+    width: 100%;
+    max-width: 440px;
+    background: #fff;
+    border-radius: 14px;
+    border: 1px solid #e8e8e6;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12);
+    padding: 28px;
+  }
+
+  .admin-modal-lg {
+    max-width: 720px;
+    max-height: 80vh;
+    overflow-y: auto;
   }
 }

@@ -14,7 +14,6 @@ interface MediaPickerProps {
 interface MediaAsset {
   id: string
   storage_path: string
-  type: string
   width: number | null
   height: number | null
   alt_text: string
@@ -26,14 +25,11 @@ const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL!
 export function MediaPicker({ onSelect, onClose }: MediaPickerProps) {
   const [assets, setAssets] = useState<MediaAsset[]>([])
   const [loading, setLoading] = useState(true)
+  const [hoveredId, setHoveredId] = useState<string | null>(null)
 
   const loadAssets = useCallback(async () => {
     const supabase = createClient()
-    const { data } = await supabase
-      .from('media_assets')
-      .select('*')
-      .eq('type', 'image')
-      .order('created_at', { ascending: false })
+    const { data } = await supabase.from('media_assets').select('*').eq('type', 'image').order('created_at', { ascending: false })
     setAssets((data as MediaAsset[]) ?? [])
     setLoading(false)
   }, [])
@@ -47,18 +43,11 @@ export function MediaPicker({ onSelect, onClose }: MediaPickerProps) {
   }
 
   return (
-    <div
-      style={{ position: 'fixed', inset: 0, zIndex: 200, display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'rgba(0,0,0,0.25)', padding: 16 }}
-      onClick={onClose}
-    >
-      <div
-        style={{ width: '100%', maxWidth: 720, maxHeight: '80vh', overflowY: 'auto', borderRadius: 14, background: '#fff', border: '1px solid #e8e8e6', boxShadow: '0 20px 60px rgba(0,0,0,0.12)', padding: 28 }}
-        onClick={(e) => e.stopPropagation()}
-      >
-        {/* Header */}
+    <div className="admin-modal-backdrop" onClick={onClose}>
+      <div className="admin-modal admin-modal-lg" onClick={(e) => e.stopPropagation()}>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 24 }}>
           <div>
-            <h2 className="font-display" style={{ fontSize: 18, fontWeight: 700, color: '#1a1a1a' }}>Choose an Image</h2>
+            <h2 style={{ fontSize: 18, fontWeight: 700, color: '#1a1a1a', fontFamily: 'var(--font-display)' }}>Choose an Image</h2>
             <p style={{ fontSize: 13, color: '#999', marginTop: 2 }}>Select from your library or upload a new one.</p>
           </div>
           <button onClick={onClose} style={{ color: '#bbb', background: 'none', border: 'none', cursor: 'pointer', padding: 4 }}>
@@ -77,23 +66,28 @@ export function MediaPicker({ onSelect, onClose }: MediaPickerProps) {
               <p style={{ fontSize: 14, color: '#bbb' }}>No images yet. Upload your first one above.</p>
             </div>
           ) : (
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(120px, 1fr))', gap: 8 }}>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(110px, 1fr))', gap: 8 }}>
               {assets.map((asset) => (
                 <button
                   key={asset.id}
                   type="button"
                   onClick={() => onSelect(asset.storage_path)}
-                  style={{ position: 'relative', aspectRatio: '1', borderRadius: 8, overflow: 'hidden', border: '2px solid transparent', background: 'none', padding: 0, cursor: 'pointer', transition: 'border-color 0.12s, box-shadow 0.12s' }}
-                  onMouseEnter={(e) => { e.currentTarget.style.borderColor = '#C07B2A'; e.currentTarget.style.boxShadow = '0 0 0 2px rgba(192,123,42,0.2)' }}
-                  onMouseLeave={(e) => { e.currentTarget.style.borderColor = 'transparent'; e.currentTarget.style.boxShadow = 'none' }}
+                  onMouseEnter={() => setHoveredId(asset.id)}
+                  onMouseLeave={() => setHoveredId(null)}
+                  style={{
+                    position: 'relative',
+                    aspectRatio: '1',
+                    borderRadius: 8,
+                    overflow: 'hidden',
+                    border: hoveredId === asset.id ? '2px solid #C07B2A' : '2px solid transparent',
+                    boxShadow: hoveredId === asset.id ? '0 0 0 2px rgba(192,123,42,0.2)' : 'none',
+                    background: 'none',
+                    padding: 0,
+                    cursor: 'pointer',
+                    transition: 'border-color 0.12s, box-shadow 0.12s',
+                  }}
                 >
-                  <Image
-                    src={`${SUPABASE_URL}/storage/v1/object/public/media/${asset.storage_path}`}
-                    alt={asset.alt_text || ''}
-                    fill
-                    className="object-cover"
-                    sizes="120px"
-                  />
+                  <Image src={`${SUPABASE_URL}/storage/v1/object/public/media/${asset.storage_path}`} alt={asset.alt_text || ''} fill style={{ objectFit: 'cover' }} sizes="120px" />
                 </button>
               ))}
             </div>

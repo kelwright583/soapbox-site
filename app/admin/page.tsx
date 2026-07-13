@@ -1,15 +1,6 @@
 import Link from 'next/link'
 import { createClient } from '@/lib/supabase/server'
-import {
-  FileText,
-  ImageIcon,
-  Video,
-  Podcast,
-  Eye,
-  PenLine,
-  Plus,
-  ArrowRight,
-} from 'lucide-react'
+import { FileText, ImageIcon, Video, Podcast, Eye, PenLine, Plus, ArrowRight } from 'lucide-react'
 
 export default async function AdminDashboard() {
   const supabase = await createClient()
@@ -45,14 +36,9 @@ export default async function AdminDashboard() {
 
   return (
     <div>
-      {/* Header */}
       <div style={{ marginBottom: 40 }}>
-        <h1 className="font-display" style={{ fontSize: 28, fontWeight: 800, color: '#1a1a1a', marginBottom: 6 }}>
-          Good to see you.
-        </h1>
-        <p style={{ fontSize: 15, color: '#888' }}>
-          Here is what is happening with your site.
-        </p>
+        <h1 className="admin-page-title">Good to see you.</h1>
+        <p className="admin-page-desc">Your creative space. Here is everything at a glance.</p>
       </div>
 
       {/* Stats */}
@@ -66,27 +52,25 @@ export default async function AdminDashboard() {
         ))}
       </div>
 
-      {/* Two-column layout */}
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }} className="max-sm:!grid-cols-1">
-        {/* Quick Actions */}
+      {/* Two columns */}
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 16 }}>
+        {/* Quick actions */}
         <div className="admin-card">
-          <div className="admin-section-title">Quick Actions</div>
+          <div className="admin-section-title">Create</div>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
             <Link href="/admin/opinions/new" className="admin-btn-primary" style={{ textDecoration: 'none' }}>
-              <Plus style={{ width: 16, height: 16 }} />
-              Write a New Opinion
+              <Plus style={{ width: 16, height: 16 }} /> Write a New Opinion
             </Link>
             <Link href="/admin/media" className="admin-btn-secondary" style={{ textDecoration: 'none' }}>
-              <ImageIcon style={{ width: 16, height: 16 }} />
-              Open Media Library
+              <ImageIcon style={{ width: 16, height: 16 }} /> Open Media Library
             </Link>
           </div>
         </div>
 
-        {/* Recent Posts */}
+        {/* Recent posts */}
         <div className="admin-card" style={{ padding: 0 }}>
-          <div style={{ padding: '18px 20px 12px' }}>
-            <div className="admin-section-title" style={{ marginBottom: 0 }}>Recent Opinions</div>
+          <div style={{ padding: '18px 20px 10px' }}>
+            <div className="admin-section-title" style={{ marginBottom: 0 }}>Recent Work</div>
           </div>
           {recentPosts && recentPosts.length > 0 ? (
             <div>
@@ -94,24 +78,14 @@ export default async function AdminDashboard() {
                 <Link
                   key={post.id}
                   href={`/admin/opinions/${post.id}`}
-                  style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'space-between',
-                    padding: '12px 20px',
-                    textDecoration: 'none',
-                    borderTop: '1px solid #f0f0ee',
-                    transition: 'background 0.1s',
-                  }}
-                  className="hover:!bg-stone-50"
+                  className="admin-row"
+                  style={{ borderTop: '1px solid #f0f0ee' }}
                 >
-                  <div style={{ display: 'flex', alignItems: 'center', gap: 10, minWidth: 0 }}>
-                    <span style={{ fontSize: 14, fontWeight: 500, color: '#333', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
-                      {post.title || '(untitled)'}
-                    </span>
-                  </div>
+                  <span style={{ fontSize: 14, fontWeight: 500, color: '#333', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', minWidth: 0 }}>
+                    {post.title || '(untitled)'}
+                  </span>
                   <div style={{ display: 'flex', alignItems: 'center', gap: 10, flexShrink: 0 }}>
-                    <span className={post.published ? 'admin-badge admin-badge-live' : 'admin-badge admin-badge-draft'}>
+                    <span className={`admin-badge ${post.published ? 'admin-badge-live' : 'admin-badge-draft'}`}>
                       {post.published ? 'Live' : 'Draft'}
                     </span>
                     <ArrowRight style={{ width: 14, height: 14, color: '#ccc' }} />
@@ -121,7 +95,7 @@ export default async function AdminDashboard() {
             </div>
           ) : (
             <div style={{ padding: '24px 20px', textAlign: 'center' }}>
-              <p style={{ fontSize: 13, color: '#aaa' }}>No posts yet. Write your first one above.</p>
+              <p style={{ fontSize: 13, color: '#aaa' }}>Nothing here yet. Start writing!</p>
             </div>
           )}
         </div>
