@@ -50,7 +50,7 @@ export default async function AdminDashboard() {
             }}>
               Good to see you.
             </h1>
-            <p style={{ fontSize: 15, color: '#9a8a76', lineHeight: 1.5, maxWidth: 420 }}>
+            <p style={{ fontSize: 15, color: '#888', lineHeight: 1.5, maxWidth: 420 }}>
               Your creative space. Everything you need to write, curate and share your thoughts with the world.
             </p>
           </div>
@@ -108,7 +108,7 @@ export default async function AdminDashboard() {
                   key={post.id}
                   href={`/admin/opinions/${post.id}`}
                   className="admin-row"
-                  style={{ borderTop: '1px solid #f0eeea', padding: '14px 24px' }}
+                  style={{ borderTop: '1px solid #e5e5e5', padding: '14px 24px' }}
                 >
                   <span style={{ fontSize: 14, fontWeight: 500, color: '#333', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', minWidth: 0 }}>
                     {post.title || '(untitled)'}
@@ -117,11 +117,11 @@ export default async function AdminDashboard() {
                     <span className={`admin-badge ${post.published ? 'admin-badge-live' : 'admin-badge-draft'}`}>
                       {post.published ? 'Live' : 'Draft'}
                     </span>
-                    <ArrowRight style={{ width: 14, height: 14, color: '#d4d0ca' }} />
+                    <ArrowRight style={{ width: 14, height: 14, color: '#ccc' }} />
                   </div>
                 </Link>
               ))}
-              <div style={{ padding: '14px 24px', borderTop: '1px solid #f0eeea', textAlign: 'center' }}>
+              <div style={{ padding: '14px 24px', borderTop: '1px solid #e5e5e5', textAlign: 'center' }}>
                 <Link href="/admin/opinions" style={{ fontSize: 13, color: '#C07B2A', fontWeight: 600, textDecoration: 'none' }}>
                   View all opinions &rarr;
                 </Link>

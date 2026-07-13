@@ -53,7 +53,7 @@ export function AdminSidebar() {
             <div style={{ fontSize: 15, fontWeight: 700, color: '#1a1a1a', lineHeight: 1.2, fontFamily: "'Playfair Display', Georgia, serif" }}>
               The Desk
             </div>
-            <div style={{ fontSize: 11.5, color: '#b5a898', lineHeight: 1.3 }}>Your creative space</div>
+            <div style={{ fontSize: 11.5, color: '#999', lineHeight: 1.3 }}>Your creative space</div>
           </div>
         </div>
 
@@ -70,7 +70,7 @@ export function AdminSidebar() {
       </div>
 
       {/* Divider */}
-      <div style={{ margin: '0 24px', borderTop: '1px solid #f0eeea' }} />
+      <div style={{ margin: '0 24px', borderTop: '1px solid #e5e5e5' }} />
 
       {/* Nav */}
       <nav style={{ flex: 1, padding: '16px 14px' }}>
@@ -91,7 +91,7 @@ export function AdminSidebar() {
       </nav>
 
       {/* Footer */}
-      <div style={{ borderTop: '1px solid #f0eeea', padding: '12px 14px' }}>
+      <div style={{ borderTop: '1px solid #e5e5e5', padding: '12px 14px' }}>
         <Link href="/" target="_blank" className="admin-nav-link" style={{ color: '#bbb' }}>
           <ExternalLink style={{ width: 16, height: 16 }} strokeWidth={1.6} />
           View Live Site

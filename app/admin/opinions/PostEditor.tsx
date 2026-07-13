@@ -77,7 +77,7 @@ export function PostEditor({ post }: { post?: Post }) {
         <div className="admin-section-title">Cover Image</div>
         <p className="admin-hint" style={{ marginTop: -8, marginBottom: 16 }}>Appears at the top of your post and when shared on social media.</p>
         {coverImage ? (
-          <div style={{ position: 'relative', aspectRatio: '16/9', maxWidth: 500, borderRadius: 10, overflow: 'hidden', border: '1px solid #e8e8e6', marginBottom: 12 }}>
+          <div style={{ position: 'relative', aspectRatio: '16/9', maxWidth: 500, borderRadius: 10, overflow: 'hidden', border: '1px solid #e5e5e5', marginBottom: 12 }}>
             <Image src={`${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/media/${coverImage}`} alt="Cover" fill style={{ objectFit: 'cover' }} sizes="500px" />
             <button type="button" onClick={() => setCoverImage('')} style={{ position: 'absolute', top: 8, right: 8, padding: '4px 12px', borderRadius: 6, background: 'rgba(0,0,0,0.6)', color: '#fff', fontSize: 12, border: 'none', cursor: 'pointer' }}>
               Remove
@@ -150,7 +150,7 @@ export function PostEditor({ post }: { post?: Post }) {
       </div>
 
       {/* Actions */}
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '16px 0', borderTop: '1px solid #e8e8e6' }}>
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '16px 0', borderTop: '1px solid #e5e5e5' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
           <button type="submit" disabled={pending} className="admin-btn-primary">
             {pending ? 'Saving...' : (<><Save style={{ width: 16, height: 16 }} />{isEdit ? 'Save Changes' : 'Create Opinion'}</>)}

@@ -16,7 +16,7 @@ export default async function AdminLoginPage({
   const errorMsg = params.error ? errorMessages[params.error] : null
 
   return (
-    <div style={{ display: 'flex', minHeight: '100vh', alignItems: 'center', justifyContent: 'center', padding: 16, background: '#f5f5f4' }}>
+    <div style={{ display: 'flex', minHeight: '100vh', alignItems: 'center', justifyContent: 'center', padding: 16, background: '#f5f5f5' }}>
       <div style={{ width: '100%', maxWidth: 400 }}>
         <div style={{ textAlign: 'center', marginBottom: 32 }}>
           <div style={{ width: 48, height: 48, borderRadius: 12, background: '#C07B2A', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', marginBottom: 16 }}>

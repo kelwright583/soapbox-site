@@ -102,7 +102,7 @@ export function AdminLoginForm() {
 
       <div style={{ position: 'relative', margin: '4px 0' }}>
         <div style={{ position: 'absolute', inset: 0, display: 'flex', alignItems: 'center' }}>
-          <div style={{ width: '100%', borderTop: '1px solid #e8e8e6' }} />
+          <div style={{ width: '100%', borderTop: '1px solid #e5e5e5' }} />
         </div>
         <div style={{ position: 'relative', display: 'flex', justifyContent: 'center' }}>
           <span style={{ background: '#fff', padding: '0 12px', fontSize: 12, color: '#bbb' }}>or</span>

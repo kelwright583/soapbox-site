@@ -97,7 +97,7 @@ export function Dropzone({ onUpload }: DropzoneProps) {
       {uploads.length > 0 && (
         <div style={{ display: 'flex', flexDirection: 'column', gap: 6, marginTop: 12 }}>
           {uploads.map((item) => (
-            <div key={item.name} style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '10px 14px', borderRadius: 8, background: '#fff', border: '1px solid #e8e8e6', fontSize: 13 }}>
+            <div key={item.name} style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '10px 14px', borderRadius: 8, background: '#fff', border: '1px solid #e5e5e5', fontSize: 13 }}>
               {item.status === 'done' ? (
                 <Check style={{ width: 16, height: 16, color: '#16a34a', flexShrink: 0 }} />
               ) : item.status === 'error' ? (

@@ -104,7 +104,7 @@ export default function MediaPage() {
       <Dropzone onUpload={handleImageUpload} />
 
       {/* Tabs */}
-      <div style={{ display: 'flex', borderBottom: '1px solid #e8e8e6', marginTop: 32, marginBottom: 24 }}>
+      <div style={{ display: 'flex', borderBottom: '1px solid #e5e5e5', marginTop: 32, marginBottom: 24 }}>
         {tabs.map(({ key, label }) => {
           const c = key === 'all' ? assets.length : count(key === 'images' ? 'image' : key === 'videos' ? 'video' : 'podcast')
           return (
