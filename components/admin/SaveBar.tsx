@@ -14,10 +14,10 @@ export function SaveBar({ pending, message, ok, label = 'Save' }: SaveBarProps) 
         type="submit"
         disabled={pending}
         className={cn(
-          'rounded border px-5 py-2 text-xs font-semibold uppercase tracking-[0.15em] transition-colors',
+          'rounded-lg border px-6 py-2.5 text-xs font-semibold uppercase tracking-[0.15em] transition-all',
           pending
-            ? 'cursor-not-allowed border-white/10 text-white/30'
-            : 'border-amber text-amber hover:bg-amber hover:text-white',
+            ? 'cursor-not-allowed border-white/[0.06] text-white/20'
+            : 'border-amber/60 text-amber hover:bg-amber hover:text-white',
         )}
       >
         {pending ? 'Saving\u2026' : label}
@@ -25,7 +25,7 @@ export function SaveBar({ pending, message, ok, label = 'Save' }: SaveBarProps) 
       {message && (
         <p
           aria-live="polite"
-          className={cn('text-xs', ok ? 'text-green-400' : 'text-red-400')}
+          className={cn('text-xs font-medium', ok ? 'text-green-400' : 'text-red-400')}
         >
           {message}
         </p>

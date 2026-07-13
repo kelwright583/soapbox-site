@@ -4,7 +4,7 @@ import { createClient } from '@/lib/supabase/server'
 export const metadata = { title: 'Opinions | The Desk' }
 
 function formatDate(iso: string | null) {
-  if (!iso) return '\u2014'
+  if (!iso) return '-'
   return new Date(iso).toLocaleDateString('en-GB', {
     day: 'numeric',
     month: 'short',
@@ -21,68 +21,70 @@ export default async function OpinionsAdminPage() {
 
   return (
     <div>
-      <div className="mb-8 flex items-end justify-between">
+      {/* Header */}
+      <div className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
         <div>
-          <span className="mb-1 block text-[10px] font-semibold uppercase tracking-[0.2em] text-amber">
+          <p className="mb-1 text-[10px] font-semibold uppercase tracking-[0.25em] text-amber">
             The Desk
-          </span>
-          <h1 className="font-display text-2xl font-extrabold uppercase tracking-tight text-white">
+          </p>
+          <h1 className="font-display text-2xl font-extrabold tracking-tight text-white">
             Unsolicited Opinions
           </h1>
         </div>
         <Link
           href="/admin/opinions/new"
-          className="rounded border border-amber px-4 py-2 text-xs font-semibold uppercase tracking-[0.15em] text-amber transition-colors hover:bg-amber hover:text-white"
+          className="inline-flex rounded-lg border border-amber/60 px-5 py-2.5 text-xs font-semibold uppercase tracking-[0.15em] text-amber transition-all hover:bg-amber hover:text-white"
         >
           + New Opinion
         </Link>
       </div>
 
+      {/* Table */}
       {posts && posts.length > 0 ? (
-        <div className="overflow-hidden rounded-lg border border-white/10">
+        <div className="overflow-hidden rounded-xl border border-white/[0.06]">
           <table className="w-full text-sm">
-            <thead className="border-b border-white/10 bg-ink-soft">
+            <thead className="border-b border-white/[0.06] bg-white/[0.02]">
               <tr>
-                <th className="px-4 py-3 text-left text-[10px] font-semibold uppercase tracking-[0.15em] text-white/40">
+                <th className="px-5 py-3.5 text-left text-[10px] font-semibold uppercase tracking-[0.2em] text-white/25">
                   Title
                 </th>
-                <th className="hidden px-4 py-3 text-left text-[10px] font-semibold uppercase tracking-[0.15em] text-white/40 md:table-cell">
+                <th className="hidden px-5 py-3.5 text-left text-[10px] font-semibold uppercase tracking-[0.2em] text-white/25 md:table-cell">
                   Slug
                 </th>
-                <th className="px-4 py-3 text-left text-[10px] font-semibold uppercase tracking-[0.15em] text-white/40">
+                <th className="px-5 py-3.5 text-left text-[10px] font-semibold uppercase tracking-[0.2em] text-white/25">
                   Status
                 </th>
-                <th className="hidden px-4 py-3 text-left text-[10px] font-semibold uppercase tracking-[0.15em] text-white/40 sm:table-cell">
+                <th className="hidden px-5 py-3.5 text-left text-[10px] font-semibold uppercase tracking-[0.2em] text-white/25 sm:table-cell">
                   Date
                 </th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-white/5">
+            <tbody className="divide-y divide-white/[0.04]">
               {posts.map((post) => (
-                <tr key={post.id} className="group transition-colors hover:bg-ink-soft">
-                  <td className="px-4 py-3">
+                <tr key={post.id} className="group transition-colors hover:bg-white/[0.02]">
+                  <td className="px-5 py-3.5">
                     <Link
                       href={`/admin/opinions/${post.id}`}
-                      className="font-medium text-white transition-colors group-hover:text-amber"
+                      className="font-medium text-white/80 transition-colors group-hover:text-amber"
                     >
                       {post.title || '(untitled)'}
                     </Link>
                   </td>
-                  <td className="hidden px-4 py-3 font-mono text-xs text-white/40 md:table-cell">
+                  <td className="hidden px-5 py-3.5 font-mono text-xs text-white/25 md:table-cell">
                     {post.slug}
                   </td>
-                  <td className="px-4 py-3">
+                  <td className="px-5 py-3.5">
                     <span
-                      className={`inline-block rounded px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider ${
+                      className={`inline-block rounded-full px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider ${
                         post.published
-                          ? 'bg-amber/20 text-amber'
-                          : 'bg-white/5 text-white/40'
+                          ? 'bg-green-500/10 text-green-400'
+                          : 'bg-white/[0.04] text-white/30'
                       }`}
                     >
-                      {post.published ? 'Published' : 'Draft'}
+                      {post.published ? 'Live' : 'Draft'}
                     </span>
                   </td>
-                  <td className="hidden px-4 py-3 text-xs text-white/40 sm:table-cell">
+                  <td className="hidden px-5 py-3.5 text-xs text-white/25 sm:table-cell">
                     {formatDate(post.published_at ?? post.updated_at)}
                   </td>
                 </tr>
@@ -91,7 +93,15 @@ export default async function OpinionsAdminPage() {
           </table>
         </div>
       ) : (
-        <p className="text-sm text-white/40">No opinions yet. Create your first one.</p>
+        <div className="rounded-xl border border-dashed border-white/[0.08] px-8 py-16 text-center">
+          <p className="text-sm text-white/30">No opinions yet. Write your first one.</p>
+          <Link
+            href="/admin/opinions/new"
+            className="mt-4 inline-block text-xs font-semibold text-amber hover:text-amber-light"
+          >
+            + Create Opinion
+          </Link>
+        </div>
       )}
     </div>
   )

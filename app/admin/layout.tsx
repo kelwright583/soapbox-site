@@ -12,7 +12,6 @@ export default async function AdminLayout({ children }: { children: React.ReactN
     data: { user },
   } = await supabase.auth.getUser()
 
-  // Allow login page through without auth
   if (!user) {
     return <>{children}</>
   }
@@ -30,8 +29,8 @@ export default async function AdminLayout({ children }: { children: React.ReactN
   return (
     <div className="min-h-screen bg-ink lg:flex">
       <AdminSidebar />
-      <div className="min-w-0 flex-1">
-        <main className="p-4 lg:p-8">{children}</main>
+      <div className="min-w-0 flex-1 bg-ink">
+        <main className="mx-auto max-w-5xl p-5 lg:p-10">{children}</main>
       </div>
     </div>
   )

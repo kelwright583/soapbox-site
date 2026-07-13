@@ -54,6 +54,10 @@ export type Database = {
         Row: {
           id: string
           storage_path: string
+          type: 'image' | 'video' | 'podcast'
+          external_url: string | null
+          caption: string
+          duration: number | null
           width: number | null
           height: number | null
           alt_text: string
@@ -64,6 +68,10 @@ export type Database = {
         Insert: {
           id?: string
           storage_path: string
+          type?: 'image' | 'video' | 'podcast'
+          external_url?: string | null
+          caption?: string
+          duration?: number | null
           width?: number | null
           height?: number | null
           alt_text?: string
@@ -72,6 +80,10 @@ export type Database = {
         }
         Update: {
           storage_path?: string
+          type?: 'image' | 'video' | 'podcast'
+          external_url?: string | null
+          caption?: string
+          duration?: number | null
           width?: number | null
           height?: number | null
           alt_text?: string
