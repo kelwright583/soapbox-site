@@ -5,18 +5,20 @@ export const metadata = { title: 'New Opinion | The Desk' }
 
 export default function NewOpinionPage() {
   return (
-    <div className="max-w-3xl">
-      <div className="mb-8">
-        <Link
-          href="/admin/opinions"
-          className="mb-4 inline-block text-xs font-semibold uppercase tracking-[0.15em] text-white/30 transition-colors hover:text-white/60"
-        >
-          &larr; All Opinions
-        </Link>
-        <h1 className="font-display text-2xl font-extrabold tracking-tight text-white">
-          New Opinion
-        </h1>
-      </div>
+    <div style={{ maxWidth: '720px' }}>
+      <Link
+        href="/admin/opinions"
+        style={{ display: 'inline-block', marginBottom: '1rem', fontSize: '13px', fontWeight: 600, color: 'rgba(255,255,255,0.3)', textDecoration: 'none', transition: 'color 0.15s' }}
+        className="hover:!text-white/60"
+      >
+        &larr; Back to all opinions
+      </Link>
+      <h1 className="font-display" style={{ fontSize: '1.75rem', fontWeight: 800, color: '#fff', marginBottom: '0.25rem' }}>
+        New Opinion
+      </h1>
+      <p style={{ fontSize: '14px', color: 'rgba(255,255,255,0.35)', marginBottom: '2rem' }}>
+        Write a new post for your Unsolicited Opinions section. Fill in what you need and save - you can always come back to edit.
+      </p>
       <PostEditor />
     </div>
   )

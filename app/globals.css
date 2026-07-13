@@ -93,4 +93,106 @@
   .prose-soapbox em {
     font-style: italic;
   }
+
+  /* ── Admin Panel (bulletproof dark theme) ── */
+  .admin-shell {
+    background-color: #1a1a1a;
+    color: #e5e5e5;
+    min-height: 100vh;
+  }
+
+  .admin-card {
+    background-color: #242424;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 0.75rem;
+    padding: 1.25rem 1.5rem;
+  }
+
+  .admin-section-title {
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: rgba(255, 255, 255, 0.35);
+    margin-bottom: 1rem;
+  }
+
+  .admin-label {
+    display: block;
+    font-size: 12px;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.55);
+    margin-bottom: 6px;
+  }
+
+  .admin-hint {
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.25);
+    margin-top: 4px;
+  }
+
+  .admin-input {
+    width: 100%;
+    border-radius: 0.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background-color: #1a1a1a;
+    padding: 0.75rem 1rem;
+    font-size: 0.875rem;
+    color: #ffffff;
+    outline: none;
+    transition: border-color 0.15s ease;
+  }
+
+  .admin-input:focus {
+    border-color: rgba(192, 123, 42, 0.5);
+    box-shadow: 0 0 0 2px rgba(192, 123, 42, 0.1);
+  }
+
+  .admin-input::placeholder {
+    color: rgba(255, 255, 255, 0.2);
+  }
+
+  .admin-btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    border-radius: 0.5rem;
+    background-color: #C07B2A;
+    padding: 0.625rem 1.25rem;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: #ffffff;
+    transition: background-color 0.15s ease;
+    border: none;
+    cursor: pointer;
+  }
+
+  .admin-btn-primary:hover {
+    background-color: #d4943f;
+  }
+
+  .admin-btn-primary:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+
+  .admin-btn-outline {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    border-radius: 0.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 0.5rem 1rem;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.5);
+    background: transparent;
+    transition: all 0.15s ease;
+    cursor: pointer;
+  }
+
+  .admin-btn-outline:hover {
+    border-color: rgba(192, 123, 42, 0.4);
+    color: rgba(255, 255, 255, 0.8);
+  }
 }

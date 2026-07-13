@@ -12,8 +12,9 @@ export default async function AdminLayout({ children }: { children: React.ReactN
     data: { user },
   } = await supabase.auth.getUser()
 
+  // Not logged in: still wrap in dark shell (for login page)
   if (!user) {
-    return <>{children}</>
+    return <div className="admin-shell">{children}</div>
   }
 
   const { data: profile } = await supabase
@@ -27,9 +28,9 @@ export default async function AdminLayout({ children }: { children: React.ReactN
   }
 
   return (
-    <div className="min-h-screen bg-ink lg:flex">
+    <div className="admin-shell lg:flex">
       <AdminSidebar />
-      <div className="min-w-0 flex-1 bg-ink">
+      <div className="min-w-0 flex-1">
         <main className="mx-auto max-w-5xl p-5 lg:p-10">{children}</main>
       </div>
     </div>

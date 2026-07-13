@@ -13,7 +13,6 @@ import {
   X,
   ExternalLink,
 } from 'lucide-react'
-import { cn } from '@/lib/utils'
 
 const navItems = [
   { href: '/admin', label: 'Dashboard', icon: LayoutDashboard },
@@ -32,23 +31,37 @@ export function AdminSidebar() {
     router.push('/admin/login')
   }
 
+  const linkStyle = (active: boolean): React.CSSProperties => ({
+    display: 'flex',
+    alignItems: 'center',
+    gap: '0.75rem',
+    padding: '0.625rem 0.75rem',
+    borderRadius: '0.5rem',
+    fontSize: '13px',
+    fontWeight: 500,
+    textDecoration: 'none',
+    transition: 'all 0.15s ease',
+    background: active ? 'rgba(255,255,255,0.07)' : 'transparent',
+    color: active ? '#C07B2A' : 'rgba(255,255,255,0.45)',
+  })
+
   const nav = (
-    <div className="flex h-full flex-col">
+    <div style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
       {/* Branding */}
-      <div className="px-5 pb-6 pt-7">
-        <span className="mb-0.5 block text-[9px] font-semibold uppercase tracking-[0.3em] text-amber">
+      <div style={{ padding: '1.5rem 1.25rem 1.25rem' }}>
+        <span style={{ display: 'block', fontSize: '9px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.3em', color: '#C07B2A', marginBottom: '0.125rem' }}>
           The Desk
         </span>
-        <span className="font-display block text-base font-extrabold tracking-tight text-white">
+        <span className="font-display" style={{ display: 'block', fontSize: '15px', fontWeight: 800, color: '#fff' }}>
           Soapbox Admin
         </span>
       </div>
 
       {/* Divider */}
-      <div className="mx-4 mb-2 border-t border-white/[0.06]" />
+      <div style={{ margin: '0 1rem 0.5rem', borderTop: '1px solid rgba(255,255,255,0.06)' }} />
 
       {/* Navigation */}
-      <nav className="flex-1 space-y-0.5 px-3">
+      <nav style={{ flex: 1, padding: '0 0.75rem', display: 'flex', flexDirection: 'column', gap: '2px' }}>
         {navItems.map(({ href, label, icon: Icon }) => {
           const active = pathname === href || (href !== '/admin' && pathname.startsWith(href))
           return (
@@ -56,14 +69,9 @@ export function AdminSidebar() {
               key={href}
               href={href}
               onClick={() => setOpen(false)}
-              className={cn(
-                'flex items-center gap-3 rounded-lg px-3 py-2.5 text-[13px] font-medium transition-colors',
-                active
-                  ? 'bg-white/[0.07] text-amber'
-                  : 'text-white/50 hover:bg-white/[0.04] hover:text-white/80',
-              )}
+              style={linkStyle(active)}
             >
-              <Icon className="h-[18px] w-[18px]" strokeWidth={1.8} />
+              <Icon style={{ width: 18, height: 18 }} strokeWidth={1.8} />
               {label}
             </Link>
           )
@@ -71,20 +79,34 @@ export function AdminSidebar() {
       </nav>
 
       {/* Footer */}
-      <div className="space-y-0.5 border-t border-white/[0.06] px-3 py-3">
+      <div style={{ borderTop: '1px solid rgba(255,255,255,0.06)', padding: '0.75rem' }}>
         <Link
           href="/"
           target="_blank"
-          className="flex items-center gap-3 rounded-lg px-3 py-2.5 text-[13px] font-medium text-white/30 transition-colors hover:bg-white/[0.04] hover:text-white/60"
+          style={{ ...linkStyle(false), color: 'rgba(255,255,255,0.25)' }}
         >
-          <ExternalLink className="h-[18px] w-[18px]" strokeWidth={1.8} />
+          <ExternalLink style={{ width: 18, height: 18 }} strokeWidth={1.8} />
           View Site
         </Link>
         <button
           onClick={handleSignOut}
-          className="flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-[13px] font-medium text-white/30 transition-colors hover:bg-white/[0.04] hover:text-red-400"
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: '0.75rem',
+            width: '100%',
+            padding: '0.625rem 0.75rem',
+            borderRadius: '0.5rem',
+            fontSize: '13px',
+            fontWeight: 500,
+            background: 'transparent',
+            border: 'none',
+            color: 'rgba(255,255,255,0.25)',
+            cursor: 'pointer',
+            transition: 'color 0.15s',
+          }}
         >
-          <LogOut className="h-[18px] w-[18px]" strokeWidth={1.8} />
+          <LogOut style={{ width: 18, height: 18 }} strokeWidth={1.8} />
           Sign Out
         </button>
       </div>
@@ -94,17 +116,23 @@ export function AdminSidebar() {
   return (
     <>
       {/* Desktop sidebar */}
-      <aside className="hidden w-[220px] shrink-0 border-r border-white/[0.06] bg-[#161616] lg:block">
-        <div className="sticky top-0 h-screen">{nav}</div>
+      <aside
+        className="hidden lg:block"
+        style={{ width: '220px', flexShrink: 0, borderRight: '1px solid rgba(255,255,255,0.06)', background: '#161616' }}
+      >
+        <div style={{ position: 'sticky', top: 0, height: '100vh' }}>{nav}</div>
       </aside>
 
       {/* Mobile header */}
-      <div className="sticky top-0 z-30 flex items-center justify-between border-b border-white/[0.06] bg-[#161616] px-4 py-3 lg:hidden">
-        <span className="text-[9px] font-semibold uppercase tracking-[0.3em] text-amber">
+      <div
+        className="lg:hidden"
+        style={{ position: 'sticky', top: 0, zIndex: 30, display: 'flex', alignItems: 'center', justifyContent: 'space-between', borderBottom: '1px solid rgba(255,255,255,0.06)', background: '#161616', padding: '0.75rem 1rem' }}
+      >
+        <span style={{ fontSize: '9px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.3em', color: '#C07B2A' }}>
           The Desk
         </span>
-        <button onClick={() => setOpen(!open)} className="text-white/60">
-          {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+        <button onClick={() => setOpen(!open)} style={{ color: 'rgba(255,255,255,0.5)', background: 'none', border: 'none', cursor: 'pointer' }}>
+          {open ? <X style={{ width: 20, height: 20 }} /> : <Menu style={{ width: 20, height: 20 }} />}
         </button>
       </div>
 
@@ -112,13 +140,17 @@ export function AdminSidebar() {
       {open && (
         <>
           <div
-            className="fixed inset-0 z-40 bg-black/60 backdrop-blur-sm lg:hidden"
             onClick={() => setOpen(false)}
+            className="lg:hidden"
+            style={{ position: 'fixed', inset: 0, zIndex: 40, background: 'rgba(0,0,0,0.6)', backdropFilter: 'blur(4px)' }}
           />
-          <div className="fixed inset-y-0 left-0 z-50 w-[260px] bg-[#161616] lg:hidden">
-            <div className="flex items-center justify-end px-4 py-3">
-              <button onClick={() => setOpen(false)} className="text-white/60">
-                <X className="h-5 w-5" />
+          <div
+            className="lg:hidden"
+            style={{ position: 'fixed', top: 0, bottom: 0, left: 0, zIndex: 50, width: '260px', background: '#161616' }}
+          >
+            <div style={{ display: 'flex', justifyContent: 'flex-end', padding: '0.75rem 1rem' }}>
+              <button onClick={() => setOpen(false)} style={{ color: 'rgba(255,255,255,0.5)', background: 'none', border: 'none', cursor: 'pointer' }}>
+                <X style={{ width: 20, height: 20 }} />
               </button>
             </div>
             {nav}
