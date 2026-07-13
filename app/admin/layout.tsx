@@ -12,10 +12,12 @@ export default async function AdminLayout({ children }: { children: React.ReactN
     data: { user },
   } = await supabase.auth.getUser()
 
+  // No user — render children without sidebar (login page needs this)
   if (!user) {
-    return <div className="admin-shell" style={{ display: 'block' }}>{children}</div>
+    return <>{children}</>
   }
 
+  // Check role
   const { data: profile } = await supabase
     .from('profiles')
     .select('role')

@@ -37,7 +37,7 @@ export function AdminLoginForm() {
     const supabase = createClient()
     const { error: otpError } = await supabase.auth.signInWithOtp({
       email,
-      options: { emailRedirectTo: `${window.location.origin}/admin` },
+      options: { emailRedirectTo: `${window.location.origin}/auth/callback?next=/admin` },
     })
 
     if (otpError) {

@@ -3,7 +3,18 @@ import { AdminLoginForm } from './AdminLoginForm'
 
 export const metadata = { title: 'Sign In | The Desk' }
 
-export default function AdminLoginPage() {
+export default async function AdminLoginPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ error?: string }>
+}) {
+  const params = await searchParams
+  const errorMessages: Record<string, string> = {
+    unauthorized: 'Your account does not have admin access.',
+    auth_failed: 'Authentication failed. Please try again.',
+  }
+  const errorMsg = params.error ? errorMessages[params.error] : null
+
   return (
     <div style={{ display: 'flex', minHeight: '100vh', alignItems: 'center', justifyContent: 'center', padding: 16, background: '#f5f5f4' }}>
       <div style={{ width: '100%', maxWidth: 400 }}>
@@ -18,6 +29,13 @@ export default function AdminLoginPage() {
             Sign in to The Desk to manage your site.
           </p>
         </div>
+
+        {errorMsg && (
+          <div style={{ padding: '12px 16px', borderRadius: 10, background: '#fef2f2', border: '1px solid #fecaca', marginBottom: 16, textAlign: 'center' }}>
+            <p style={{ fontSize: 13, color: '#dc2626' }}>{errorMsg}</p>
+          </div>
+        )}
+
         <div className="admin-card" style={{ padding: 32 }}>
           <AdminLoginForm />
         </div>
