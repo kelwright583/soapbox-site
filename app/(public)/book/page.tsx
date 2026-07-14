@@ -122,7 +122,7 @@ export default function BookPage() {
       </section>
 
       {/* Synopsis */}
-      <section className="py-24">
+      <section className="py-28">
         <div className="mx-auto max-w-[720px] px-6">
           <span className="scroll-reveal mb-3 block text-[10px] font-semibold uppercase tracking-[0.26em] text-amber">
             What this is
@@ -137,30 +137,30 @@ export default function BookPage() {
             className="scroll-reveal space-y-5 text-[15px] leading-[1.85] text-muted"
             style={{ '--reveal-delay': '160ms' } as React.CSSProperties}
           >
-            <p>It starts at sixteen.</p>
-            <p>Pregnant. Unplanned. In possession of approximately zero useful skills — including, apparently, the ability to correctly deploy a condom.</p>
-            <p>It ends at 30(ish).</p>
+            <p className="amber-left-accent">It starts at sixteen.</p>
+            <p>Pregnant. Unplanned. In possession of approximately zero useful skills &mdash; including, apparently, the ability to correctly deploy a condom.</p>
+            <p className="amber-left-accent">It ends at 30(ish).</p>
             <p>20(ish) kilograms heavier. Two relationships worse for wear. One child raised mostly well (the jury&apos;s still out on the dental hygiene). A genuinely alarming amount of self-knowledge that was predominantly the byproduct of having made so many mistakes, and choosing to fok voort regardless.</p>
-            <p>It is also, and perhaps more than anything else, a book about a child. A forgiving, gracious human, who arrived before I was ready, grew up while I was still figuring out how to, and somehow — through all of it — managed to teach me more about grace, grit, and getting back up than I ever managed to teach myself.</p>
-            <p>This is not a book about having it figured out. It is a book about what happens when you don&apos;t — and about the very specific kind of person who, in the absence of an actual soapbox, decides to write it all down anyway.</p>
+            <p>It is also, and perhaps more than anything else, a book about a child. A forgiving, gracious human, who arrived before I was ready, grew up while I was still figuring out how to, and somehow &mdash; through all of it &mdash; managed to teach me more about grace, grit, and getting back up than I ever managed to teach myself.</p>
+            <p className="font-display text-base font-bold text-ink">This is not a book about having it figured out. It is a book about what happens when you don&apos;t &mdash; and about the very specific kind of person who, in the absence of an actual soapbox, decides to write it all down anyway.</p>
           </div>
         </div>
       </section>
 
       {/* Dedication */}
-      <section className="border-y border-border bg-grey py-20">
+      <section className="relative overflow-hidden bg-ink py-24">
         <div className="mx-auto max-w-[600px] px-6 text-center">
           <span className="scroll-reveal mb-3 block text-[10px] font-semibold uppercase tracking-[0.26em] text-amber">
             Dedication
           </span>
           <p
-            className="scroll-reveal font-display mb-8 text-xl font-bold text-ink"
+            className="scroll-reveal font-display mb-10 text-xl font-bold text-white"
             style={{ '--reveal-delay': '80ms' } as React.CSSProperties}
           >
             For my daughter
           </p>
           <div
-            className="scroll-reveal font-display space-y-5 text-base italic leading-relaxed text-muted"
+            className="scroll-reveal pullquote-mark pt-6 font-display space-y-6 text-base italic leading-relaxed text-white/70"
             style={{ '--reveal-delay': '160ms' } as React.CSSProperties}
           >
             <p>
@@ -174,7 +174,7 @@ export default function BookPage() {
               You turned my brokenness into bravery<br />
               You taught me grace simply by being gracious<br />
               And without ever raising your voice<br />
-              You gave me mine
+              <span className="text-amber">You gave me mine</span>
             </p>
             <p>
               You changed my story<br />
@@ -183,55 +183,61 @@ export default function BookPage() {
               Into someone worthy of yours
             </p>
           </div>
+          <div className="mx-auto mt-10 h-[3px] w-16 bg-amber" />
         </div>
       </section>
 
       {/* Chapters */}
-      <section className="py-24">
+      <section className="py-28">
         <div className="mx-auto max-w-[1140px] px-6">
-          <span className="scroll-reveal mb-3 block text-[10px] font-semibold uppercase tracking-[0.26em] text-amber">
-            The Structure
-          </span>
-          <h2
-            className="scroll-reveal font-display mb-3 text-[clamp(1.8rem,3vw,2.4rem)] font-extrabold text-ink"
-            style={{ '--reveal-delay': '80ms' } as React.CSSProperties}
-          >
-            How it&apos;s organised. More or less.
-          </h2>
-          <p
-            className="scroll-reveal mb-14 max-w-lg text-[15px] leading-[1.8] text-muted"
-            style={{ '--reveal-delay': '160ms' } as React.CSSProperties}
-          >
-            Each section has a name. Each name is, technically, a category of disaster. Together they
-            form something that looks suspiciously like a life well examined.
-          </p>
+          <div className="mb-16">
+            <span className="scroll-reveal mb-3 block text-[10px] font-semibold uppercase tracking-[0.26em] text-amber">
+              The Structure
+            </span>
+            <h2
+              className="scroll-reveal font-display mb-3 text-[clamp(1.8rem,3vw,2.4rem)] font-extrabold text-ink"
+              style={{ '--reveal-delay': '80ms' } as React.CSSProperties}
+            >
+              How it&apos;s organised. More or less.
+            </h2>
+            <p
+              className="scroll-reveal max-w-lg text-[15px] leading-[1.8] text-muted"
+              style={{ '--reveal-delay': '160ms' } as React.CSSProperties}
+            >
+              Each section has a name. Each name is, technically, a category of disaster. Together they
+              form something that looks suspiciously like a life well examined.
+            </p>
+          </div>
 
-          <div className="space-y-0">
+          <div className="space-y-6">
             {chapters.map((ch, i) => (
               <div
                 key={ch.numeral}
-                className="scroll-reveal grid items-start gap-8 border-t border-border py-10 md:grid-cols-[60px_1fr_180px]"
-                style={{ '--reveal-delay': `${i * 60}ms` } as React.CSSProperties}
+                className={`scroll-reveal chapter-card overflow-hidden ${i % 2 === 0 ? 'bg-grey' : 'bg-white border border-border'}`}
+                style={{ '--reveal-delay': `${i * 80}ms`, borderRadius: 2 } as React.CSSProperties}
               >
-                <span className="font-display text-3xl font-extrabold text-amber/25">
-                  {ch.numeral}
-                </span>
-                <div>
-                  <h3 className="font-display mb-3 text-lg font-bold text-ink">{ch.name}</h3>
-                  <p className="text-[15px] leading-[1.8] text-muted">{ch.subtitle}</p>
-                  <blockquote className="font-display mt-4 border-l-2 border-amber/30 pl-4 text-sm italic text-muted">
-                    {ch.quote}
-                  </blockquote>
-                </div>
-                <div className="hidden md:block">
-                  <Image
-                    src={`/images/${ch.image}`}
-                    alt=""
-                    width={180}
-                    height={180}
-                    className="transition-transform duration-300 hover:scale-105"
-                    style={{ borderRadius: 2 }}
-                  />
+                <div className="grid items-center gap-0 md:grid-cols-[220px_1fr]">
+                  <div className="relative aspect-square overflow-hidden md:aspect-auto md:h-full">
+                    <Image
+                      src={`/images/${ch.image}`}
+                      alt=""
+                      fill
+                      className="object-cover"
+                      sizes="220px"
+                    />
+                    <div className="absolute inset-0 flex items-center justify-center bg-ink/30">
+                      <span className="font-display text-5xl font-extrabold text-white/60">
+                        {ch.numeral}
+                      </span>
+                    </div>
+                  </div>
+                  <div className="p-8 md:p-10">
+                    <h3 className="font-display mb-3 text-[clamp(1rem,1.5vw,1.25rem)] font-bold text-ink">{ch.name}</h3>
+                    <p className="text-[15px] leading-[1.8] text-muted">{ch.subtitle}</p>
+                    <blockquote className="font-display mt-5 border-l-2 border-amber pl-4 text-sm italic text-ink/60">
+                      {ch.quote}
+                    </blockquote>
+                  </div>
                 </div>
               </div>
             ))}
@@ -240,32 +246,34 @@ export default function BookPage() {
       </section>
 
       {/* Collage */}
-      <section className="bg-grey py-16">
-        <div className="scroll-reveal-scale mx-auto max-w-[1000px] px-6">
-          <Image
-            src="/images/MockupCollage.png"
-            alt="Book mockup collage"
-            width={1000}
-            height={600}
-            style={{ borderRadius: 2 }}
-          />
+      <section className="bg-grey py-20">
+        <div className="mx-auto max-w-[1000px] px-6">
+          <div className="scroll-reveal-scale overflow-hidden shadow-lg" style={{ borderRadius: 2 }}>
+            <Image
+              src="/images/MockupCollage.png"
+              alt="Book mockup collage"
+              width={1000}
+              height={600}
+              className="transition-transform duration-700 hover:scale-[1.02]"
+            />
+          </div>
         </div>
       </section>
 
       {/* Excerpt */}
-      <section className="py-24">
+      <section className="bg-grey py-28">
         <div className="mx-auto max-w-[720px] px-6">
           <span className="scroll-reveal mb-3 block text-[10px] font-semibold uppercase tracking-[0.26em] text-amber">
             From the Introduction
           </span>
           <h2
-            className="scroll-reveal font-display mb-8 text-[clamp(1.6rem,2.5vw,2rem)] font-extrabold text-ink"
+            className="scroll-reveal font-display mb-10 text-[clamp(1.6rem,2.5vw,2rem)] font-extrabold text-ink"
             style={{ '--reveal-delay': '80ms' } as React.CSSProperties}
           >
             A taste of what you&apos;re in for.
           </h2>
           <div
-            className="scroll-reveal space-y-5 text-[15px] leading-[1.85] text-muted"
+            className="scroll-reveal amber-left-accent space-y-5 text-[15px] leading-[1.85] text-muted"
             style={{ '--reveal-delay': '160ms' } as React.CSSProperties}
           >
             <p>
@@ -275,12 +283,17 @@ export default function BookPage() {
             </p>
             <p>
               These things have been accumulating since I was squeezed out of utero. And items of
-              specific importance — such as getting myself up the pole at 16, weight gain, navigating
+              specific importance &mdash; such as getting myself up the pole at 16, weight gain, navigating
               single parenting, weight gain, dating, weight gain, fluctuating emotions, weight gain,
-              bad decisions, oh, and weight gain — are but a few of these topics.
+              bad decisions, oh, and weight gain &mdash; are but a few of these topics.
             </p>
-            <p className="italic">There is considerably more where that came from.</p>
           </div>
+          <p
+            className="scroll-reveal font-display mt-8 text-base font-bold italic text-amber"
+            style={{ '--reveal-delay': '200ms' } as React.CSSProperties}
+          >
+            There is considerably more where that came from.
+          </p>
           <div className="scroll-reveal mt-10" style={{ '--reveal-delay': '240ms' } as React.CSSProperties}>
             <NotifyModal />
           </div>

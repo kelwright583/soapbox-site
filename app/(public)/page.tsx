@@ -28,16 +28,19 @@ export default async function HomePage() {
       <Hero />
 
       {/* Brownie strip quote */}
-      <section className="bg-ink py-20">
+      <section className="relative overflow-hidden bg-ink py-24">
         <div className="mx-auto max-w-[800px] px-6 text-center">
-          <blockquote className="scroll-reveal font-display text-[clamp(1.3rem,2.5vw,1.8rem)] font-bold italic leading-[1.5] text-white">
-            &ldquo;I wasn&apos;t a failure. I was fabulous. Or I was failing fabulously.
-            <br />
-            <span className="text-amber">
-              Turns out those two things are not mutually exclusive.
-            </span>
-            &rdquo;
-          </blockquote>
+          <div className="scroll-reveal pullquote-mark pt-8">
+            <blockquote className="font-display text-[clamp(1.3rem,2.5vw,1.8rem)] font-bold italic leading-[1.55] text-white">
+              &ldquo;I wasn&apos;t a failure. I was fabulous. Or I was failing fabulously.
+              <br />
+              <span className="text-amber">
+                Turns out those two things are not mutually exclusive.
+              </span>
+              &rdquo;
+            </blockquote>
+            <div className="mx-auto mt-8 h-[3px] w-16 bg-amber" />
+          </div>
           <div className="scroll-reveal mt-8" style={{ '--reveal-delay': '150ms' } as React.CSSProperties}>
             <Link
               href="/about"
@@ -50,7 +53,7 @@ export default async function HomePage() {
       </section>
 
       {/* Book journey */}
-      <section className="py-24">
+      <section className="py-28">
         <div className="mx-auto max-w-[1140px] px-6">
           <div className="grid items-center gap-16 lg:grid-cols-2">
             <div>
@@ -66,7 +69,7 @@ export default async function HomePage() {
                 It starts at sixteen. It takes a while from there.
               </h2>
               <div
-                className="scroll-reveal mt-8 space-y-5 text-[15px] leading-[1.85] text-muted"
+                className="scroll-reveal amber-left-accent mt-8 space-y-5 text-[15px] leading-[1.85] text-muted"
                 style={{ '--reveal-delay': '160ms' } as React.CSSProperties}
               >
                 <p>
@@ -76,12 +79,25 @@ export default async function HomePage() {
                 </p>
                 <p>This is the book that came out of all of that.</p>
                 <p>
+                  Not a memoir about rock bottom and redemption. Not a lesson. Not a how-to or a
+                  didn&apos;t-you-know or a here&apos;s-what-I-learned-so-you-don&apos;t-have-to.
+                </p>
+                <p>
                   Just an honest account of what it looks like when life doesn&apos;t follow the
                   order it was supposed to &mdash; and you have to grow up in public, out of sequence,
                   with everyone watching, and no real idea what you&apos;re doing.
                 </p>
-                <p>Told with enough distance to be funny about it.</p>
-                <p>And enough honesty to know it wasn&apos;t, at the time.</p>
+              </div>
+              <div
+                className="scroll-reveal mt-6 space-y-1"
+                style={{ '--reveal-delay': '200ms' } as React.CSSProperties}
+              >
+                <p className="font-display text-[15px] font-bold text-ink">
+                  Told with enough distance to be funny about it.
+                </p>
+                <p className="font-display text-[15px] font-bold text-muted">
+                  And enough honesty to know it wasn&apos;t, at the time.
+                </p>
               </div>
               <div className="scroll-reveal mt-8" style={{ '--reveal-delay': '240ms' } as React.CSSProperties}>
                 <Link

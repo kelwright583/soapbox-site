@@ -6,21 +6,44 @@ export const metadata: Metadata = {
   description: 'Say hello. I read everything.',
 }
 
+const groundRules = [
+  {
+    num: '01',
+    text: 'No unsolicited anatomy. (Unsolicited opinions are my entire brand, so I appreciate the irony of that rule \u2014 but what you\u2019re packing is your business, not mine.)',
+  },
+  {
+    num: '02',
+    text: 'Be kind, or be quiet. Cruelty is boring and I have a delete key.',
+  },
+  {
+    num: '03',
+    text: 'Profanity is allowed. So are strong opinions. Both are taken seriously here.',
+  },
+  {
+    num: '04',
+    text: 'If you\u2019ve got something to say, say it directly. I\u2019m not easily offended \u2014 I\u2019ve written about things considerably more embarrassing than whatever you\u2019re holding back.',
+  },
+  {
+    num: '05',
+    text: 'Take what resonates. Leave what doesn\u2019t exactly where you found it.',
+  },
+]
+
 export default function CorrespondencePage() {
   return (
     <>
       {/* Hero */}
-      <section className="border-b border-border bg-grey" style={{ paddingTop: 64 }}>
-        <div className="mx-auto max-w-[1140px] px-6 py-20">
+      <section className="relative bg-ink" style={{ paddingTop: 64 }}>
+        <div className="mx-auto max-w-[1140px] px-6 py-24">
           <span className="hero-animate-kicker mb-3 block text-[10px] font-semibold uppercase tracking-[0.26em] text-amber">
             Correspondence
           </span>
-          <h1 className="hero-animate-headline font-display text-[clamp(2.2rem,4vw,3.4rem)] font-extrabold leading-[1.08] tracking-tight text-ink">
+          <h1 className="hero-animate-headline font-display text-[clamp(2.2rem,4vw,3.4rem)] font-extrabold leading-[1.08] tracking-tight text-white">
             Say hello.
             <br />
             <span className="text-amber italic">I read everything.</span>
           </h1>
-          <p className="hero-animate-body mt-5 max-w-lg text-[15px] leading-[1.8] text-muted">
+          <p className="hero-animate-body mt-5 max-w-lg text-[15px] leading-[1.8] text-white/60">
             I don&apos;t always reply immediately. I have a life, a child, and strong opinions about
             avocado pricing. But I read everything. Eventually.
           </p>
@@ -28,17 +51,24 @@ export default function CorrespondencePage() {
       </section>
 
       {/* Contact body */}
-      <section className="py-24">
+      <section className="py-28">
         <div className="mx-auto max-w-[1140px] px-6">
-          <div className="grid gap-16 md:grid-cols-2">
+          <div className="grid gap-20 md:grid-cols-2">
             {/* Contact form */}
             <div>
-              <span className="scroll-reveal mb-5 block text-[10px] font-semibold uppercase tracking-[0.26em] text-amber">
+              <span className="scroll-reveal mb-3 block text-[10px] font-semibold uppercase tracking-[0.26em] text-amber">
                 Send a letter
               </span>
+              <p
+                className="scroll-reveal mb-8 text-[15px] leading-[1.8] text-muted"
+                style={{ '--reveal-delay': '60ms' } as React.CSSProperties}
+              >
+                Say what you came to say. There&apos;s no wrong answer, unless
+                the answer is unsolicited anatomy.
+              </p>
               <form
                 className="scroll-reveal space-y-5"
-                style={{ '--reveal-delay': '80ms' } as React.CSSProperties}
+                style={{ '--reveal-delay': '120ms' } as React.CSSProperties}
                 action="https://formspree.io/f/REPLACE_WITH_FORMSPREE_ID"
                 method="POST"
               >
@@ -73,54 +103,67 @@ export default function CorrespondencePage() {
                   Send it
                 </button>
               </form>
-            </div>
 
-            {/* Direct contact + house rules */}
-            <div>
-              <span className="scroll-reveal mb-5 block text-[10px] font-semibold uppercase tracking-[0.26em] text-muted">
-                Or, more directly
-              </span>
-              <div
-                className="scroll-reveal space-y-4"
-                style={{ '--reveal-delay': '80ms' } as React.CSSProperties}
-              >
-                <div className="flex items-center gap-4">
-                  <span className="text-[10px] font-semibold uppercase tracking-[0.18em] text-muted">General</span>
-                  <a href="mailto:hello@intheabsence.co.za" className="link-hover text-sm font-medium text-ink">
-                    hello@intheabsence.co.za
-                  </a>
-                </div>
-                <div className="flex items-center gap-4">
-                  <span className="text-[10px] font-semibold uppercase tracking-[0.18em] text-muted">Book enquiries</span>
-                  <a href="mailto:purchases@intheabsence.co.za" className="link-hover text-sm font-medium text-ink">
-                    purchases@intheabsence.co.za
-                  </a>
+              {/* Direct contact */}
+              <div className="mt-14">
+                <span className="scroll-reveal mb-5 block text-[10px] font-semibold uppercase tracking-[0.26em] text-muted">
+                  Or, more directly
+                </span>
+                <div
+                  className="scroll-reveal space-y-4"
+                  style={{ '--reveal-delay': '80ms' } as React.CSSProperties}
+                >
+                  <div className="flex items-center gap-4">
+                    <span className="text-[10px] font-semibold uppercase tracking-[0.18em] text-muted">General</span>
+                    <a href="mailto:hello@intheabsence.co.za" className="link-hover text-sm font-medium text-ink">
+                      hello@intheabsence.co.za
+                    </a>
+                  </div>
+                  <div className="flex items-center gap-4">
+                    <span className="text-[10px] font-semibold uppercase tracking-[0.18em] text-muted">Book enquiries</span>
+                    <a href="mailto:purchases@intheabsence.co.za" className="link-hover text-sm font-medium text-ink">
+                      purchases@intheabsence.co.za
+                    </a>
+                  </div>
                 </div>
               </div>
+            </div>
 
-              <div className="mt-14">
-                <span
-                  className="scroll-reveal mb-5 block text-[10px] font-semibold uppercase tracking-[0.26em] text-amber"
-                  style={{ '--reveal-delay': '160ms' } as React.CSSProperties}
-                >
-                  Ground rules
-                </span>
-                <ol
-                  className="scroll-reveal list-decimal space-y-4 pl-5 text-[15px] leading-[1.8] text-muted"
-                  style={{ '--reveal-delay': '240ms' } as React.CSSProperties}
-                >
-                  <li>
-                    No unsolicited anatomy. (Unsolicited opinions are my entire brand, so I appreciate
-                    the irony of that rule — but what you&apos;re packing is your business, not mine.)
-                  </li>
-                  <li>Be kind, or be quiet. Cruelty is boring and I have a delete key.</li>
-                  <li>Profanity is allowed. So are strong opinions. Both are taken seriously here.</li>
-                  <li>
-                    If you&apos;ve got something to say, say it directly. I&apos;m not easily offended — I&apos;ve
-                    written about things considerably more embarrassing than whatever you&apos;re holding back.
-                  </li>
-                  <li>Take what resonates. Leave what doesn&apos;t exactly where you found it.</li>
-                </ol>
+            {/* Ground rules */}
+            <div>
+              <span
+                className="scroll-reveal mb-3 block text-[10px] font-semibold uppercase tracking-[0.26em] text-amber"
+              >
+                Ground rules
+              </span>
+              <h2
+                className="scroll-reveal font-display mb-10 text-[clamp(1.4rem,2vw,1.8rem)] font-extrabold text-ink"
+                style={{ '--reveal-delay': '80ms' } as React.CSSProperties}
+              >
+                Before you say hello.
+              </h2>
+              <div className="space-y-8">
+                {groundRules.map((rule, i) => (
+                  <div
+                    key={rule.num}
+                    className="scroll-reveal ground-rule"
+                    style={{ '--reveal-delay': `${(i + 2) * 80}ms` } as React.CSSProperties}
+                  >
+                    <span className="ground-rule-num">{rule.num}</span>
+                    <p className="text-[15px] leading-[1.8] text-muted">{rule.text}</p>
+                  </div>
+                ))}
+              </div>
+
+              {/* Quote accent */}
+              <div
+                className="scroll-reveal mt-14 border-t border-border pt-10"
+                style={{ '--reveal-delay': '600ms' } as React.CSSProperties}
+              >
+                <blockquote className="font-display amber-left-accent text-base font-bold italic text-ink/60">
+                  &ldquo;I write because someone needs to say the thing out loud. The uncomfortable
+                  thing. The embarrassing thing.&rdquo;
+                </blockquote>
               </div>
             </div>
           </div>
