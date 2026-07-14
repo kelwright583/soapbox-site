@@ -66,7 +66,7 @@ export default function BookPage() {
       {/* Book Hero */}
       <section className="relative bg-ink" style={{ paddingTop: 64 }}>
         <div className="mx-auto grid max-w-[1140px] items-center gap-0 lg:grid-cols-2">
-          <div className="hero-animate-image flex items-center justify-center px-6 py-16 lg:py-20 lg:px-12">
+          <div className="hero-animate-image flex items-center justify-center px-6 py-16 lg:h-[620px] lg:py-0 lg:px-12">
             <Image
               src="/images/BookCover_Real.png"
               alt="In the Absence of a Soapbox - book cover"
