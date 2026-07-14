@@ -1,8 +1,11 @@
 'use client'
 
 import { useEffect } from 'react'
+import { usePathname } from 'next/navigation'
 
 export function ScrollRevealObserver() {
+  const pathname = usePathname()
+
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -16,12 +19,20 @@ export function ScrollRevealObserver() {
       { threshold: 0.08 },
     )
 
-    document.querySelectorAll('.scroll-reveal, .scroll-reveal-left, .scroll-reveal-scale').forEach((el) =>
-      observer.observe(el),
-    )
+    // Small delay to ensure DOM is settled after navigation
+    const timeout = setTimeout(() => {
+      document.querySelectorAll('.scroll-reveal, .scroll-reveal-left, .scroll-reveal-scale').forEach((el) => {
+        if (!el.classList.contains('revealed')) {
+          observer.observe(el)
+        }
+      })
+    }, 50)
 
-    return () => observer.disconnect()
-  }, [])
+    return () => {
+      clearTimeout(timeout)
+      observer.disconnect()
+    }
+  }, [pathname])
 
   return null
 }
