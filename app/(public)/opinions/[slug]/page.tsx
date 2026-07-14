@@ -49,66 +49,69 @@ export default async function OpinionDetailPage({ params }: Props) {
   if (!post) notFound()
 
   return (
-    <article className="mx-auto max-w-[780px] px-6 pb-20 pt-32">
-      <Link
-        href="/opinions"
-        className="mb-8 inline-block text-xs font-semibold uppercase tracking-[0.15em] text-muted transition-colors hover:text-ink"
-      >
-        &larr; Unsolicited Opinions
-      </Link>
-
-      {post.cover_image && (
-        <div className="relative mb-10 aspect-[16/9] overflow-hidden rounded-lg">
-          <Image
-            src={`${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/media/${post.cover_image}`}
-            alt={post.title}
-            fill
-            priority
-            className="object-cover"
-            sizes="(max-width: 780px) 100vw, 780px"
-          />
-        </div>
-      )}
-
-      <span className="mb-3 block text-[10px] font-semibold uppercase tracking-[0.2em] text-amber">
-        Unsolicited Opinion
-      </span>
-      <h1 className="font-display mb-4 text-3xl font-extrabold leading-tight text-ink md:text-4xl">
-        {post.title}
-      </h1>
-      {post.excerpt && (
-        <p className="mb-6 text-base leading-relaxed text-muted">{post.excerpt}</p>
-      )}
-      <p className="mb-10 text-[10px] font-semibold uppercase tracking-[0.15em] text-muted">
-        {formatDate(post.published_at)}
-      </p>
-
-      {post.tags.length > 0 && (
-        <div className="mb-8 flex flex-wrap gap-2">
-          {post.tags.map((tag) => (
-            <span
-              key={tag}
-              className="rounded-full bg-grey px-3 py-1 text-[10px] font-medium uppercase tracking-wider text-muted"
-            >
-              {tag}
-            </span>
-          ))}
-        </div>
-      )}
-
-      {post.body && (
-        <div className="prose-soapbox text-sm leading-[1.85] text-muted">
-          {renderBody(post.body)}
-        </div>
-      )}
-
-      <div className="mt-16 border-t border-border pt-8 text-center">
+    <article style={{ paddingTop: 64 }}>
+      <div className="mx-auto max-w-[780px] px-6 pb-24 pt-12">
         <Link
           href="/opinions"
-          className="text-sm font-semibold text-amber hover:text-amber-light"
+          className="link-hover mb-10 inline-block text-[10px] font-semibold uppercase tracking-[0.18em] text-muted"
         >
-          &larr; Back to all opinions
+          &larr; Unsolicited Opinions
         </Link>
+
+        {post.cover_image && (
+          <div className="relative mb-12 aspect-[16/9] overflow-hidden" style={{ borderRadius: 2 }}>
+            <Image
+              src={`${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/media/${post.cover_image}`}
+              alt={post.title}
+              fill
+              priority
+              className="object-cover"
+              sizes="(max-width: 780px) 100vw, 780px"
+            />
+          </div>
+        )}
+
+        <span className="mb-3 block text-[10px] font-semibold uppercase tracking-[0.26em] text-amber">
+          Unsolicited Opinion
+        </span>
+        <h1 className="font-display mb-5 text-[clamp(1.8rem,3.5vw,2.6rem)] font-extrabold leading-[1.12] text-ink">
+          {post.title}
+        </h1>
+        {post.excerpt && (
+          <p className="mb-6 max-w-xl text-[15px] leading-[1.8] text-muted">{post.excerpt}</p>
+        )}
+        <p className="mb-12 text-[10px] font-semibold uppercase tracking-[0.18em] text-muted">
+          {formatDate(post.published_at)}
+        </p>
+
+        {post.tags.length > 0 && (
+          <div className="mb-10 flex flex-wrap gap-2">
+            {post.tags.map((tag) => (
+              <span
+                key={tag}
+                className="border border-ink/6 px-2.5 py-0.5 text-[10px] font-medium uppercase tracking-wider text-muted"
+                style={{ borderRadius: 2 }}
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
+        )}
+
+        {post.body && (
+          <div className="prose-soapbox text-[15px] leading-[1.85] text-muted">
+            {renderBody(post.body)}
+          </div>
+        )}
+
+        <div className="mt-20 border-t border-border pt-10 text-center">
+          <Link
+            href="/opinions"
+            className="link-hover text-sm font-semibold text-amber"
+          >
+            &larr; Back to all opinions
+          </Link>
+        </div>
       </div>
     </article>
   )

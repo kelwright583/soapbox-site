@@ -24,9 +24,9 @@ export default function AboutPage() {
   return (
     <>
       {/* Hero */}
-      <section className="bg-ink pt-24">
+      <section className="relative bg-ink" style={{ paddingTop: 64 }}>
         <div className="mx-auto grid max-w-[1140px] items-center gap-0 lg:grid-cols-2">
-          <div className="relative aspect-[3/4] lg:aspect-auto lg:h-[600px]">
+          <div className="hero-animate-image relative aspect-[3/4] overflow-hidden lg:aspect-auto lg:h-[620px]">
             <Image
               src="/images/AuthorPicture.jpeg"
               alt="Kel Wright"
@@ -35,36 +35,39 @@ export default function AboutPage() {
               className="object-cover"
               sizes="(max-width: 1024px) 100vw, 50vw"
             />
+            <div className="absolute inset-0 bg-gradient-to-t from-ink/40 via-transparent to-transparent lg:bg-gradient-to-l lg:from-ink/30 lg:via-transparent lg:to-transparent" />
           </div>
-          <div className="px-6 py-12 lg:pl-12 lg:pr-6">
-            <span className="mb-2 block text-[10px] font-semibold uppercase tracking-[0.2em] text-amber">
+          <div className="px-6 py-16 lg:py-20 lg:pl-14 lg:pr-6">
+            <span className="hero-animate-kicker mb-3 block text-[10px] font-semibold uppercase tracking-[0.26em] text-amber">
               The author
             </span>
-            <h1 className="font-display text-[clamp(2rem,3.5vw,3rem)] font-extrabold leading-[1.1] text-white">
+            <h1 className="hero-animate-headline font-display text-[clamp(2rem,3.5vw,3rem)] font-extrabold leading-[1.1] text-white">
               She&apos;s Thirty-Something.
               <br />
               She has a lot
               <br />
               <span className="text-amber italic">to say about it.</span>
             </h1>
-            <p className="mt-3 text-sm text-white/60">
+            <p className="hero-animate-body mt-4 text-[15px] leading-[1.8] text-white/60">
               And she&apos;s been collecting material since she was 16.
             </p>
-            <p className="mt-4 text-sm leading-relaxed text-white/80">
+            <p className="hero-animate-body mt-5 text-[15px] leading-[1.8] text-white/80">
               Kel Wright is a writer, a mother, and the holder of a very prestigious,
               ultra-important, super-adventurous, not-boring-at-all position at an insurance
               company. She has been collecting material since she was sixteen.
             </p>
-            <div className="mt-8 flex flex-wrap gap-3">
+            <div className="hero-animate-ctas mt-10 flex flex-wrap gap-4">
               <Link
                 href="/book"
-                className="rounded-full border border-white/30 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-white hover:text-ink"
+                className="btn-lift inline-block border-2 border-white/30 px-7 py-3.5 text-sm font-semibold text-white transition-all duration-200 hover:border-white hover:bg-white hover:text-ink"
+                style={{ borderRadius: 2 }}
               >
                 Read the Book
               </Link>
               <Link
                 href="/opinions"
-                className="rounded-full bg-amber px-6 py-3 text-sm font-semibold text-white hover:bg-amber-light"
+                className="btn-lift inline-block bg-amber px-7 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-amber-light"
+                style={{ borderRadius: 2 }}
               >
                 Read the Opinions
               </Link>
@@ -74,13 +77,23 @@ export default function AboutPage() {
       </section>
 
       {/* Bio */}
-      <section className="py-20">
+      <section className="py-24">
         <div className="mx-auto max-w-[720px] px-6">
-          <span className="mb-2 block text-[10px] font-semibold uppercase tracking-[0.2em] text-amber">
+          <span
+            className="scroll-reveal mb-3 block text-[10px] font-semibold uppercase tracking-[0.26em] text-amber"
+          >
             Who she actually is
           </span>
-          <h2 className="font-display mb-8 text-3xl font-bold text-ink">Not the polished version.</h2>
-          <div className="space-y-5 text-sm leading-[1.85] text-muted">
+          <h2
+            className="scroll-reveal font-display mb-10 text-[clamp(1.8rem,3vw,2.4rem)] font-extrabold text-ink"
+            style={{ '--reveal-delay': '80ms' } as React.CSSProperties}
+          >
+            Not the polished version.
+          </h2>
+          <div
+            className="scroll-reveal space-y-5 text-[15px] leading-[1.85] text-muted"
+            style={{ '--reveal-delay': '160ms' } as React.CSSProperties}
+          >
             <p>
               I am, first and most importantly, a mother. A teenage mother, as it happens, who spent a considerable number of years wearing &ldquo;single&rdquo; alongside it like it was part of the official job title. What I have come to understand, recently, slowly, and with the particular embarrassment of someone who can write about self-awareness at considerable length and still somehow be the last to apply it, is that I was never actually alone in it. I had people in my corner the whole time. I simply hadn&apos;t yet developed the good sense to notice, let alone be grateful. The book tells the story as it felt then. This is what I know now. Both are true.
             </p>
@@ -101,20 +114,29 @@ export default function AboutPage() {
       </section>
 
       {/* Timeline */}
-      <section className="border-t border-border bg-grey py-20">
+      <section className="border-t border-border bg-grey py-24">
         <div className="mx-auto max-w-[720px] px-6">
-          <span className="mb-2 block text-[10px] font-semibold uppercase tracking-[0.2em] text-amber">
+          <span className="scroll-reveal mb-3 block text-[10px] font-semibold uppercase tracking-[0.26em] text-amber">
             The short version
           </span>
-          <h2 className="font-display mb-10 text-3xl font-bold text-ink">How we got here.</h2>
+          <h2
+            className="scroll-reveal font-display mb-12 text-[clamp(1.8rem,3vw,2.4rem)] font-extrabold text-ink"
+            style={{ '--reveal-delay': '80ms' } as React.CSSProperties}
+          >
+            How we got here.
+          </h2>
 
           <div className="space-y-8">
-            {timeline.map(({ year, text }) => (
-              <div key={year} className="scroll-reveal flex gap-6">
-                <span className="font-display w-24 shrink-0 text-right text-lg font-bold text-amber">
+            {timeline.map(({ year, text }, i) => (
+              <div
+                key={year}
+                className="scroll-reveal-left flex gap-6"
+                style={{ '--reveal-delay': `${i * 60}ms` } as React.CSSProperties}
+              >
+                <span className="font-display w-28 shrink-0 text-right text-lg font-bold text-amber">
                   {year}
                 </span>
-                <p className="text-sm leading-relaxed text-muted">{text}</p>
+                <p className="text-[15px] leading-[1.8] text-muted">{text}</p>
               </div>
             ))}
           </div>
@@ -122,10 +144,17 @@ export default function AboutPage() {
       </section>
 
       {/* Notify */}
-      <section className="bg-ink py-16">
+      <section className="bg-ink py-20">
         <div className="mx-auto max-w-[600px] px-6 text-center">
-          <h2 className="font-display text-3xl font-bold text-white">The book is coming.</h2>
-          <p className="mt-3 text-sm text-white/60">Be the first to know when it&apos;s available.</p>
+          <h2 className="scroll-reveal font-display text-[clamp(1.8rem,3vw,2.6rem)] font-extrabold text-white">
+            The book is coming.
+          </h2>
+          <p
+            className="scroll-reveal mt-4 text-sm leading-relaxed text-white/50"
+            style={{ '--reveal-delay': '100ms' } as React.CSSProperties}
+          >
+            Be the first to know when it&apos;s available.
+          </p>
         </div>
       </section>
     </>
