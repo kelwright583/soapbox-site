@@ -66,16 +66,18 @@ export default function BookPage() {
       {/* Book Hero */}
       <section className="relative bg-ink" style={{ paddingTop: 64 }}>
         <div className="mx-auto grid max-w-[1140px] items-center gap-0 lg:grid-cols-2">
-          <div className="hero-animate-image flex items-center justify-center px-6 py-16 lg:h-[620px] lg:py-0 lg:px-12">
-            <Image
-              src="/images/BookCover_Real.png"
-              alt="In the Absence of a Soapbox - book cover"
-              width={320}
-              height={460}
-              priority
-              className="shadow-2xl transition-transform duration-500 hover:scale-[1.02]"
-              style={{ borderRadius: 2 }}
-            />
+          <div className="hero-animate-image relative aspect-[3/4] overflow-hidden lg:aspect-auto lg:h-[620px]">
+            <div className="flex h-full items-center justify-center px-10 py-12">
+              <Image
+                src="/images/BookCover_Real.png"
+                alt="In the Absence of a Soapbox - book cover"
+                width={380}
+                height={545}
+                priority
+                className="max-h-full w-auto shadow-2xl transition-transform duration-500 hover:scale-[1.02]"
+                style={{ borderRadius: 2 }}
+              />
+            </div>
           </div>
           <div className="px-6 py-16 lg:py-20 lg:pl-4 lg:pr-14">
             <span className="hero-animate-kicker mb-3 block text-[10px] font-semibold uppercase tracking-[0.26em] text-amber">
